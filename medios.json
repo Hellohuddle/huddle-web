@@ -1,0 +1,92 @@
+{
+  "colores": [
+    {
+      "archivo": "color_white",
+      "nombre": "White",
+      "alt": "White exterior scheme"
+    },
+    {
+      "archivo": "color_brown",
+      "nombre": "Brown",
+      "alt": "Brown exterior scheme"
+    },
+    {
+      "archivo": "color_yellow",
+      "nombre": "Yellow",
+      "alt": "Yellow exterior scheme"
+    },
+    {
+      "archivo": "color_blue",
+      "nombre": "Blue",
+      "alt": "Blue exterior scheme"
+    }
+  ],
+  "diaNoche": {
+    "dia": "facade_day",
+    "noche": "facade_night",
+    "altDia": "The Huddle townhomes by day",
+    "altNoche": "The Huddle townhomes at night"
+  },
+  "galeria": [
+    {
+      "archivo": "scene1",
+      "alt": "Street view of the townhomes"
+    },
+    {
+      "archivo": "scene2",
+      "alt": "Frontage and driveways"
+    },
+    {
+      "archivo": "scene3",
+      "alt": "Townhomes among the landscaping"
+    },
+    {
+      "archivo": "scene4",
+      "alt": "Rear yards with plunge pools"
+    },
+    {
+      "archivo": "scene5",
+      "alt": "Backyards at dusk"
+    },
+    {
+      "archivo": "scene6",
+      "alt": "Private outdoor space"
+    },
+    {
+      "archivo": "scene7",
+      "alt": "Front elevations"
+    },
+    {
+      "archivo": "aerial_block",
+      "alt": "Aerial view of the block and the Pickleball Commons"
+    },
+    {
+      "archivo": "detail_facade",
+      "alt": "Facade detail: board-and-batten, metal roof and round windows"
+    },
+    {
+      "archivo": "int_bedroom",
+      "alt": "Bedroom with a view over the neighborhood"
+    },
+    {
+      "archivo": "aerial_street",
+      "alt": "Aerial view along the street"
+    },
+    {
+      "archivo": "int_bath",
+      "alt": "Bathroom with double vanity and matte black fixtures"
+    },
+    {
+      "archivo": "int_laundry",
+      "alt": "Laundry room with full-height cabinetry"
+    },
+    {
+      "archivo": "siteplan_render",
+      "alt": "Site plan of the neighborhood"
+    }
+  ],
+  "patioMedios": {
+    "antes": "scene6",
+    "despues": "scene4"
+  }
+}

@@ -1,0 +1,449 @@
+# Configuracion del CMS. GENERADA por huddle_4_cms.py desde contenido.json.
+# Si se anade un campo al JSON, hay que regenerar este archivo: el CMS borra al
+# guardar cualquier campo que no tenga declarado.
+
+backend:
+  name: github
+  repo: USUARIO-GITHUB/huddle-web     # <-- cambiar por el repo real
+  branch: main
+  base_url: https://api.netlify.com   # proveedor OAuth de Netlify
+  commit_messages:
+    update: "contenido: {{collection}} actualizado desde el CMS"
+
+publish_mode: simple
+site_url: https://huddle.netlify.app  # <-- cambiar por el dominio real
+display_url: https://huddle.netlify.app
+media_folder: img
+public_folder: /img
+
+collections:
+  - name: sitio
+    label: "Huddle"
+    files:
+      - name: contenido
+        label: "Page content"
+        file: contenido.json
+        format: json
+        description: "Change the wording and the figures. Press Publish and the site updates in about two minutes."
+        fields:
+      - name: hero
+        label: "Hero (top of the page)"
+        widget: object
+        collapsed: true
+        fields:
+          - name: etiqueta
+            label: "Label"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: sub
+            label: "Subtitle"
+            widget: text
+            required: true
+      - name: heroDatos
+        label: "Hero figures"
+        widget: list
+        collapsed: true
+        summary: "{{fields.etiqueta}}"
+        fields:
+          - name: etiqueta
+            label: "Label"
+            widget: string
+            required: true
+          - name: valor
+            label: "Value"
+            widget: string
+            required: true
+      - name: experience
+        label: "Section: The Huddle experience"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+      - name: pilares
+        label: "— its four pillars"
+        widget: list
+        collapsed: true
+        summary: "{{fields.titulo}}"
+        fields:
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: texto
+            label: "Text"
+            widget: text
+            required: true
+      - name: howitworks
+        label: "Section: How the neighborhood works"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+      - name: pasos
+        label: "— its three steps"
+        widget: list
+        collapsed: true
+        summary: "{{fields.titulo}}"
+        fields:
+          - name: n
+            label: "Number"
+            widget: string
+            required: true
+          - name: etiqueta
+            label: "Label"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: texto
+            label: "Text"
+            widget: text
+            required: true
+      - name: spin
+        label: "Section: Walk around the townhomes"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+      - name: amenities
+        label: "Section: Seven experiences"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+          - name: nota
+            label: "Footnote"
+            widget: text
+            required: false
+      - name: experiencias
+        label: "— the seven experiences"
+        widget: list
+        collapsed: true
+        summary: "{{fields.titulo}}"
+        fields:
+          - name: n
+            label: "Number"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: texto
+            label: "Text"
+            widget: text
+            required: true
+      - name: block360
+        label: "Section: The neighborhood from above"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+      - name: homes
+        label: "Section: Homes with personality"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+          - name: diaEtiqueta
+            label: "Day button"
+            widget: string
+            required: true
+          - name: nocheEtiqueta
+            label: "Night button"
+            widget: string
+            required: true
+      - name: homesDatos
+        label: "— its three facts"
+        widget: list
+        collapsed: true
+        summary: "{{fields.titulo}}"
+        fields:
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: texto
+            label: "Text"
+            widget: text
+            required: true
+      - name: gallery
+        label: "Section: Gallery"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+      - name: tour
+        label: "Section: 3D walkthrough"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+      - name: timeline
+        label: "Section: Partnership + readiness"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+      - name: hitos
+        label: "— its milestones"
+        widget: list
+        collapsed: true
+        summary: "{{fields.titulo}}"
+        fields:
+          - name: fecha
+            label: "Date"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: texto
+            label: "Text"
+            widget: text
+            required: true
+      - name: contact
+        label: "Section: Contact"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: parrafo1
+            label: "First paragraph"
+            widget: text
+            required: true
+          - name: parrafo2
+            label: "Second paragraph"
+            widget: text
+            required: true
+          - name: boton
+            label: "Button text"
+            widget: string
+            required: true
+      - name: plans
+        label: "Section: Floor plans"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+          - name: nota
+            label: "Footnote"
+            widget: text
+            required: false
+      - name: patio
+        label: "Section: Backyard with / without pool"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+          - name: etiquetaAntes
+            label: "Left label"
+            widget: string
+            required: true
+          - name: etiquetaDespues
+            label: "Right label"
+            widget: string
+            required: true
+          - name: altAntes
+            label: "Left image description"
+            widget: string
+            required: true
+          - name: altDespues
+            label: "Right image description"
+            widget: string
+            required: true
+      - name: plantas
+        label: "— the plans and their figures"
+        widget: list
+        collapsed: true
+        summary: "{{fields.nombre}}"
+        fields:
+          - name: id
+            label: "Internal id (do not change)"
+            widget: string
+            required: true
+          - name: nombre
+            label: "Name"
+            widget: string
+            required: true
+          - name: archivo
+            label: "Image file name (ask Juan to change)"
+            widget: string
+            required: true
+          - name: alt
+            label: "Image description for screen readers"
+            widget: string
+            required: false
+          - name: area
+            label: "Square footage"
+            widget: string
+            required: true
+          - name: dormitorios
+            label: "Bedrooms"
+            widget: string
+            required: true
+          - name: banos
+            label: "Bathrooms"
+            widget: string
+            required: true
+          - name: garaje
+            label: "Garage"
+            widget: string
+            required: true
+          - name: exterior
+            label: "Outdoor space"
+            widget: string
+            required: true

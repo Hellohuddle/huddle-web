@@ -1,0 +1,1204 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Huddle — Cool Eats. Smart Homes. One Place.</title>
+<meta name="description" content="Huddle is the 2027 Dream Home Neighborhood: 48 townhomes where distinctive design, outdoor living, everyday convenience and genuine connection come together.">
+<meta name="theme-color" content="#F6F1EA">
+<meta property="og:title" content="Huddle — 2027 Dream Home Neighborhood">
+<meta property="og:description" content="Cool Eats. Smart Homes. One Place.">
+<meta property="og:image" content="video/hero_poster.jpg">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HUDDLE — landing del barrio
+   Paleta muestreada de la presentacion de marca:
+     crema #F6F1EA · naranja #ED6B3A · tinta #24211F
+   El azul de acento esta estimado del kit (solo lo tengo en captura).
+   ============================================================ */
+:root{
+  --cream:#F6F1EA;
+  --cream-2:#EFE8DE;
+  --orange:#ED6B3A;
+  --orange-soft:#F4CCB9;
+  --ink:#24211F;
+  --ink-soft:#5A534E;
+  --accent:#7BA2BE;
+  --line:rgba(36,33,31,.14);
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --pad:clamp(20px,5vw,88px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+/* clip en html Y body: hidden solo en body se escapa en movil, y ademas crearia
+   un contenedor de scroll que rompe los sticky */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  background:var(--cream);color:var(--ink);font-family:var(--sans);
+  font-weight:400;line-height:1.65;overflow-x:clip;max-width:100%;
+  -webkit-font-smoothing:antialiased;
+}
+body.is-locked{overflow:hidden;height:100vh}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--orange);color:#fff}
+
+.wrap{padding:clamp(72px,10vh,130px) var(--pad)}
+.serif{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.08}
+
+/* etiqueta pequena sobre cada titular */
+.eyebrow{
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--orange);font-weight:600;margin-bottom:20px;
+}
+.h2{font-size:clamp(30px,4.4vw,62px)}
+.h2 em{font-style:normal;color:var(--orange)}
+.lead{font-size:clamp(15px,1.25vw,18px);color:var(--ink-soft);max-width:56ch}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--orange);color:#fff;border:0;border-radius:999px;cursor:pointer;
+  font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.04em;
+  padding:16px 30px;transition:background .3s var(--ease),transform .3s var(--ease);
+}
+.btn:hover{background:#d95c2d;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--cream-2);border-color:var(--ink)}
+
+/* ---------- reveals ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- cabecera ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--pad);
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
+}
+header.solid{background:rgba(246,241,234,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+             box-shadow:0 1px 0 var(--line);padding:12px var(--pad)}
+.logo{font-family:var(--sans);font-weight:700;font-size:24px;letter-spacing:-.03em;color:var(--orange);
+      display:inline-flex;align-items:center;min-height:46px}
+header.on-hero .logo{color:#fff}
+nav.links{display:flex;gap:clamp(16px,2vw,34px);align-items:center}
+nav.links a{font-size:13px;font-weight:500;color:var(--ink);transition:color .3s}
+header.on-hero nav.links a{color:rgba(255,255,255,.9)}
+nav.links a:hover{color:var(--orange)}
+#burger{display:none;width:46px;height:46px;align-items:center;justify-content:center;
+        background:none;border:0;cursor:pointer}
+#burger i{display:block;width:24px;height:2px;background:var(--ink);position:relative;transition:background .3s}
+#burger i::before,#burger i::after{content:'';position:absolute;left:0;width:24px;height:2px;background:var(--ink);
+  transition:transform .35s var(--ease)}
+#burger i::before{top:-7px}#burger i::after{top:7px}
+header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger i::after{background:#fff}
+#burger.open i{background:transparent}
+#burger.open i::before{transform:translateY(7px) rotate(45deg)}
+#burger.open i::after{transform:translateY(-7px) rotate(-45deg)}
+#drawer{
+  position:fixed;inset:0;z-index:99;background:var(--cream);
+  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 var(--pad);
+  opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;
+}
+#drawer.open{opacity:1;visibility:visible}
+#drawer a{font-family:var(--serif);font-size:clamp(28px,7vw,46px);font-weight:600;padding:12px 0;
+          border-bottom:1px solid var(--line)}
+#drawer a small{font-size:12px;font-family:var(--sans);color:var(--orange);margin-right:14px;vertical-align:middle}
+
+/* ---------- hero ---------- */
+#hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+#hero video,#hero .heroimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(36,33,31,.34) 0%,rgba(36,33,31,.04) 34%,rgba(36,33,31,.6) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;padding:0 var(--pad) clamp(44px,7vh,80px);color:#fff}
+.hero-tag{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--orange-soft);margin-bottom:18px}
+.hero-in h1{font-family:var(--serif);font-weight:700;font-size:clamp(44px,8.5vw,120px);line-height:.98;letter-spacing:-.03em}
+.hero-sub{margin-top:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.hero-sub p{font-size:clamp(15px,1.5vw,21px);color:rgba(255,255,255,.9);max-width:34ch}
+.hero-facts{display:flex;gap:clamp(20px,3vw,52px);flex-wrap:wrap}
+.hero-facts div span{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);margin-bottom:5px}
+.hero-facts div b{font-family:var(--serif);font-size:clamp(19px,2vw,26px);font-weight:600;color:#fff}
+
+/* ---------- pilares ---------- */
+#experience{background:var(--cream)}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,40px);margin-top:clamp(40px,6vw,72px)}
+.pillar{border-top:2px solid var(--orange);padding-top:22px}
+.pillar b{display:block;font-family:var(--serif);font-size:clamp(19px,1.8vw,25px);font-weight:600;margin-bottom:10px}
+.pillar p{font-size:14.5px;color:var(--ink-soft)}
+
+/* ---------- como funciona ---------- */
+#howitworks{background:var(--cream-2)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,56px);margin-top:clamp(40px,6vw,70px)}
+.step{position:relative;padding-top:52px}
+.step::before{content:attr(data-n);position:absolute;top:0;left:0;
+  width:38px;height:38px;border-radius:50%;background:var(--orange);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.step span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.step b{display:block;font-family:var(--serif);font-size:clamp(24px,2.6vw,36px);font-weight:600;margin-bottom:12px}
+.step p{font-size:14.5px;color:var(--ink-soft)}
+
+/* ---------- visor de rotacion 360 ---------- */
+#spin{background:var(--ink);color:#fff}
+#spin .eyebrow{color:var(--orange-soft)}
+#spin .lead{color:rgba(255,255,255,.72)}
+.spin-stage{
+  position:relative;margin-top:clamp(30px,4vw,54px);background:#000;
+  border-radius:6px;overflow:hidden;aspect-ratio:16/9;
+  touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;
+}
+.spin-stage.dragging{cursor:grabbing}
+.spin-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  pointer-events:none;-webkit-user-drag:none}
+.spin-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;
+  transition:background .3s,transform .3s var(--ease),opacity .3s;
+}
+.spin-arrow:hover{background:#d95c2d;transform:translateY(-50%) scale(1.07)}
+.spin-arrow:disabled{opacity:.45;cursor:default;transform:translateY(-50%)}
+.spin-arrow.prev{left:clamp(10px,2vw,26px)}
+.spin-arrow.next{right:clamp(10px,2vw,26px)}
+.spin-arrow svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
+.spin-dots{position:absolute;left:0;right:0;bottom:10px;z-index:3;display:flex;justify-content:center;gap:2px}
+.spin-dots button{width:26px;height:26px;border:0;cursor:pointer;padding:0;background:transparent;
+  display:flex;align-items:center;justify-content:center}
+.spin-dots button::after{content:'';width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.38);transition:background .3s var(--ease),transform .3s var(--ease)}
+.spin-dots button.on::after{background:var(--orange);transform:scale(1.4)}
+.spin-hint{
+  position:absolute;left:50%;top:18px;transform:translateX(-50%);z-index:3;pointer-events:none;
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;
+  background:rgba(0,0,0,.42);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:8px 16px;border-radius:999px;transition:opacity .5s var(--ease);
+}
+.spin-stage.used .spin-hint,.orbit-stage.used .spin-hint{opacity:0}
+.spin-stage.ready .orbit-load{opacity:0;transition:opacity .6s .2s var(--ease)}
+/* los puntos suben para no pisar la barra de carga */
+.spin-dots{bottom:12px}
+
+/* ---------- plantas ---------- */
+#plans{background:var(--cream)}
+.plan-tabs{display:flex;flex-wrap:wrap;gap:2px;border:1px solid var(--line);border-radius:999px;
+  padding:3px;width:max-content;max-width:100%;margin:clamp(30px,4vw,48px) 0 20px}
+.plan-tabs button{border:0;background:transparent;color:var(--ink-soft);cursor:pointer;
+  font:600 11.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;
+  padding:11px 18px;border-radius:999px;transition:background .3s var(--ease),color .3s var(--ease)}
+.plan-tabs button.on{background:var(--ink);color:var(--cream)}
+.plan-body{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(24px,3vw,44px);align-items:start}
+.plan-sheet{display:none;background:#fff;border-radius:6px;overflow:hidden;margin:0;cursor:zoom-in}
+.plan-sheet.on{display:block}
+.plan-sheet img{width:100%;height:auto;display:block}
+.plan-info{display:none}
+.plan-info.on{display:block}
+.plan-info h3{font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);font-weight:600;
+  letter-spacing:-.01em;margin-bottom:6px}
+.plan-info .plan-sq{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);
+  margin-bottom:18px}
+.plan-info ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.plan-info li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;
+  border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+.plan-info li b{color:var(--ink);font-weight:600;text-align:right}
+.plan-nota{margin-top:18px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+@media(max-width:860px){.plan-body{grid-template-columns:1fr}}
+
+/* ---------- patio: antes y despues ---------- */
+/* La comparacion se hace con clip-path sobre la imagen de encima: las dos fotos
+   quedan a tamano completo y superpuestas, asi que no hay calculo de anchos que
+   se desajuste al cambiar de pantalla. */
+#patio{background:var(--cream-2)}
+.ba{--x:50%;position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
+  background:#000;aspect-ratio:16/9;touch-action:pan-y;cursor:ew-resize;user-select:none;
+  -webkit-user-select:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  pointer-events:none;-webkit-user-drag:none}
+.ba .ba-antes{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.ba-linea{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:#fff;z-index:3;
+  transform:translateX(-1px);pointer-events:none;box-shadow:0 0 14px rgba(0,0,0,.35)}
+.ba-tirador{position:absolute;top:50%;left:var(--x);z-index:4;width:48px;height:48px;border-radius:50%;
+  background:#fff;color:var(--ink);transform:translate(-50%,-50%);pointer-events:none;
+  display:flex;align-items:center;justify-content:center;gap:2px;box-shadow:0 6px 22px rgba(0,0,0,.3)}
+.ba-tirador svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round}
+.ba-et{position:absolute;top:16px;z-index:3;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:#fff;background:rgba(0,0,0,.44);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:8px 15px;border-radius:999px;pointer-events:none;transition:opacity .3s var(--ease)}
+.ba-et.izq{left:16px}
+.ba-et.der{right:16px}
+.ba:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+@media(max-width:700px){
+  #patio .ba{margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1);
+             border-radius:0;aspect-ratio:3/2}
+  .ba-tirador{width:42px;height:42px}
+  .ba-et{font-size:9.5px;padding:7px 12px}
+}
+
+/* ---------- orbital aereo de la cuadra ---------- */
+/* Va por secuencia de imagenes y no por video: el clip original es UNA toma continua,
+   asi el giro responde al instante, se puede arrastrar de forma continua y desaparece
+   la clase de fallo que daba el parpadeo en el visor de seis clips. */
+#block360{background:var(--ink);color:#fff}
+#block360 .eyebrow{color:var(--orange-soft)}
+#block360 .lead{color:rgba(255,255,255,.72)}
+.orbit-stage{
+  position:relative;margin-top:clamp(30px,4vw,54px);background:#000;
+  border-radius:6px;overflow:hidden;aspect-ratio:16/9;
+  touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;
+}
+.orbit-stage.dragging{cursor:grabbing}
+.orbit-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  pointer-events:none;-webkit-user-drag:none}
+/* Las poses se descargan enteras ANTES de habilitar el giro: arrastrar no puede
+   encontrarse nunca con un fotograma a medio cargar. */
+.orbit-load{position:absolute;left:0;right:0;bottom:0;height:2px;z-index:4;
+  background:rgba(255,255,255,.14)}
+.orbit-load i{display:block;height:100%;width:0;background:var(--orange);
+  transition:width .2s linear}
+.orbit-stage.ready .orbit-load{opacity:0;transition:opacity .6s .2s var(--ease)}
+.orbit-scrub{position:absolute;left:50%;transform:translateX(-50%);bottom:15px;z-index:3;
+  display:flex;align-items:center;gap:3px;pointer-events:none}
+.orbit-scrub span{display:block;width:2px;height:8px;border-radius:2px;
+  background:rgba(255,255,255,.28);transition:background .25s var(--ease),height .25s var(--ease)}
+.orbit-scrub span.on{background:var(--orange);height:14px}
+
+/* ---------- siete experiencias ---------- */
+#amenities{background:var(--cream)}
+.amen{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(30px,5vw,80px);margin-top:clamp(36px,5vw,64px)}
+.amen article{display:flex;gap:18px;padding:24px 0;border-bottom:1px solid var(--line)}
+.amen i{font-style:normal;font-family:var(--serif);font-size:13px;font-weight:700;color:var(--orange);
+  padding-top:4px;min-width:26px}
+.amen b{display:block;font-size:15px;font-weight:600;letter-spacing:.01em;margin-bottom:6px}
+.amen p{font-size:14px;color:var(--ink-soft)}
+.amen-note{margin-top:clamp(28px,4vw,46px);background:var(--orange);color:#fff;border-radius:6px;
+  padding:26px 30px;font-family:var(--serif);font-size:clamp(18px,2vw,26px);font-weight:600;text-align:center}
+
+/* ---------- casas ---------- */
+#homes{background:var(--cream-2)}
+.homes-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,3.5vw,60px);align-items:center;
+  margin-top:clamp(36px,5vw,60px)}
+.daynight{position:relative;border-radius:6px;overflow:hidden;background:var(--ink)}
+.daynight img{width:100%;height:auto;display:block}
+.daynight img.night{position:absolute;inset:0;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease)}
+.daynight.is-night img.night{opacity:1}
+.dn-toggle{
+  position:absolute;right:14px;bottom:14px;z-index:2;display:flex;gap:2px;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:999px;padding:4px;
+}
+.dn-toggle button{
+  border:0;cursor:pointer;background:transparent;color:rgba(255,255,255,.8);border-radius:999px;
+  font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 16px;transition:background .3s,color .3s;
+}
+.dn-toggle button.on{background:var(--orange);color:#fff}
+.homes-facts div{border-top:1px solid var(--line);padding:18px 0}
+.homes-facts span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);
+  font-weight:600;margin-bottom:7px}
+.homes-facts p{font-size:15px;color:var(--ink-soft)}
+.colors{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,20px);margin-top:clamp(30px,4vw,54px)}
+.colors figure{border-radius:5px;overflow:hidden;background:var(--cream)}
+.colors img{width:100%;height:auto;transition:transform .9s var(--ease)}
+.colors figure:hover img{transform:scale(1.04)}
+.colors figcaption{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  padding:12px 2px 0}
+
+/* ---------- galeria ---------- */
+#gallery{background:var(--cream)}
+.gal{column-count:3;column-gap:clamp(12px,1.6vw,22px);margin-top:clamp(36px,5vw,60px)}
+.gal figure{break-inside:avoid;margin:0 0 clamp(12px,1.6vw,22px);border-radius:5px;overflow:hidden;
+  background:var(--cream-2);cursor:zoom-in;position:relative}
+.gal img{width:100%;height:auto;transition:transform .9s var(--ease)}
+.gal figure:hover img{transform:scale(1.03)}
+
+/* ---------- walkthrough ---------- */
+#tour{background:var(--ink);color:#fff}
+#tour .eyebrow{color:var(--orange-soft)}
+#tour .lead{color:rgba(255,255,255,.72)}
+.tour-box{position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;background:#000;
+  aspect-ratio:16/9;max-height:78vh;min-height:420px}
+.tour-box iframe{display:block;width:100%;height:100%;border:0}
+
+/* ---------- calendario ---------- */
+#timeline{background:var(--cream-2)}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,50px);margin-top:clamp(36px,5vw,60px)}
+.tl article{background:var(--cream);border-radius:6px;padding:clamp(24px,2.6vw,38px)}
+.tl span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);
+  font-weight:600;margin-bottom:12px}
+.tl b{display:block;font-family:var(--serif);font-size:clamp(19px,2vw,26px);font-weight:600;margin-bottom:12px}
+.tl p{font-size:14.5px;color:var(--ink-soft)}
+
+/* ---------- formulario ---------- */
+#contact{background:var(--orange);color:#fff}
+#contact .eyebrow{color:rgba(255,255,255,.72)}
+#contact .h2 em{color:var(--ink)}
+#contact .lead{color:rgba(255,255,255,.9)}
+.form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.85);font-weight:600;margin-bottom:8px}
+.field input,.field select,.field textarea{
+  width:100%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:5px;
+  color:#fff;font-family:var(--sans);font-size:16px;padding:14px 16px;min-height:52px;
+  transition:border-color .3s,background .3s;
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.55)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:#fff;background:rgba(255,255,255,.2)}
+.field select option{background:var(--ink);color:#fff}
+.field textarea{resize:vertical;min-height:110px}
+.field.err input,.field.err select,.field.err textarea{border-color:var(--ink)}
+.field .msg{display:none;font-size:12px;color:var(--ink);margin-top:7px;font-weight:600}
+.field.err .msg{display:block}
+.f-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+#contact .btn{background:var(--ink)}
+#contact .btn:hover{background:#000}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+#formNote{font-size:13.5px;margin-top:16px;color:rgba(255,255,255,.9)}
+.contact-side p{color:rgba(255,255,255,.9);font-size:15px;margin-bottom:14px}
+.contact-side a{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- pie ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,80px) var(--pad) 34px}
+.f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:44px}
+.f-top .logo{color:var(--orange);font-size:30px}
+.f-top p{max-width:34ch;font-size:14.5px;margin-top:12px}
+.f-links{display:flex;gap:clamp(28px,5vw,70px);flex-wrap:wrap}
+.f-links div span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);
+  font-weight:600;margin-bottom:12px}
+.f-links a,.f-links p{display:block;font-size:14px;margin-bottom:7px;color:rgba(255,255,255,.72)}
+.f-links a:hover{color:#fff}
+.f-bot{border-top:1px solid rgba(255,255,255,.14);padding-top:24px;display:flex;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.5)}
+
+/* ---------- visor a pantalla completa ---------- */
+#lb{position:fixed;inset:0;z-index:150;background:rgba(20,18,17,.96);
+  display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,56px);
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;cursor:zoom-out}
+#lb.open{opacity:1;visibility:visible}
+#lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;
+  transform:scale(.97);transition:transform .45s var(--ease)}
+#lb.open img{transform:scale(1)}
+#lbClose{position:absolute;top:clamp(14px,3vw,30px);right:clamp(14px,3vw,30px);
+  width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:var(--orange);color:#fff;
+  font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center}
+
+/* ---------- responsive ---------- */
+@media(max-width:1024px){
+  .pillars{grid-template-columns:repeat(2,1fr)}
+  .homes-grid,.form-grid{grid-template-columns:1fr}
+  .gal{column-count:2}
+}
+@media(max-width:820px){
+  nav.links{display:none}
+  #burger{display:flex}
+  .steps,.tl{grid-template-columns:1fr}
+  .amen{grid-template-columns:1fr}
+  .colors{grid-template-columns:repeat(2,1fr)}
+  .spin-arrow{width:48px;height:48px}
+  /* a 16:9 el visor quedaba en 350x197: demasiado bajo para la pieza principal.
+     Se saca del margen y se sube la proporcion; el bloque va centrado, asi que
+     recortar un poco de los lados no quita informacion. */
+  #spin .spin-stage{margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1);
+                    border-radius:0;aspect-ratio:3/2}
+  #block360 .orbit-stage{margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1);
+                         border-radius:0;aspect-ratio:3/2}
+  .tour-box{aspect-ratio:auto;height:min(74vh,600px);min-height:0;max-height:none}
+  .f-cols{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .pillars{grid-template-columns:1fr}
+  .gal{column-count:1}
+  .hero-facts{gap:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+</style>
+
+<header id="hdr" class="on-hero">
+  <a href="#hero" class="logo">huddle</a>
+  <nav class="links">
+    <a href="#experience">Experience</a>
+    <a href="#spin">360° View</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#block360">Aerial</a>
+    <a href="#homes">Homes</a>
+    <a href="#plans">Plans</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#tour">Walkthrough</a>
+    <a href="#contact" class="btn" style="padding:11px 22px">Get in touch</a>
+  </nav>
+  <button id="burger" aria-label="Menu"><i></i></button>
+</header>
+
+<div id="drawer">
+  <a href="#experience"><small>01</small>Experience</a>
+  <a href="#spin"><small>02</small>360° View</a>
+  <a href="#amenities"><small>03</small>Amenities</a>
+  <a href="#block360"><small>04</small>Aerial 360</a>
+  <a href="#homes"><small>05</small>Homes</a>
+  <a href="#plans"><small>06</small>Plans</a>
+  <a href="#patio"><small>07</small>Backyards</a>
+  <a href="#gallery"><small>08</small>Gallery</a>
+  <a href="#tour"><small>09</small>Walkthrough</a>
+  <a href="#contact"><small>10</small>Get in touch</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <video id="heroVid" poster="video/hero_poster.jpg" muted loop playsinline preload="none"
+         data-hd="video/hero_hd.mp4" data-sd="video/hero_sd.mp4" aria-hidden="true"></video>
+  <div class="hero-in">
+    <p class="hero-tag" data-c="hero.etiqueta">2027 Dream Home Neighborhood</p>
+    <h1 data-c="hero.titulo">Cool Eats.<br>Smart Homes.<br>One Place.</h1>
+    <div class="hero-sub">
+      <p data-c="hero.sub">A neighborhood where distinctive homes, outdoor living and genuine connection come together.</p>
+      <div class="hero-facts" data-loop="heroDatos">
+<div><span>Townhomes</span><b>48</b></div>
+<div><span>Presales</span><b>Oct 2026</b></div>
+<div><span>First homes</span><b>Q1 2027</b></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 · EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="experience.eyebrow">The Huddle experience</p>
+    <h2 class="serif h2 rv" data-c="experience.titulo">Why Huddle is a<br><em>dream neighborhood</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="experience.lead">A thoughtfully designed neighborhood where distinctive homes, outdoor living, everyday convenience and genuine connection come together.</p>
+    <div class="pillars" data-loop="pilares">
+<div class="pillar rv"><b>Connection</b><p>Shared spaces placed where neighborhood life naturally happens.</p></div>
+<div class="pillar rv"><b>Convenience</b><p>Food, coffee and daily essentials always just around the corner.</p></div>
+<div class="pillar rv"><b>Personality</b><p>Varied architecture and streetscapes with real character.</p></div>
+<div class="pillar rv"><b>Outdoor living</b><p>Private yards, plunge pools and room to actually be outside.</p></div>
+</div>
+  </div>
+</section>
+
+<!-- ============ 02 · HOW IT WORKS ============ -->
+<section id="howitworks">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="howitworks.eyebrow">How the neighborhood works</p>
+    <h2 class="serif h2 rv" data-c="howitworks.titulo">Designed as one<br><em>complete experience</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="howitworks.lead">Huddle brings homes, food, recreation, technology and connection together in one expertly designed place.</p>
+    <div class="steps" data-loop="pasos">
+<article class="step rv" data-n="01"><span>At home</span><b>Live</b><p>Distinctive townhomes, smart-home living and private outdoor space.</p></article>
+<article class="step rv" data-n="02"><span>Just outside</span><b>Step out</b><p>Walking, pickleball, dogs and gathering.</p></article>
+<article class="step rv" data-n="03"><span>Around the corner</span><b>Connect</b><p>Cool Eats, community Wi-Fi and everyday connection.</p></article>
+</div>
+  </div>
+</section>
+
+<!-- ============ 03 · VISOR 360 ============ -->
+<section id="spin">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="spin.eyebrow">See it from every side</p>
+    <h2 class="serif h2 rv" data-c="spin.titulo">Walk around the<br><em>townhomes</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="spin.lead">One full turn around the homes. Drag the view or use the arrows to see how the houses, the yards and the pools sit together.</p>
+
+    <div class="spin-stage rv" id="spinStage">
+      <img id="spinImg" src="video/casa00.jpg"
+           alt="Exterior view of the Huddle townhomes">
+
+      <button class="spin-arrow prev" id="spinPrev" aria-label="Rotate left" disabled>
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="spin-arrow next" id="spinNext" aria-label="Rotate right" disabled>
+        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+
+      <span class="spin-hint" id="spinHint">Loading the turn</span>
+      <div class="spin-dots" id="spinDots"></div>
+      <div class="orbit-load"><i id="spinFill"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 · AMENITIES ============ -->
+<section id="amenities">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="amenities.eyebrow">Core experience areas</p>
+    <h2 class="serif h2 rv" data-c="amenities.titulo">Seven experiences.<br><em>One connected neighborhood.</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="amenities.lead">Each one is designed to make everyday life easier, more social and more distinctly Huddle.</p>
+    <div class="amen" data-loop="experiencias">
+<article class="rv"><i>01</i><div><b>The Walking Trail</b><p>A landscaped route connecting homes, shared spaces and daily movement.</p></div></article>
+<article class="rv"><i>02</i><div><b>Connected Everywhere</b><p>Community-wide Wi-Fi keeps residents connected at home and throughout the neighborhood.</p></div></article>
+<article class="rv"><i>03</i><div><b>Cool Eats Close By</b><p>Food, coffee and everyday connection are always just around the corner.</p></div></article>
+<article class="rv"><i>04</i><div><b>Cart to Coffee. Cart to Dinner.</b><p>Golf-cart access makes getting around Huddle convenient, and a little more fun.</p></div></article>
+<article class="rv"><i>05</i><div><b>The Pool Collection</b><p>Every home can add an 8′ × 10′ plunge pool, a private backyard retreat without leaving the neighborhood.</p></div></article>
+<article class="rv"><i>06</i><div><b>The Quiet Lawn</b><p>A Wi-Fi enabled outdoor living room and a natural place to meet neighbors without having to host at home.</p></div></article>
+<article class="rv"><i>07</i><div><b>Pickle &amp; Play</b><p>The Pickleball Commons builds movement, fun, wellness and friendship into neighborhood life.</p></div></article>
+</div>
+    <p class="amen-note rv" data-c="amenities.nota">Designed to move. Gather. Play. Belong.</p>
+  </div>
+</section>
+
+<!-- ============ 05 · ORBITAL AEREO ============ -->
+<section id="block360">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="block360.eyebrow">The neighborhood from above</p>
+    <h2 class="serif h2 rv" data-c="block360.titulo">Circle the<br><em>whole block</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="block360.lead">A full turn around Huddle from the air. Drag the view or use the arrows to see how the homes, the trail, the Pickleball Commons and the Quiet Lawn sit together.</p>
+
+    <div class="orbit-stage rv" id="orbitStage">
+      <img id="orbitImg" src="video/cuadra00.jpg"
+           alt="Aerial view of the Huddle neighborhood">
+      <button class="spin-arrow prev" id="orbitPrev" aria-label="Rotate left" disabled>
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="spin-arrow next" id="orbitNext" aria-label="Rotate right" disabled>
+        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <span class="spin-hint" id="orbitHint">Loading the aerial turn</span>
+      <div class="orbit-scrub" id="orbitScrub"></div>
+      <div class="orbit-load"><i id="orbitFill"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 · HOMES ============ -->
+<section id="homes">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="homes.eyebrow">Residential architecture</p>
+    <h2 class="serif h2 rv" data-c="homes.titulo">Homes with<br><em>personality</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="homes.lead">48 townhomes designed to create a neighborhood with rhythm, variety and character.</p>
+
+    <div class="homes-grid">
+      <div class="daynight rv" id="dayNight">
+        <picture><source srcset="img/facade_day.webp" type="image/webp">
+          <img src="img/facade_day.jpg" alt="The Huddle townhomes by day"></picture>
+        <picture><source srcset="img/facade_night.webp" type="image/webp">
+          <img class="night" src="img/facade_night.jpg" alt="The Huddle townhomes at night" loading="lazy"></picture>
+        <div class="dn-toggle">
+          <button class="on" data-dn="day" data-c="homes.diaEtiqueta">Day</button>
+          <button data-dn="night" data-c="homes.nocheEtiqueta">Night</button>
+        </div>
+      </div>
+      <div class="homes-facts rv" data-loop="homesDatos">
+<div><span>Architectural rhythm</span><p>Varied exterior colors, distinctive elevations and tall rooflines.</p></div>
+<div><span>Smart by design</span><p>Integrated smart-home features throughout every home.</p></div>
+<div><span>Private Florida living</span><p>Fenced outdoor spaces with optional 8′ × 10′ plunge pools.</p></div>
+</div>
+      </div>
+    </div>
+
+    <div class="colors" data-loop="colores">
+<figure class="rv"><picture><source srcset="img/color_white.webp" type="image/webp">
+        <img src="img/color_white.jpg" alt="White exterior scheme" loading="lazy"></picture><figcaption>White</figcaption></figure>
+<figure class="rv"><picture><source srcset="img/color_brown.webp" type="image/webp">
+        <img src="img/color_brown.jpg" alt="Brown exterior scheme" loading="lazy"></picture><figcaption>Brown</figcaption></figure>
+<figure class="rv"><picture><source srcset="img/color_yellow.webp" type="image/webp">
+        <img src="img/color_yellow.jpg" alt="Yellow exterior scheme" loading="lazy"></picture><figcaption>Yellow</figcaption></figure>
+<figure class="rv"><picture><source srcset="img/color_blue.webp" type="image/webp">
+        <img src="img/color_blue.jpg" alt="Blue exterior scheme" loading="lazy"></picture><figcaption>Blue</figcaption></figure>
+</div>
+  </div>
+</section>
+
+<!-- ============ 07 · PLANTAS ============ -->
+<section id="plans">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="plans.eyebrow">Floor plans</p>
+    <h2 class="serif h2 rv" data-c="plans.titulo">Room to live,<br><em>inside and out</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="plans.lead">Every Huddle townhome is designed around open living, private outdoor space and the option of a plunge pool.</p>
+
+    <div class="plan-tabs rv" id="planTabs" role="tablist" aria-label="Floor plans"></div>
+    <div class="plan-body rv">
+      <div data-loop="plantas">
+<figure class="plan-sheet" data-plan="a"><picture><source srcset="img/siteplan_render.webp" type="image/webp">
+          <img src="img/siteplan_render.jpg" alt="Floor plan A" loading="lazy"></picture></figure>
+<figure class="plan-sheet" data-plan="b"><picture><source srcset="img/siteplan_render.webp" type="image/webp">
+          <img src="img/siteplan_render.jpg" alt="Floor plan B" loading="lazy"></picture></figure>
+</div>
+      <div data-loop="plantas" data-tpl="plantasFicha">
+<div class="plan-info" data-plan="a">
+          <h3>PLACEHOLDER Plan A</h3>
+          <p class="plan-sq">PLACEHOLDER sq ft</p>
+          <ul>
+            <li><span>Bedrooms</span><b>—</b></li>
+            <li><span>Bathrooms</span><b>—</b></li>
+            <li><span>Garage</span><b>—</b></li>
+            <li><span>Outdoor</span><b>—</b></li>
+          </ul>
+        </div>
+<div class="plan-info" data-plan="b">
+          <h3>PLACEHOLDER Plan B</h3>
+          <p class="plan-sq">PLACEHOLDER sq ft</p>
+          <ul>
+            <li><span>Bedrooms</span><b>—</b></li>
+            <li><span>Bathrooms</span><b>—</b></li>
+            <li><span>Garage</span><b>—</b></li>
+            <li><span>Outdoor</span><b>—</b></li>
+          </ul>
+        </div>
+</div>
+    </div>
+    <p class="plan-nota rv" data-c="plans.nota">Plans are illustrative. Dimensions and finishes may vary by homesite.</p>
+  </div>
+</section>
+
+<!-- ============ 08 · PATIO ANTES Y DESPUES ============ -->
+<section id="patio">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="patio.eyebrow">Your backyard, your call</p>
+    <h2 class="serif h2 rv" data-c="patio.titulo">With pool.<br><em>Or without.</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="patio.lead">Every home comes with a fenced backyard, and an 8′ × 10′ plunge pool is optional. Drag the handle to see both.</p>
+
+    <div class="ba rv" id="ba" tabindex="0" role="slider"
+         aria-label="Compare the backyard with and without a plunge pool"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <img src="img/scene4.jpg" alt="Backyard with an 8 by 10 foot plunge pool" loading="lazy">
+      <img class="ba-antes" src="img/scene6.jpg" alt="Backyard without a plunge pool" loading="lazy">
+      <span class="ba-et izq" data-c="patio.etiquetaAntes">Without pool</span>
+      <span class="ba-et der" data-c="patio.etiquetaDespues">With plunge pool</span>
+      <div class="ba-linea"></div>
+      <div class="ba-tirador">
+        <svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M10 7l5 5-5 5"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 · GALLERY ============ -->
+<section id="gallery">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="gallery.eyebrow">The project in images</p>
+    <h2 class="serif h2 rv" data-c="gallery.titulo">A closer<br><em>look</em></h2>
+    <p class="lead rv" style="margin-top:24px;margin-bottom:-8px" data-c="gallery.lead">Exteriors, aerials and the first interiors. Tap any image to open it full size.</p>
+    <div class="gal" id="gal" data-loop="galeria">
+<figure class="rv"><picture><source srcset="img/scene1.webp" type="image/webp">
+        <img src="img/scene1.jpg" alt="Street view of the townhomes" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/scene2.webp" type="image/webp">
+        <img src="img/scene2.jpg" alt="Frontage and driveways" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/scene3.webp" type="image/webp">
+        <img src="img/scene3.jpg" alt="Townhomes among the landscaping" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/scene4.webp" type="image/webp">
+        <img src="img/scene4.jpg" alt="Rear yards with plunge pools" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/scene5.webp" type="image/webp">
+        <img src="img/scene5.jpg" alt="Backyards at dusk" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/scene6.webp" type="image/webp">
+        <img src="img/scene6.jpg" alt="Private outdoor space" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/scene7.webp" type="image/webp">
+        <img src="img/scene7.jpg" alt="Front elevations" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/aerial_block.webp" type="image/webp">
+        <img src="img/aerial_block.jpg" alt="Aerial view of the block and the Pickleball Commons" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/detail_facade.webp" type="image/webp">
+        <img src="img/detail_facade.jpg" alt="Facade detail: board-and-batten, metal roof and round windows" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_bedroom.webp" type="image/webp">
+        <img src="img/int_bedroom.jpg" alt="Bedroom with a view over the neighborhood" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/aerial_street.webp" type="image/webp">
+        <img src="img/aerial_street.jpg" alt="Aerial view along the street" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_bath.webp" type="image/webp">
+        <img src="img/int_bath.jpg" alt="Bathroom with double vanity and matte black fixtures" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_laundry.webp" type="image/webp">
+        <img src="img/int_laundry.jpg" alt="Laundry room with full-height cabinetry" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/siteplan_render.webp" type="image/webp">
+        <img src="img/siteplan_render.jpg" alt="Site plan of the neighborhood" loading="lazy"></picture></figure>
+</div>
+  </div>
+</section>
+
+<!-- ============ 10 · WALKTHROUGH ============ -->
+<section id="tour">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="tour.eyebrow">Interactive 3D walkthrough</p>
+    <h2 class="serif h2 rv" data-c="tour.titulo">Step inside,<br><em>from anywhere</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="tour.lead">Drag to look around and use the floor points to move between spaces. Runs in the browser, nothing to install.</p>
+    <div class="tour-box rv">
+      <iframe src="https://dynamiccomposition.viewin360.co/share/collection/7TS9w?logo=bWVkaWEvNDMwMDM2LzZhOWItMTMwYy01ZWY1LWI3OTkucG5n&amp;info=0&amp;fs=1&amp;vr=1&amp;sd=1&amp;initload=1&amp;thumbs=-1"
+              title="Huddle interactive 3D walkthrough" loading="lazy"
+              allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+              allowfullscreen scrolling="no" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 · TIMELINE ============ -->
+<section id="timeline">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="timeline.eyebrow">Partnership + readiness</p>
+    <h2 class="serif h2 rv" data-c="timeline.titulo">Ready to partner.<br><em>Ready to launch.</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="timeline.lead">Huddle gives the 2027 Dream Home Neighborhood campaign a clear runway, from presales through completed homes.</p>
+    <div class="tl" data-loop="hitos">
+<article class="rv"><span>October 2026</span><b>Marketing + presales begin</b><p>Marketing launches alongside buyer outreach, creating a full runway for the campaign.</p></article>
+<article class="rv"><span>Q4 2026</span><b>A steady stream of content</b><p>Construction updates, interviews, site access and digital storytelling build momentum.</p></article>
+<article class="rv"><span>Q1 2027</span><b>First 12 homes complete</b><p>A tangible neighborhood milestone aligned with the 2027 program.</p></article>
+</div>
+  </div>
+</section>
+
+<!-- ============ 12 · CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="form-grid">
+      <div class="contact-side">
+        <p class="eyebrow rv" data-c="contact.eyebrow">Get in touch</p>
+        <h2 class="serif h2 rv" data-c="contact.titulo">Let's talk<br><em>about Huddle</em></h2>
+        <p class="rv" style="margin-top:24px" data-c="contact.parrafo1">Tell us what you would like to know and we will get back to you with details, availability and next steps.</p>
+        <p class="rv" data-c="contact.parrafo2">Together, we can show what it means to live connected.</p>
+      </div>
+
+      <form id="leadForm" class="rv" name="huddle-leads" method="POST"
+            data-netlify="true" netlify-honeypot="company-website">
+        <input type="hidden" name="form-name" value="huddle-leads">
+        <p class="hp"><label>Do not fill this in <input name="company-website" tabindex="-1"></label></p>
+
+        <div class="f-cols">
+          <div class="field"><label for="name">Full name *</label>
+            <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+            <span class="msg">Please enter your name</span></div>
+          <div class="field"><label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+            <span class="msg">Please enter a valid email</span></div>
+        </div>
+        <div class="f-cols">
+          <div class="field"><label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="(000) 000-0000" autocomplete="tel"></div>
+          <div class="field"><label for="interest">I'm interested in</label>
+            <select id="interest" name="interest">
+              <option>Buying a home</option>
+              <option>Investment opportunity</option>
+              <option>Partnership</option>
+              <option>General information</option>
+            </select></div>
+        </div>
+        <div class="field"><label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Anything you'd like us to know"></textarea></div>
+
+        <button type="submit" class="btn" id="submitBtn" data-c="contact.boton">Send message</button>
+        <p id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-top">
+    <div>
+      <div class="logo">huddle</div>
+      <p>Cool Eats. Smart Homes. One Place. The 2027 Dream Home Neighborhood.</p>
+    </div>
+    <div class="f-links">
+      <div>
+        <span>Explore</span>
+        <a href="#experience">Experience</a>
+        <a href="#spin">360° View</a>
+        <a href="#homes">Homes</a>
+        <a href="#tour">Walkthrough</a>
+      </div>
+      <div>
+        <span>The neighborhood</span>
+        <p>48 townhomes</p>
+        <p>Optional plunge pools</p>
+        <p>Community-wide Wi-Fi</p>
+      </div>
+    </div>
+  </div>
+  <div class="f-bot">
+    <p>© <span id="year">2026</span> Huddle. All rights reserved.</p>
+    <p>Renderings are illustrative and subject to change.</p>
+  </div>
+</footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button id="lbClose" aria-label="Close">✕</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script>
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- NAV ---------- */
+  var hdr=document.getElementById('hdr'), burger=document.getElementById('burger'),
+      drawer=document.getElementById('drawer'), hero=document.getElementById('hero');
+  burger.addEventListener('click',function(){
+    var open=drawer.classList.toggle('open');
+    burger.classList.toggle('open',open);
+    document.body.classList.toggle('is-locked',open);
+  });
+  drawer.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){
+      drawer.classList.remove('open'); burger.classList.remove('open');
+      document.body.classList.remove('is-locked');
+    }
+  });
+
+  /* ---------- REVEALS ----------
+     Umbral bajo y red de seguridad: con umbrales altos un elemento pequeno puede
+     no dispararse nunca y quedarse invisible para siempre. */
+  var reveal=[].slice.call(document.querySelectorAll('.rv'));
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.01});
+  reveal.forEach(function(el,i){ el.style.transitionDelay=(i%4)*0.06+'s'; io.observe(el); });
+  function rescatar(){
+    for(var i=reveal.length-1;i>=0;i--){
+      var el=reveal[i];
+      if(el.classList.contains('in')){ reveal.splice(i,1); continue; }
+      var r=el.getBoundingClientRect();
+      if(r.top<innerHeight && r.bottom>0){ el.classList.add('in'); io.unobserve(el); reveal.splice(i,1); }
+    }
+  }
+  addEventListener('scroll',function(){
+    rescatar();
+    hdr.classList.toggle('solid', scrollY>60);
+    hdr.classList.toggle('on-hero', scrollY < hero.offsetHeight-90);
+  },{passive:true});
+  addEventListener('load',function(){ rescatar(); setTimeout(rescatar,600); });
+  setTimeout(rescatar,1200);
+
+  /* ---------- HERO: el video se carga al entrar, no en el primer pintado ---------- */
+  (function(){
+    var v=document.getElementById('heroVid');
+    if(!v||RM) return;
+    function fuente(){
+      var ahorro=navigator.connection&&(navigator.connection.saveData||
+                 /2g/.test(navigator.connection.effectiveType||''));
+      return (innerWidth>=820 && !ahorro) ? v.getAttribute('data-hd') : v.getAttribute('data-sd');
+    }
+    addEventListener('load',function(){
+      setTimeout(function(){
+        v.src=fuente(); v.load();
+        var p=v.play(); if(p&&p.catch) p.catch(function(){});
+      },400);
+    });
+  })();
+
+  /* ---------- VISOR 360 (motor compartido) ----------
+
+     Los dos visores de la pagina giran por SECUENCIA DE IMAGENES, no por video.
+     Con video, cada flecha tenia que descargar ~1,5 MB antes de arrancar y, al
+     terminar, cambiar de video a foto: de ahi venian tanto la espera como el
+     parpadeo. Con poses sueltas el giro es inmediato, se puede arrastrar y no hay
+     ningun intercambio que pueda fallar.
+
+     Todo (medir, elegir formato, descargar) ocurre cuando la seccion se acerca a la
+     pantalla: al cargar la pagina el ancho todavia puede ser 0 (pestana oculta,
+     panel sin componer) y quien no baje hasta aqui no se descarga nada.          */
+  function crearVisor360(cfg){
+    var stage=document.getElementById(cfg.stage);
+    if(!stage) return;
+    var img  =document.getElementById(cfg.img),
+        prev =document.getElementById(cfg.prev),
+        next =document.getElementById(cfg.next),
+        hint =document.getElementById(cfg.hint),
+        barra=document.getElementById(cfg.barra),
+        caja =document.getElementById(cfg.marcas),
+        TOTAL=cfg.total;
+    var idx=[], marcas=[], N=0, pos=0, listo=false, anim=null, ext='.jpg', iniciado=false;
+
+    function url(k){ var n=idx[k]; return 'video/'+cfg.prefijo+(n<10?'0':'')+n+ext; }
+    function norm(k){ return ((k%N)+N)%N; }
+    function pintar(k){
+      pos=norm(Math.round(k));
+      img.src=url(pos);
+      if(!marcas.length) return;
+      var act = cfg.anclas ? Math.round(pos*cfg.anclas/N)%cfg.anclas : pos;
+      for(var j=0;j<marcas.length;j++) marcas[j].classList.toggle('on',j===act);
+    }
+
+    function arrancar(){
+      if(iniciado) return;
+      iniciado=true;
+      /* Se mide el visor, no la ventana: es el ancho que de verdad manda. En pantallas
+         estrechas se usa una pose de cada dos, la mitad de bytes y la mitad de mapas
+         de bits en memoria, que es lo que ahoga a un movil modesto. */
+      var PASO = (stage.clientWidth||innerWidth||360) < 560 ? 2 : 1, i;
+      for(i=0;i<TOTAL;i+=PASO) idx.push(i);
+      N=idx.length;
+
+      var cuantas = cfg.anclas || N;
+      for(i=0;i<cuantas;i++){
+        var m=document.createElement(cfg.anclas?'button':'span');
+        if(cfg.anclas){
+          m.setAttribute('aria-label','View '+(i+1));
+          (function(k){ m.addEventListener('click',function(){
+             if(!listo) return;
+             stage.classList.add('used');
+             irA(Math.round(k*N/cfg.anclas));
+          }); })(i);
+        }
+        caja.appendChild(m);
+      }
+      marcas=[].slice.call(caja.children);
+
+      /* prueba de webp de 1x1: elegir el formato por deteccion, y no con <picture>,
+         evita que el navegador acabe pidiendo un formato que no se precargo */
+      var probe=new Image();
+      probe.onload =function(){ ext = probe.width===1 ? '.webp' : '.jpg'; precargar(); };
+      probe.onerror=function(){ ext='.jpg'; precargar(); };
+      probe.src='data:image/webp;base64,UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA';
+    }
+
+    function habilitar(){
+      if(listo) return;
+      listo=true;
+      stage.classList.add('ready');
+      prev.disabled=next.disabled=false;
+      if(hint) hint.textContent='Drag or use the arrows';
+    }
+
+    /* Las poses se descargan enteras ANTES de habilitar el giro: arrastrar no puede
+       encontrarse nunca con un fotograma a medio cargar. */
+    function precargar(){
+      var hechas=0;
+      for(var k=0;k<N;k++){
+        (function(){
+          var im=new Image();
+          im.onload=im.onerror=function(){
+            hechas++;
+            if(barra) barra.style.width=(hechas/N*100)+'%';
+            if(hechas===N){ habilitar(); pintar(0); }   // ya con el formato definitivo
+          };
+          im.src=url(k);
+        })();
+      }
+      setTimeout(habilitar,15000);      // red muy lenta: no dejar el visor inerte
+    }
+
+    /* Disparo por observador MAS red de seguridad por scroll: hay entornos (webviews
+       embebidos, paneles que no componen) donde IntersectionObserver no llega a
+       dispararse nunca y el visor se quedaria cargando para siempre. Es el mismo
+       patron que ya usan los reveals de esta pagina. */
+    function cerca(){
+      var r=stage.getBoundingClientRect();
+      return r.top < innerHeight+400 && r.bottom > -400;
+    }
+    function revisar(){
+      if(cerca()){
+        arrancar();
+        removeEventListener('scroll',revisar);
+        removeEventListener('resize',revisar);
+      }
+    }
+    if('IntersectionObserver' in window){
+      var ob=new IntersectionObserver(function(es){
+        if(es[0].isIntersecting){ ob.disconnect(); arrancar(); }
+      },{rootMargin:'400px 0px'});
+      ob.observe(stage);
+    }
+    addEventListener('scroll',revisar,{passive:true});
+    addEventListener('resize',revisar);
+    addEventListener('load',revisar);
+    revisar();
+
+    /* ---- giro animado ---- */
+    function irA(destino,ms){
+      var desde=pos, delta=destino-desde, t0=performance.now();
+      ms=ms||520;
+      cancelAnimationFrame(anim);
+      (function paso(t){
+        var k=Math.min(1,(t-t0)/ms);
+        var e=k<.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;      // easeInOutQuad
+        pintar(desde+delta*e);
+        if(k<1) anim=requestAnimationFrame(paso);
+      })(performance.now());
+    }
+    /* Las flechas NO se bloquean durante la animacion: un toque nuevo solo reapunta el
+       destino. Asi el visor no puede quedarse trabado si rAF no llega a correr. */
+    function girar(dir){
+      if(!listo) return;
+      stage.classList.add('used');
+      irA(pos + dir*Math.max(1,Math.round(N*cfg.grados/360)), cfg.ms);
+    }
+    next.addEventListener('click',function(){ girar(1); });
+    prev.addEventListener('click',function(){ girar(-1); });
+
+    /* ---- arrastre continuo, con raton y con el dedo ---- */
+    var x0=null, base=0, movido=0;
+    function bajar(e){
+      if(!listo) return;
+      cancelAnimationFrame(anim);
+      x0=(e.touches?e.touches[0]:e).clientX; base=pos; movido=0;
+      stage.classList.add('dragging','used');
+    }
+    function mover(e){
+      if(x0===null) return;
+      var dx=(e.touches?e.touches[0]:e).clientX-x0;
+      movido=Math.max(movido,Math.abs(dx));
+      pintar(base - dx/stage.clientWidth*N);        // el ancho del visor = una vuelta
+      if(e.cancelable && movido>8) e.preventDefault();   // ya es un giro, no un scroll
+    }
+    function subir(){ x0=null; stage.classList.remove('dragging'); }
+
+    stage.addEventListener('mousedown',bajar);
+    addEventListener('mousemove',mover);
+    addEventListener('mouseup',subir);
+    stage.addEventListener('touchstart',bajar,{passive:true});
+    stage.addEventListener('touchmove',mover,{passive:false});
+    stage.addEventListener('touchend',subir,{passive:true});
+    stage.addEventListener('dragstart',function(e){ e.preventDefault(); });
+
+    addEventListener('keydown',function(e){
+      var r=stage.getBoundingClientRect();
+      if(r.top>innerHeight||r.bottom<0) return;
+      if(e.key==='ArrowRight') girar(1);
+      if(e.key==='ArrowLeft')  girar(-1);
+    });
+  }
+
+  /* las casas: seis puntos de anclaje, 60 grados por toque */
+  crearVisor360({stage:'spinStage',img:'spinImg',prev:'spinPrev',next:'spinNext',
+                 hint:'spinHint',barra:'spinFill',marcas:'spinDots',
+                 prefijo:'casa',total:36,anclas:6,grados:60,ms:520});
+
+  /* la cuadra desde el aire: pista fina, un cuarto de vuelta por toque */
+  crearVisor360({stage:'orbitStage',img:'orbitImg',prev:'orbitPrev',next:'orbitNext',
+                 hint:'orbitHint',barra:'orbitFill',marcas:'orbitScrub',
+                 prefijo:'cuadra',total:36,anclas:0,grados:90,ms:650});
+
+
+  /* ---------- PLANTAS: pestanas ---------- */
+  (function(){
+    var caja=document.getElementById('planTabs');
+    if(!caja) return;
+    var hojas=[].slice.call(document.querySelectorAll('.plan-sheet')),
+        infos=[].slice.call(document.querySelectorAll('.plan-info'));
+    if(!hojas.length) return;
+    hojas.forEach(function(h,i){
+      var id=h.getAttribute('data-plan');
+      var info=infos.filter(function(x){ return x.getAttribute('data-plan')===id; })[0];
+      var b=document.createElement('button');
+      b.type='button'; b.setAttribute('role','tab');
+      b.textContent=(info?info.querySelector('h3').textContent:id);
+      if(i===0){ b.className='on'; h.classList.add('on'); if(info) info.classList.add('on'); }
+      b.addEventListener('click',function(){
+        [].slice.call(caja.children).forEach(function(x){ x.classList.toggle('on',x===b); });
+        hojas.forEach(function(x){ x.classList.toggle('on',x.getAttribute('data-plan')===id); });
+        infos.forEach(function(x){ x.classList.toggle('on',x.getAttribute('data-plan')===id); });
+      });
+      caja.appendChild(b);
+    });
+    /* la hoja se abre a pantalla completa con el visor que ya tiene la pagina */
+    hojas.forEach(function(h){
+      h.addEventListener('click',function(){
+        var img=h.querySelector('img');
+        if(window.abrirLightbox) window.abrirLightbox(img.currentSrc||img.src, img.alt);
+      });
+    });
+  })();
+
+  /* ---------- PATIO: comparador antes / despues ---------- */
+  (function(){
+    var caja=document.getElementById('ba');
+    if(!caja) return;
+    var x=50, arrastrando=false;
+
+    function pintar(){
+      caja.style.setProperty('--x', x.toFixed(2)+'%');
+      caja.setAttribute('aria-valuenow', Math.round(x));
+      /* las etiquetas se apartan cuando el tirador se les echa encima */
+      var izq=caja.querySelector('.ba-et.izq'), der=caja.querySelector('.ba-et.der');
+      if(izq) izq.style.opacity = x < 22 ? '0' : '1';
+      if(der) der.style.opacity = x > 78 ? '0' : '1';
+    }
+    function desde(e){
+      var r=caja.getBoundingClientRect();
+      var cx=(e.touches?e.touches[0]:e).clientX;
+      x=Math.max(0,Math.min(100,(cx-r.left)/r.width*100));
+      pintar();
+    }
+    caja.addEventListener('mousedown',function(e){ arrastrando=true; desde(e); e.preventDefault(); });
+    addEventListener('mousemove',function(e){ if(arrastrando) desde(e); });
+    addEventListener('mouseup',function(){ arrastrando=false; });
+    /* touch-action:pan-y deja el scroll vertical de la pagina intacto: solo se
+       captura el gesto cuando ya es claramente horizontal */
+    var x0=null,y0=null,manda=false;
+    caja.addEventListener('touchstart',function(e){
+      x0=e.touches[0].clientX; y0=e.touches[0].clientY; manda=false;
+    },{passive:true});
+    caja.addEventListener('touchmove',function(e){
+      if(x0===null) return;
+      var dx=Math.abs(e.touches[0].clientX-x0), dy=Math.abs(e.touches[0].clientY-y0);
+      if(!manda && dx>6 && dx>dy) manda=true;
+      if(manda){ desde(e); if(e.cancelable) e.preventDefault(); }
+    },{passive:false});
+    caja.addEventListener('touchend',function(){ x0=y0=null; manda=false; },{passive:true});
+    caja.addEventListener('keydown',function(e){
+      var paso = e.shiftKey ? 10 : 2;
+      if(e.key==='ArrowLeft'){ x=Math.max(0,x-paso); pintar(); e.preventDefault(); }
+      if(e.key==='ArrowRight'){ x=Math.min(100,x+paso); pintar(); e.preventDefault(); }
+      if(e.key==='Home'){ x=0; pintar(); e.preventDefault(); }
+      if(e.key==='End'){ x=100; pintar(); e.preventDefault(); }
+    });
+    pintar();
+  })();
+
+  /* ---------- DIA / NOCHE ---------- */
+  (function(){
+    var caja=document.getElementById('dayNight');
+    if(!caja) return;
+    caja.querySelectorAll('.dn-toggle button').forEach(function(b){
+      b.addEventListener('click',function(){
+        caja.classList.toggle('is-night', b.dataset.dn==='night');
+        caja.querySelectorAll('.dn-toggle button').forEach(function(o){ o.classList.toggle('on',o===b); });
+      });
+    });
+  })();
+
+  /* ---------- VISOR A PANTALLA COMPLETA ---------- */
+  var lightbox=(function(){
+    var lb=document.getElementById('lb'), im=document.getElementById('lbImg'),
+        x=document.getElementById('lbClose');
+    function abrir(src,alt){
+      im.src=src; im.alt=alt||'';
+      lb.classList.add('open'); document.body.classList.add('is-locked'); x.focus();
+    }
+    function cerrar(){
+      lb.classList.remove('open'); document.body.classList.remove('is-locked');
+      setTimeout(function(){ if(!lb.classList.contains('open')) im.removeAttribute('src'); },450);
+    }
+    lb.addEventListener('click',cerrar);
+    x.addEventListener('click',function(e){ e.stopPropagation(); cerrar(); });
+    addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('open')) cerrar(); });
+    window.abrirLightbox = abrir;
+    return {abrir:abrir};
+  })();
+  document.getElementById('gal').addEventListener('click',function(e){
+    var f=e.target.closest('figure'); if(!f) return;
+    var i=f.querySelector('img');
+    lightbox.abrir(i.currentSrc||i.src, i.alt);
+  });
+
+  /* ---------- FORMULARIO ---------- */
+  (function(){
+    var f=document.getElementById('leadForm');
+    if(!f) return;
+    var btn=document.getElementById('submitBtn'), note=document.getElementById('formNote');
+    function malo(campo){
+      var c=campo.closest('.field'); c.classList.add('err');
+      campo.addEventListener('input',function(){ c.classList.remove('err'); },{once:true});
+    }
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var ok=true;
+      f.querySelectorAll('[required]').forEach(function(c){
+        var v=c.value.trim();
+        var bien = c.type==='email' ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) : v.length>1;
+        if(!bien){ malo(c); ok=false; }
+      });
+      if(!ok){ note.textContent='Please check the highlighted fields.'; return; }
+      btn.disabled=true; btn.textContent='Sending…'; note.textContent='';
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+                 body:new URLSearchParams(new FormData(f)).toString()})
+        .then(function(){
+          f.style.display='none';
+          note.innerHTML='<strong>Thank you.</strong> We received your message and will be in touch shortly.';
+        })
+        .catch(function(err){
+          console.error(err);
+          btn.disabled=false; btn.textContent='Try again';
+          note.textContent='Something went wrong. Please email us instead.';
+        });
+    });
+  })();
+})();
+</script>
+

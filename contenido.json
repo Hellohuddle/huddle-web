@@ -1,0 +1,221 @@
+{
+  "hero": {
+    "etiqueta": "2027 Dream Home Neighborhood",
+    "titulo": "Cool Eats.<br>Smart Homes.<br>One Place.",
+    "sub": "A neighborhood where distinctive homes, outdoor living and genuine connection come together."
+  },
+  "heroDatos": [
+    {
+      "etiqueta": "Townhomes",
+      "valor": "48"
+    },
+    {
+      "etiqueta": "Presales",
+      "valor": "Oct 2026"
+    },
+    {
+      "etiqueta": "First homes",
+      "valor": "Q1 2027"
+    }
+  ],
+  "experience": {
+    "eyebrow": "The Huddle experience",
+    "titulo": "Why Huddle is a<br><em>dream neighborhood</em>",
+    "lead": "A thoughtfully designed neighborhood where distinctive homes, outdoor living, everyday convenience and genuine connection come together."
+  },
+  "pilares": [
+    {
+      "titulo": "Connection",
+      "texto": "Shared spaces placed where neighborhood life naturally happens."
+    },
+    {
+      "titulo": "Convenience",
+      "texto": "Food, coffee and daily essentials always just around the corner."
+    },
+    {
+      "titulo": "Personality",
+      "texto": "Varied architecture and streetscapes with real character."
+    },
+    {
+      "titulo": "Outdoor living",
+      "texto": "Private yards, plunge pools and room to actually be outside."
+    }
+  ],
+  "howitworks": {
+    "eyebrow": "How the neighborhood works",
+    "titulo": "Designed as one<br><em>complete experience</em>",
+    "lead": "Huddle brings homes, food, recreation, technology and connection together in one expertly designed place."
+  },
+  "pasos": [
+    {
+      "n": "01",
+      "etiqueta": "At home",
+      "titulo": "Live",
+      "texto": "Distinctive townhomes, smart-home living and private outdoor space."
+    },
+    {
+      "n": "02",
+      "etiqueta": "Just outside",
+      "titulo": "Step out",
+      "texto": "Walking, pickleball, dogs and gathering."
+    },
+    {
+      "n": "03",
+      "etiqueta": "Around the corner",
+      "titulo": "Connect",
+      "texto": "Cool Eats, community Wi-Fi and everyday connection."
+    }
+  ],
+  "spin": {
+    "eyebrow": "See it from every side",
+    "titulo": "Walk around the<br><em>townhomes</em>",
+    "lead": "One full turn around the homes. Drag the view or use the arrows to see how the houses, the yards and the pools sit together."
+  },
+  "amenities": {
+    "eyebrow": "Core experience areas",
+    "titulo": "Seven experiences.<br><em>One connected neighborhood.</em>",
+    "lead": "Each one is designed to make everyday life easier, more social and more distinctly Huddle.",
+    "nota": "Designed to move. Gather. Play. Belong."
+  },
+  "experiencias": [
+    {
+      "n": "01",
+      "titulo": "The Walking Trail",
+      "texto": "A landscaped route connecting homes, shared spaces and daily movement."
+    },
+    {
+      "n": "02",
+      "titulo": "Connected Everywhere",
+      "texto": "Community-wide Wi-Fi keeps residents connected at home and throughout the neighborhood."
+    },
+    {
+      "n": "03",
+      "titulo": "Cool Eats Close By",
+      "texto": "Food, coffee and everyday connection are always just around the corner."
+    },
+    {
+      "n": "04",
+      "titulo": "Cart to Coffee. Cart to Dinner.",
+      "texto": "Golf-cart access makes getting around Huddle convenient, and a little more fun."
+    },
+    {
+      "n": "05",
+      "titulo": "The Pool Collection",
+      "texto": "Every home can add an 8′ × 10′ plunge pool, a private backyard retreat without leaving the neighborhood."
+    },
+    {
+      "n": "06",
+      "titulo": "The Quiet Lawn",
+      "texto": "A Wi-Fi enabled outdoor living room and a natural place to meet neighbors without having to host at home."
+    },
+    {
+      "n": "07",
+      "titulo": "Pickle &amp; Play",
+      "texto": "The Pickleball Commons builds movement, fun, wellness and friendship into neighborhood life."
+    }
+  ],
+  "block360": {
+    "eyebrow": "The neighborhood from above",
+    "titulo": "Circle the<br><em>whole block</em>",
+    "lead": "A full turn around Huddle from the air. Drag the view or use the arrows to see how the homes, the trail, the Pickleball Commons and the Quiet Lawn sit together."
+  },
+  "homes": {
+    "eyebrow": "Residential architecture",
+    "titulo": "Homes with<br><em>personality</em>",
+    "lead": "48 townhomes designed to create a neighborhood with rhythm, variety and character.",
+    "diaEtiqueta": "Day",
+    "nocheEtiqueta": "Night"
+  },
+  "homesDatos": [
+    {
+      "titulo": "Architectural rhythm",
+      "texto": "Varied exterior colors, distinctive elevations and tall rooflines."
+    },
+    {
+      "titulo": "Smart by design",
+      "texto": "Integrated smart-home features throughout every home."
+    },
+    {
+      "titulo": "Private Florida living",
+      "texto": "Fenced outdoor spaces with optional 8′ × 10′ plunge pools."
+    }
+  ],
+  "gallery": {
+    "eyebrow": "The project in images",
+    "titulo": "A closer<br><em>look</em>",
+    "lead": "Exteriors, aerials and the first interiors. Tap any image to open it full size."
+  },
+  "tour": {
+    "eyebrow": "Interactive 3D walkthrough",
+    "titulo": "Step inside,<br><em>from anywhere</em>",
+    "lead": "Drag to look around and use the floor points to move between spaces. Runs in the browser, nothing to install."
+  },
+  "timeline": {
+    "eyebrow": "Partnership + readiness",
+    "titulo": "Ready to partner.<br><em>Ready to launch.</em>",
+    "lead": "Huddle gives the 2027 Dream Home Neighborhood campaign a clear runway, from presales through completed homes."
+  },
+  "hitos": [
+    {
+      "fecha": "October 2026",
+      "titulo": "Marketing + presales begin",
+      "texto": "Marketing launches alongside buyer outreach, creating a full runway for the campaign."
+    },
+    {
+      "fecha": "Q4 2026",
+      "titulo": "A steady stream of content",
+      "texto": "Construction updates, interviews, site access and digital storytelling build momentum."
+    },
+    {
+      "fecha": "Q1 2027",
+      "titulo": "First 12 homes complete",
+      "texto": "A tangible neighborhood milestone aligned with the 2027 program."
+    }
+  ],
+  "contact": {
+    "eyebrow": "Get in touch",
+    "titulo": "Let's talk<br><em>about Huddle</em>",
+    "parrafo1": "Tell us what you would like to know and we will get back to you with details, availability and next steps.",
+    "parrafo2": "Together, we can show what it means to live connected.",
+    "boton": "Send message"
+  },
+  "plans": {
+    "eyebrow": "Floor plans",
+    "titulo": "Room to live,<br><em>inside and out</em>",
+    "lead": "Every Huddle townhome is designed around open living, private outdoor space and the option of a plunge pool.",
+    "nota": "Plans are illustrative. Dimensions and finishes may vary by homesite."
+  },
+  "patio": {
+    "eyebrow": "Your backyard, your call",
+    "titulo": "With pool.<br><em>Or without.</em>",
+    "lead": "Every home comes with a fenced backyard, and an 8′ × 10′ plunge pool is optional. Drag the handle to see both.",
+    "etiquetaAntes": "Without pool",
+    "etiquetaDespues": "With plunge pool",
+    "altAntes": "Backyard without a plunge pool",
+    "altDespues": "Backyard with an 8 by 10 foot plunge pool"
+  },
+  "plantas": [
+    {
+      "id": "a",
+      "nombre": "PLACEHOLDER Plan A",
+      "archivo": "siteplan_render",
+      "alt": "Floor plan A",
+      "area": "PLACEHOLDER sq ft",
+      "dormitorios": "—",
+      "banos": "—",
+      "garaje": "—",
+      "exterior": "—"
+    },
+    {
+      "id": "b",
+      "nombre": "PLACEHOLDER Plan B",
+      "archivo": "siteplan_render",
+      "alt": "Floor plan B",
+      "area": "PLACEHOLDER sq ft",
+      "dormitorios": "—",
+      "banos": "—",
+      "garaje": "—",
+      "exterior": "—"
+    }
+  ]
+}

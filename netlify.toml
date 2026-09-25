@@ -1,0 +1,28 @@
+# Netlify construye la pagina en cada guardado del CMS.
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[build]
+  command = "python3 build.py"
+  publish = "."
+
+# El CMS y sus piezas no deben indexarse ni cachearse agresivamente.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+# Los renders y clips llevan nombre fijo, asi que se cachean fuerte;
+# el HTML nunca, para que un cambio del CMS se vea al instante.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -433,7 +433,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <a href="#experience">Experience</a>
     <a href="#spin">360° View</a>
     <a href="#amenities">Amenities</a>
-    
+    <a href="#block360" data-si="flags.aereo360">Aerial</a>
     <a href="#homes">Homes</a>
     <a href="#plans">Plans</a>
     <a href="#gallery">Gallery</a>
@@ -447,7 +447,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   <a href="#experience"><small>01</small>Experience</a>
   <a href="#spin"><small>02</small>360° View</a>
   <a href="#amenities"><small>03</small>Amenities</a>
-  
+  <a href="#block360" data-si="flags.aereo360"><small>04</small>Aerial 360</a>
   <a href="#homes"><small>05</small>Homes</a>
   <a href="#plans"><small>06</small>Plans</a>
   <a href="#patio"><small>07</small>Backyards</a>
@@ -548,7 +548,25 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 </section>
 
 <!-- ============ 05 · ORBITAL AEREO ============ -->
+<section id="block360" data-si="flags.aereo360">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="block360.eyebrow">The neighborhood from above</p>
+    <h2 class="serif h2 rv" data-c="block360.titulo">Circle the<br><em>whole block</em></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="block360.lead">A full turn around Huddle from the air. Drag the view or use the arrows to see how the homes, the trail, the Pickleball Commons and the Quiet Lawn sit together.</p>
 
+    <div class="orbit-stage rv" id="orbitStage">
+      <img id="orbitImg" src="video/cuadra00.jpg"
+           alt="Aerial view of the Huddle neighborhood">
+      <button class="spin-arrow prev" id="orbitPrev" aria-label="Rotate left" disabled>
+        <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="spin-arrow next" id="orbitNext" aria-label="Rotate right" disabled>
+        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <span class="spin-hint" id="orbitHint">Loading the aerial turn</span>
+      <div class="orbit-scrub" id="orbitScrub"></div>
+      <div class="orbit-load"><i id="orbitFill"></i></div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ 06 · HOMES ============ -->
 <section id="homes">
@@ -1070,7 +1088,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   /* la cuadra desde el aire: pista fina, un cuarto de vuelta por toque */
   crearVisor360({stage:'orbitStage',img:'orbitImg',prev:'orbitPrev',next:'orbitNext',
                  hint:'orbitHint',barra:'orbitFill',marcas:'orbitScrub',
-                 prefijo:'cuadra',total:36,anclas:0,grados:90,ms:650});
+                 prefijo:'cuadra',total:42,anclas:0,grados:90,ms:650});
 
 
   /* ---------- PLANTAS: pestanas ---------- */

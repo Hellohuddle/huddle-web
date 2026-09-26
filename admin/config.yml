@@ -227,14 +227,6 @@ collections:
             label: "Intro paragraph"
             widget: text
             required: true
-          - name: diaEtiqueta
-            label: "Day button"
-            widget: string
-            required: true
-          - name: nocheEtiqueta
-            label: "Night button"
-            widget: string
-            required: true
       - name: homesDatos
         label: "— its three facts"
         widget: list
@@ -371,6 +363,10 @@ collections:
             label: "Footnote"
             widget: text
             required: false
+          - name: resumen
+            label: "Resumen"
+            widget: string
+            required: true
       - name: patio
         label: "Section: Backyard with / without pool"
         widget: object
@@ -431,19 +427,7 @@ collections:
             label: "Square footage"
             widget: string
             required: true
-          - name: dormitorios
-            label: "Bedrooms"
-            widget: string
-            required: true
-          - name: banos
-            label: "Bathrooms"
-            widget: string
-            required: true
-          - name: garaje
-            label: "Garage"
-            widget: string
-            required: true
-          - name: exterior
-            label: "Outdoor space"
+          - name: espacios
+            label: "Espacios"
             widget: string
             required: true

@@ -205,6 +205,11 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .plan-info li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;
   border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
 .plan-info li b{color:var(--ink);font-weight:600;text-align:right}
+.plan-espacios{font-size:14px;line-height:1.85;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:14px}
+.plan-resumen{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:14px;font-size:13.5px;color:var(--ink-soft)}
+.plan-resumen b{color:var(--ink);font-weight:600}
+.homes-shot{margin:0;border-radius:6px;overflow:hidden;background:var(--cream-2)}
+.homes-shot img{width:100%;height:100%;object-fit:cover;display:block}
 .plan-nota{margin-top:18px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 @media(max-width:860px){.plan-body{grid-template-columns:1fr}}
 
@@ -216,9 +221,10 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .ba{--x:50%;position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
   background:#000;aspect-ratio:16/9;touch-action:pan-y;cursor:ew-resize;user-select:none;
   -webkit-user-select:none}
+.ba picture{position:absolute;inset:0;display:block}
 .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
   pointer-events:none;-webkit-user-drag:none}
-.ba .ba-antes{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.ba .ba-antes{clip-path:inset(0 calc(100% - var(--x)) 0 0);z-index:2}
 .ba-linea{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:#fff;z-index:3;
   transform:translateX(-1px);pointer-events:none;box-shadow:0 0 14px rgba(0,0,0,.35)}
 .ba-tirador{position:absolute;top:50%;left:var(--x);z-index:4;width:48px;height:48px;border-radius:50%;
@@ -568,16 +574,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <p class="lead rv" style="margin-top:24px" data-c="homes.lead">48 townhomes designed to create a neighborhood with rhythm, variety and character.</p>
 
     <div class="homes-grid">
-      <div class="daynight rv" id="dayNight">
-        <picture><source srcset="img/facade_day.webp" type="image/webp">
-          <img src="img/facade_day.jpg" alt="The Huddle townhomes by day"></picture>
-        <picture><source srcset="img/facade_night.webp" type="image/webp">
-          <img class="night" src="img/facade_night.jpg" alt="The Huddle townhomes at night" loading="lazy"></picture>
-        <div class="dn-toggle">
-          <button class="on" data-dn="day" data-c="homes.diaEtiqueta">Day</button>
-          <button data-dn="night" data-c="homes.nocheEtiqueta">Night</button>
-        </div>
-      </div>
+      <figure class="homes-shot rv">
+        <picture><source srcset="img/ext_row.webp" type="image/webp">
+          <img src="img/ext_row.jpg" alt="The Huddle townhomes along the street"></picture>
+      </figure>
       <div class="homes-facts rv" data-loop="homesDatos">
 <div><span>Architectural rhythm</span><p>Varied exterior colors, distinctive elevations and tall rooflines.</p></div>
 <div><span>Smart by design</span><p>Integrated smart-home features throughout every home.</p></div>
@@ -589,12 +589,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <div class="colors" data-loop="colores">
 <figure class="rv"><picture><source srcset="img/color_white.webp" type="image/webp">
         <img src="img/color_white.jpg" alt="White exterior scheme" loading="lazy"></picture><figcaption>White</figcaption></figure>
-<figure class="rv"><picture><source srcset="img/color_brown.webp" type="image/webp">
-        <img src="img/color_brown.jpg" alt="Brown exterior scheme" loading="lazy"></picture><figcaption>Brown</figcaption></figure>
-<figure class="rv"><picture><source srcset="img/color_yellow.webp" type="image/webp">
-        <img src="img/color_yellow.jpg" alt="Yellow exterior scheme" loading="lazy"></picture><figcaption>Yellow</figcaption></figure>
-<figure class="rv"><picture><source srcset="img/color_blue.webp" type="image/webp">
-        <img src="img/color_blue.jpg" alt="Blue exterior scheme" loading="lazy"></picture><figcaption>Blue</figcaption></figure>
+<figure class="rv"><picture><source srcset="img/color_taupe.webp" type="image/webp">
+        <img src="img/color_taupe.jpg" alt="Taupe exterior scheme" loading="lazy"></picture><figcaption>Taupe</figcaption></figure>
+<figure class="rv"><picture><source srcset="img/color_navy.webp" type="image/webp">
+        <img src="img/color_navy.jpg" alt="Navy exterior scheme" loading="lazy"></picture><figcaption>Navy</figcaption></figure>
+<figure class="rv"><picture><source srcset="img/color_black.webp" type="image/webp">
+        <img src="img/color_black.jpg" alt="Black exterior scheme" loading="lazy"></picture><figcaption>Black</figcaption></figure>
 </div>
   </div>
 </section>
@@ -604,36 +604,41 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   <div class="wrap">
     <p class="eyebrow rv" data-c="plans.eyebrow">Floor plans</p>
     <h2 class="serif h2 rv" data-c="plans.titulo">Room to live,<br><em>inside and out</em></h2>
-    <p class="lead rv" style="margin-top:24px" data-c="plans.lead">Every Huddle townhome is designed around open living, private outdoor space and the option of a plunge pool.</p>
+    <p class="lead rv" style="margin-top:24px" data-c="plans.lead">Two floors per home, four homes per building. Every unit has its own garage, a covered lanai and the option of a plunge pool in the backyard.</p>
+    <p class="plan-resumen rv" data-c="plans.resumen"><b>3</b> bedrooms &nbsp;&middot;&nbsp; <b>2.5</b> baths &nbsp;&middot;&nbsp; <b>2</b>-car garage &nbsp;&middot;&nbsp; covered lanai and balcony</p>
 
     <div class="plan-tabs rv" id="planTabs" role="tablist" aria-label="Floor plans"></div>
     <div class="plan-body rv">
       <div data-loop="plantas">
-<figure class="plan-sheet" data-plan="a"><picture><source srcset="img/siteplan_render.webp" type="image/webp">
-          <img src="img/siteplan_render.jpg" alt="Floor plan A" loading="lazy"></picture></figure>
-<figure class="plan-sheet" data-plan="b"><picture><source srcset="img/siteplan_render.webp" type="image/webp">
-          <img src="img/siteplan_render.jpg" alt="Floor plan B" loading="lazy"></picture></figure>
+<figure class="plan-sheet" data-plan="f1"><picture><source srcset="img/plan_floor1.webp" type="image/webp">
+          <img src="img/plan_floor1.jpg" alt="First floor plan" loading="lazy"></picture></figure>
+<figure class="plan-sheet" data-plan="f1p"><picture><source srcset="img/plan_floor1_pool.webp" type="image/webp">
+          <img src="img/plan_floor1_pool.jpg" alt="First floor plan with the optional plunge pool" loading="lazy"></picture></figure>
+<figure class="plan-sheet" data-plan="f2"><picture><source srcset="img/plan_floor2.webp" type="image/webp">
+          <img src="img/plan_floor2.jpg" alt="Second floor plan" loading="lazy"></picture></figure>
+<figure class="plan-sheet" data-plan="blk"><picture><source srcset="img/plan_block.webp" type="image/webp">
+          <img src="img/plan_block.jpg" alt="Plan of the four-home building" loading="lazy"></picture></figure>
 </div>
       <div data-loop="plantas" data-tpl="plantasFicha">
-<div class="plan-info" data-plan="a">
-          <h3>PLACEHOLDER Plan A</h3>
-          <p class="plan-sq">PLACEHOLDER sq ft</p>
-          <ul>
-            <li><span>Bedrooms</span><b>—</b></li>
-            <li><span>Bathrooms</span><b>—</b></li>
-            <li><span>Garage</span><b>—</b></li>
-            <li><span>Outdoor</span><b>—</b></li>
-          </ul>
+<div class="plan-info" data-plan="f1">
+          <h3>First floor</h3>
+          <p class="plan-sq"></p>
+          <p class="plan-espacios">Entry &middot; Living room &middot; Kitchen &middot; Dining &middot; Half bath &middot; Storage &middot; Two-car garage &middot; Covered lanai</p>
         </div>
-<div class="plan-info" data-plan="b">
-          <h3>PLACEHOLDER Plan B</h3>
-          <p class="plan-sq">PLACEHOLDER sq ft</p>
-          <ul>
-            <li><span>Bedrooms</span><b>—</b></li>
-            <li><span>Bathrooms</span><b>—</b></li>
-            <li><span>Garage</span><b>—</b></li>
-            <li><span>Outdoor</span><b>—</b></li>
-          </ul>
+<div class="plan-info" data-plan="f1p">
+          <h3>First floor with pool</h3>
+          <p class="plan-sq"></p>
+          <p class="plan-espacios">The same floor with the optional 8&prime; &times; 10&prime; plunge pool and paved deck in place of the lawn.</p>
+        </div>
+<div class="plan-info" data-plan="f2">
+          <h3>Second floor</h3>
+          <p class="plan-sq"></p>
+          <p class="plan-espacios">Primary bedroom &middot; Primary bath &middot; Two walk-in closets &middot; Two bedrooms &middot; Full bath &middot; Laundry &middot; Covered balcony</p>
+        </div>
+<div class="plan-info" data-plan="blk">
+          <h3>The four-plex</h3>
+          <p class="plan-sq"></p>
+          <p class="plan-espacios">Four homes per building, in two plans that mirror each other, so no two neighbours share the same front.</p>
         </div>
 </div>
     </div>
@@ -646,13 +651,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   <div class="wrap">
     <p class="eyebrow rv" data-c="patio.eyebrow">Your backyard, your call</p>
     <h2 class="serif h2 rv" data-c="patio.titulo">With pool.<br><em>Or without.</em></h2>
-    <p class="lead rv" style="margin-top:24px" data-c="patio.lead">Every home comes with a fenced backyard, and an 8′ × 10′ plunge pool is optional. Drag the handle to see both.</p>
+    <p class="lead rv" style="margin-top:24px" data-c="patio.lead">Every home comes with a fenced backyard, and an 8&prime; &times; 10&prime; plunge pool is optional. Drag the handle to see the same floor both ways.</p>
 
     <div class="ba rv" id="ba" tabindex="0" role="slider"
          aria-label="Compare the backyard with and without a plunge pool"
          aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-      <img src="img/scene4.jpg" alt="Backyard with an 8 by 10 foot plunge pool" loading="lazy">
-      <img class="ba-antes" src="img/scene6.jpg" alt="Backyard without a plunge pool" loading="lazy">
+      <picture><source srcset="img/patio_con.webp" type="image/webp">
+        <img src="img/patio_con.jpg" alt="First floor plan with the optional plunge pool" loading="lazy"></picture>
+      <picture class="ba-antes"><source srcset="img/patio_sin.webp" type="image/webp">
+        <img src="img/patio_sin.jpg" alt="First floor plan with a lawn in the backyard" loading="lazy"></picture>
       <span class="ba-et izq" data-c="patio.etiquetaAntes">Without pool</span>
       <span class="ba-et der" data-c="patio.etiquetaDespues">With plunge pool</span>
       <div class="ba-linea"></div>
@@ -671,34 +678,42 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <h2 class="serif h2 rv" data-c="gallery.titulo">A closer<br><em>look</em></h2>
     <p class="lead rv" style="margin-top:24px;margin-bottom:-8px" data-c="gallery.lead">Exteriors, aerials and the first interiors. Tap any image to open it full size.</p>
     <div class="gal" id="gal" data-loop="galeria">
-<figure class="rv"><picture><source srcset="img/scene1.webp" type="image/webp">
-        <img src="img/scene1.jpg" alt="Street view of the townhomes" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/scene2.webp" type="image/webp">
-        <img src="img/scene2.jpg" alt="Frontage and driveways" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/scene3.webp" type="image/webp">
-        <img src="img/scene3.jpg" alt="Townhomes among the landscaping" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/scene4.webp" type="image/webp">
-        <img src="img/scene4.jpg" alt="Rear yards with plunge pools" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/scene5.webp" type="image/webp">
-        <img src="img/scene5.jpg" alt="Backyards at dusk" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/scene6.webp" type="image/webp">
-        <img src="img/scene6.jpg" alt="Private outdoor space" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/scene7.webp" type="image/webp">
-        <img src="img/scene7.jpg" alt="Front elevations" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/aerial_block.webp" type="image/webp">
-        <img src="img/aerial_block.jpg" alt="Aerial view of the block and the Pickleball Commons" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/ext_pair1.webp" type="image/webp">
+        <img src="img/ext_pair1.jpg" alt="Two townhomes seen from the street" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/ext_street.webp" type="image/webp">
+        <img src="img/ext_street.jpg" alt="Street frontage with driveways" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_living.webp" type="image/webp">
+        <img src="img/int_living.jpg" alt="Living room with leather armchair" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/ext_row.webp" type="image/webp">
+        <img src="img/ext_row.jpg" alt="A row of townhomes" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_open_plan.webp" type="image/webp">
+        <img src="img/int_open_plan.jpg" alt="Open kitchen and living area from above" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/ext_night.webp" type="image/webp">
+        <img src="img/ext_night.jpg" alt="The townhomes at night" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_kitchen.webp" type="image/webp">
+        <img src="img/int_kitchen.jpg" alt="Kitchen with wall ovens and range hood" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/ext_aerial_street.webp" type="image/webp">
+        <img src="img/ext_aerial_street.jpg" alt="Aerial view along the street" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/ext_dusk.webp" type="image/webp">
+        <img src="img/ext_dusk.jpg" alt="The townhomes at dusk" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/pool_aerial.webp" type="image/webp">
+        <img src="img/pool_aerial.jpg" alt="Backyard with the plunge pool from above" loading="lazy"></picture></figure>
 <figure class="rv"><picture><source srcset="img/detail_facade.webp" type="image/webp">
-        <img src="img/detail_facade.jpg" alt="Facade detail: board-and-batten, metal roof and round windows" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/int_bedroom.webp" type="image/webp">
-        <img src="img/int_bedroom.jpg" alt="Bedroom with a view over the neighborhood" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/aerial_street.webp" type="image/webp">
-        <img src="img/aerial_street.jpg" alt="Aerial view along the street" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/int_bath.webp" type="image/webp">
-        <img src="img/int_bath.jpg" alt="Bathroom with double vanity and matte black fixtures" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/int_laundry.webp" type="image/webp">
-        <img src="img/int_laundry.jpg" alt="Laundry room with full-height cabinetry" loading="lazy"></picture></figure>
-<figure class="rv"><picture><source srcset="img/siteplan_render.webp" type="image/webp">
-        <img src="img/siteplan_render.jpg" alt="Site plan of the neighborhood" loading="lazy"></picture></figure>
+        <img src="img/detail_facade.jpg" alt="Facade detail with the round gable window" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_living_detail.webp" type="image/webp">
+        <img src="img/int_living_detail.jpg" alt="Living room detail" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/amen_dogpark.webp" type="image/webp">
+        <img src="img/amen_dogpark.jpg" alt="The dog park from above" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/amen_pickleball.webp" type="image/webp">
+        <img src="img/amen_pickleball.jpg" alt="The Pickleball Commons from above" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/ext_pair2.webp" type="image/webp">
+        <img src="img/ext_pair2.jpg" alt="Two townhomes with contrasting exteriors" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_kitchen_detail.webp" type="image/webp">
+        <img src="img/int_kitchen_detail.jpg" alt="Kitchen counter detail" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_fireplace.webp" type="image/webp">
+        <img src="img/int_fireplace.jpg" alt="Living room with fireplace" loading="lazy"></picture></figure>
+<figure class="rv"><picture><source srcset="img/int_living_wide.webp" type="image/webp">
+        <img src="img/int_living_wide.jpg" alt="Living room, wide view" loading="lazy"></picture></figure>
 </div>
   </div>
 </section>

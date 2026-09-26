@@ -122,9 +122,7 @@
   "homes": {
     "eyebrow": "Residential architecture",
     "titulo": "Homes with<br><em>personality</em>",
-    "lead": "48 townhomes designed to create a neighborhood with rhythm, variety and character.",
-    "diaEtiqueta": "Day",
-    "nocheEtiqueta": "Night"
+    "lead": "48 townhomes designed to create a neighborhood with rhythm, variety and character."
   },
   "homesDatos": [
     {
@@ -182,40 +180,51 @@
   "plans": {
     "eyebrow": "Floor plans",
     "titulo": "Room to live,<br><em>inside and out</em>",
-    "lead": "Every Huddle townhome is designed around open living, private outdoor space and the option of a plunge pool.",
-    "nota": "Plans are illustrative. Dimensions and finishes may vary by homesite."
+    "lead": "Two floors per home, four homes per building. Every unit has its own garage, a covered lanai and the option of a plunge pool in the backyard.",
+    "nota": "Plans are illustrative. Dimensions and finishes may vary by homesite.",
+    "resumen": "<b>3</b> bedrooms &nbsp;&middot;&nbsp; <b>2.5</b> baths &nbsp;&middot;&nbsp; <b>2</b>-car garage &nbsp;&middot;&nbsp; covered lanai and balcony"
   },
   "patio": {
     "eyebrow": "Your backyard, your call",
     "titulo": "With pool.<br><em>Or without.</em>",
-    "lead": "Every home comes with a fenced backyard, and an 8′ × 10′ plunge pool is optional. Drag the handle to see both.",
+    "lead": "Every home comes with a fenced backyard, and an 8&prime; &times; 10&prime; plunge pool is optional. Drag the handle to see the same floor both ways.",
     "etiquetaAntes": "Without pool",
     "etiquetaDespues": "With plunge pool",
-    "altAntes": "Backyard without a plunge pool",
-    "altDespues": "Backyard with an 8 by 10 foot plunge pool"
+    "altAntes": "First floor plan with a lawn in the backyard",
+    "altDespues": "First floor plan with the optional plunge pool"
   },
   "plantas": [
     {
-      "id": "a",
-      "nombre": "PLACEHOLDER Plan A",
-      "archivo": "siteplan_render",
-      "alt": "Floor plan A",
-      "area": "PLACEHOLDER sq ft",
-      "dormitorios": "—",
-      "banos": "—",
-      "garaje": "—",
-      "exterior": "—"
+      "id": "f1",
+      "nombre": "First floor",
+      "archivo": "plan_floor1",
+      "alt": "First floor plan",
+      "area": "",
+      "espacios": "Entry &middot; Living room &middot; Kitchen &middot; Dining &middot; Half bath &middot; Storage &middot; Two-car garage &middot; Covered lanai"
     },
     {
-      "id": "b",
-      "nombre": "PLACEHOLDER Plan B",
-      "archivo": "siteplan_render",
-      "alt": "Floor plan B",
-      "area": "PLACEHOLDER sq ft",
-      "dormitorios": "—",
-      "banos": "—",
-      "garaje": "—",
-      "exterior": "—"
+      "id": "f1p",
+      "nombre": "First floor with pool",
+      "archivo": "plan_floor1_pool",
+      "alt": "First floor plan with the optional plunge pool",
+      "area": "",
+      "espacios": "The same floor with the optional 8&prime; &times; 10&prime; plunge pool and paved deck in place of the lawn."
+    },
+    {
+      "id": "f2",
+      "nombre": "Second floor",
+      "archivo": "plan_floor2",
+      "alt": "Second floor plan",
+      "area": "",
+      "espacios": "Primary bedroom &middot; Primary bath &middot; Two walk-in closets &middot; Two bedrooms &middot; Full bath &middot; Laundry &middot; Covered balcony"
+    },
+    {
+      "id": "blk",
+      "nombre": "The four-plex",
+      "archivo": "plan_block",
+      "alt": "Plan of the four-home building",
+      "area": "",
+      "espacios": "Four homes per building, in two plans that mirror each other, so no two neighbours share the same front."
     }
   ]
 }

@@ -6,87 +6,101 @@
       "alt": "White exterior scheme"
     },
     {
-      "archivo": "color_brown",
-      "nombre": "Brown",
-      "alt": "Brown exterior scheme"
+      "archivo": "color_taupe",
+      "nombre": "Taupe",
+      "alt": "Taupe exterior scheme"
     },
     {
-      "archivo": "color_yellow",
-      "nombre": "Yellow",
-      "alt": "Yellow exterior scheme"
+      "archivo": "color_navy",
+      "nombre": "Navy",
+      "alt": "Navy exterior scheme"
     },
     {
-      "archivo": "color_blue",
-      "nombre": "Blue",
-      "alt": "Blue exterior scheme"
+      "archivo": "color_black",
+      "nombre": "Black",
+      "alt": "Black exterior scheme"
     }
   ],
-  "diaNoche": {
-    "dia": "facade_day",
-    "noche": "facade_night",
-    "altDia": "The Huddle townhomes by day",
-    "altNoche": "The Huddle townhomes at night"
+  "homeImagen": {
+    "archivo": "ext_row",
+    "alt": "The Huddle townhomes along the street"
+  },
+  "patioMedios": {
+    "antes": "patio_sin",
+    "despues": "patio_con"
   },
   "galeria": [
     {
-      "archivo": "scene1",
-      "alt": "Street view of the townhomes"
+      "archivo": "ext_pair1",
+      "alt": "Two townhomes seen from the street"
     },
     {
-      "archivo": "scene2",
-      "alt": "Frontage and driveways"
+      "archivo": "ext_street",
+      "alt": "Street frontage with driveways"
     },
     {
-      "archivo": "scene3",
-      "alt": "Townhomes among the landscaping"
+      "archivo": "int_living",
+      "alt": "Living room with leather armchair"
     },
     {
-      "archivo": "scene4",
-      "alt": "Rear yards with plunge pools"
+      "archivo": "ext_row",
+      "alt": "A row of townhomes"
     },
     {
-      "archivo": "scene5",
-      "alt": "Backyards at dusk"
+      "archivo": "int_open_plan",
+      "alt": "Open kitchen and living area from above"
     },
     {
-      "archivo": "scene6",
-      "alt": "Private outdoor space"
+      "archivo": "ext_night",
+      "alt": "The townhomes at night"
     },
     {
-      "archivo": "scene7",
-      "alt": "Front elevations"
+      "archivo": "int_kitchen",
+      "alt": "Kitchen with wall ovens and range hood"
     },
     {
-      "archivo": "aerial_block",
-      "alt": "Aerial view of the block and the Pickleball Commons"
-    },
-    {
-      "archivo": "detail_facade",
-      "alt": "Facade detail: board-and-batten, metal roof and round windows"
-    },
-    {
-      "archivo": "int_bedroom",
-      "alt": "Bedroom with a view over the neighborhood"
-    },
-    {
-      "archivo": "aerial_street",
+      "archivo": "ext_aerial_street",
       "alt": "Aerial view along the street"
     },
     {
-      "archivo": "int_bath",
-      "alt": "Bathroom with double vanity and matte black fixtures"
+      "archivo": "ext_dusk",
+      "alt": "The townhomes at dusk"
     },
     {
-      "archivo": "int_laundry",
-      "alt": "Laundry room with full-height cabinetry"
+      "archivo": "pool_aerial",
+      "alt": "Backyard with the plunge pool from above"
     },
     {
-      "archivo": "siteplan_render",
-      "alt": "Site plan of the neighborhood"
+      "archivo": "detail_facade",
+      "alt": "Facade detail with the round gable window"
+    },
+    {
+      "archivo": "int_living_detail",
+      "alt": "Living room detail"
+    },
+    {
+      "archivo": "amen_dogpark",
+      "alt": "The dog park from above"
+    },
+    {
+      "archivo": "amen_pickleball",
+      "alt": "The Pickleball Commons from above"
+    },
+    {
+      "archivo": "ext_pair2",
+      "alt": "Two townhomes with contrasting exteriors"
+    },
+    {
+      "archivo": "int_kitchen_detail",
+      "alt": "Kitchen counter detail"
+    },
+    {
+      "archivo": "int_fireplace",
+      "alt": "Living room with fireplace"
+    },
+    {
+      "archivo": "int_living_wide",
+      "alt": "Living room, wide view"
     }
-  ],
-  "patioMedios": {
-    "antes": "scene6",
-    "despues": "scene4"
-  }
+  ]
 }

@@ -205,6 +205,11 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .plan-info li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;
   border-bottom:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
 .plan-info li b{color:var(--ink);font-weight:600;text-align:right}
+.plan-espacios{font-size:14px;line-height:1.85;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:14px}
+.plan-resumen{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:14px;font-size:13.5px;color:var(--ink-soft)}
+.plan-resumen b{color:var(--ink);font-weight:600}
+.homes-shot{margin:0;border-radius:6px;overflow:hidden;background:var(--cream-2)}
+.homes-shot img{width:100%;height:100%;object-fit:cover;display:block}
 .plan-nota{margin-top:18px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 @media(max-width:860px){.plan-body{grid-template-columns:1fr}}
 
@@ -216,9 +221,10 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .ba{--x:50%;position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
   background:#000;aspect-ratio:16/9;touch-action:pan-y;cursor:ew-resize;user-select:none;
   -webkit-user-select:none}
+.ba picture{position:absolute;inset:0;display:block}
 .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
   pointer-events:none;-webkit-user-drag:none}
-.ba .ba-antes{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.ba .ba-antes{clip-path:inset(0 calc(100% - var(--x)) 0 0);z-index:2}
 .ba-linea{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:#fff;z-index:3;
   transform:translateX(-1px);pointer-events:none;box-shadow:0 0 14px rgba(0,0,0,.35)}
 .ba-tirador{position:absolute;top:50%;left:var(--x);z-index:4;width:48px;height:48px;border-radius:50%;
@@ -547,16 +553,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <p class="lead rv" style="margin-top:24px" data-c="homes.lead"></p>
 
     <div class="homes-grid">
-      <div class="daynight rv" id="dayNight">
-        <picture><source srcset="img/{{diaNoche.dia}}.webp" type="image/webp">
-          <img src="img/{{diaNoche.dia}}.jpg" alt="{{diaNoche.altDia}}"></picture>
-        <picture><source srcset="img/{{diaNoche.noche}}.webp" type="image/webp">
-          <img class="night" src="img/{{diaNoche.noche}}.jpg" alt="{{diaNoche.altNoche}}" loading="lazy"></picture>
-        <div class="dn-toggle">
-          <button class="on" data-dn="day" data-c="homes.diaEtiqueta"></button>
-          <button data-dn="night" data-c="homes.nocheEtiqueta"></button>
-        </div>
-      </div>
+      <figure class="homes-shot rv">
+        <picture><source srcset="img/{{homeImagen.archivo}}.webp" type="image/webp">
+          <img src="img/{{homeImagen.archivo}}.jpg" alt="{{homeImagen.alt}}"></picture>
+      </figure>
       <div class="homes-facts rv" data-loop="homesDatos"></div>
       </div>
     </div>
@@ -571,6 +571,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <p class="eyebrow rv" data-c="plans.eyebrow"></p>
     <h2 class="serif h2 rv" data-c="plans.titulo"></h2>
     <p class="lead rv" style="margin-top:24px" data-c="plans.lead"></p>
+    <p class="plan-resumen rv" data-c="plans.resumen"></p>
 
     <div class="plan-tabs rv" id="planTabs" role="tablist" aria-label="Floor plans"></div>
     <div class="plan-body rv">
@@ -591,8 +592,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <div class="ba rv" id="ba" tabindex="0" role="slider"
          aria-label="Compare the backyard with and without a plunge pool"
          aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-      <img src="img/{{patioMedios.despues}}.jpg" alt="{{patio.altDespues}}" loading="lazy">
-      <img class="ba-antes" src="img/{{patioMedios.antes}}.jpg" alt="{{patio.altAntes}}" loading="lazy">
+      <picture><source srcset="img/{{patioMedios.despues}}.webp" type="image/webp">
+        <img src="img/{{patioMedios.despues}}.jpg" alt="{{patio.altDespues}}" loading="lazy"></picture>
+      <picture class="ba-antes"><source srcset="img/{{patioMedios.antes}}.webp" type="image/webp">
+        <img src="img/{{patioMedios.antes}}.jpg" alt="{{patio.altAntes}}" loading="lazy"></picture>
       <span class="ba-et izq" data-c="patio.etiquetaAntes"></span>
       <span class="ba-et der" data-c="patio.etiquetaDespues"></span>
       <div class="ba-linea"></div>
@@ -1143,11 +1146,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
         <div class="plan-info" data-plan="{{id}}">
           <h3>{{nombre}}</h3>
           <p class="plan-sq">{{area}}</p>
-          <ul>
-            <li><span>Bedrooms</span><b>{{dormitorios}}</b></li>
-            <li><span>Bathrooms</span><b>{{banos}}</b></li>
-            <li><span>Garage</span><b>{{garaje}}</b></li>
-            <li><span>Outdoor</span><b>{{exterior}}</b></li>
-          </ul>
+          <p class="plan-espacios">{{espacios}}</p>
         </div>
 </script>

@@ -367,6 +367,14 @@ collections:
             label: "Resumen"
             widget: string
             required: true
+          - name: etiquetaAntes
+            label: "Left label"
+            widget: string
+            required: true
+          - name: etiquetaDespues
+            label: "Right label"
+            widget: string
+            required: true
       - name: patio
         label: "Section: Backyard with / without pool"
         widget: object

@@ -3,22 +3,26 @@
     {
       "archivo": "color_white",
       "nombre": "White",
-      "alt": "White exterior scheme"
+      "alt": "White exterior scheme",
+      "muestra": "#CBCBCB"
     },
     {
       "archivo": "color_taupe",
       "nombre": "Taupe",
-      "alt": "Taupe exterior scheme"
+      "alt": "Taupe exterior scheme",
+      "muestra": "#7A7170"
     },
     {
       "archivo": "color_navy",
       "nombre": "Navy",
-      "alt": "Navy exterior scheme"
+      "alt": "Navy exterior scheme",
+      "muestra": "#263550"
     },
     {
       "archivo": "color_black",
       "nombre": "Black",
-      "alt": "Black exterior scheme"
+      "alt": "Black exterior scheme",
+      "muestra": "#4F545F"
     }
   ],
   "homeImagen": {
@@ -113,5 +117,28 @@
   "tourEmbed": "https://dynamiccomposition.viewin360.co/share/collection/7dL22?logo=bWVkaWEvNDMwMDM2LzZhOWItMTMwYy01ZWY1LWI3OTkucG5n&amp;info=0&amp;fs=1&amp;vr=1&amp;zoom=1&amp;sd=1&amp;initload=1&amp;thumbs=1",
   "flags": {
     "aereo360": true
-  }
+  },
+  "planComparador": {
+    "antes": "plan_floor1",
+    "despues": "plan_floor1_pool",
+    "altAntes": "First floor plan with a lawn in the backyard",
+    "altDespues": "First floor plan with the optional plunge pool"
+  },
+  "plantasHojas": [
+    {
+      "id": "f2",
+      "archivo": "plan_floor2",
+      "alt": "Second floor plan"
+    },
+    {
+      "id": "blk",
+      "archivo": "plan_block",
+      "alt": "Plan of the four-home building"
+    },
+    {
+      "id": "site",
+      "archivo": "plan_site",
+      "alt": "Axonometric site plan of the whole neighborhood"
+    }
+  ]
 }

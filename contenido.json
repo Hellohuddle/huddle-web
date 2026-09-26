@@ -182,7 +182,9 @@
     "titulo": "Room to live,<br><em>inside and out</em>",
     "lead": "Two floors per home, four homes per building. Every unit has its own garage, a covered lanai and the option of a plunge pool in the backyard.",
     "nota": "Plans are illustrative. Dimensions and finishes may vary by homesite.",
-    "resumen": "<b>3</b> bedrooms &nbsp;&middot;&nbsp; <b>2.5</b> baths &nbsp;&middot;&nbsp; <b>2</b>-car garage &nbsp;&middot;&nbsp; covered lanai and balcony"
+    "resumen": "<b>3</b> bedrooms &nbsp;&middot;&nbsp; <b>2.5</b> baths &nbsp;&middot;&nbsp; <b>2</b>-car garage &nbsp;&middot;&nbsp; covered lanai and balcony",
+    "etiquetaAntes": "Without pool",
+    "etiquetaDespues": "With plunge pool"
   },
   "patio": {
     "eyebrow": "Your backyard, your call",
@@ -200,15 +202,7 @@
       "archivo": "plan_floor1",
       "alt": "First floor plan",
       "area": "",
-      "espacios": "Entry &middot; Living room &middot; Kitchen &middot; Dining &middot; Half bath &middot; Storage &middot; Two-car garage &middot; Covered lanai"
-    },
-    {
-      "id": "f1p",
-      "nombre": "First floor with pool",
-      "archivo": "plan_floor1_pool",
-      "alt": "First floor plan with the optional plunge pool",
-      "area": "",
-      "espacios": "The same floor with the optional 8&prime; &times; 10&prime; plunge pool and paved deck in place of the lawn."
+      "espacios": "Entry &middot; Living room &middot; Kitchen &middot; Dining &middot; Half bath &middot; Storage &middot; Two-car garage &middot; Covered lanai. Drag the handle to see the backyard with and without the optional plunge pool."
     },
     {
       "id": "f2",

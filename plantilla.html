@@ -211,6 +211,29 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .homes-shot{margin:0;border-radius:6px;overflow:hidden;background:var(--cream-2)}
 .homes-shot img{width:100%;height:100%;object-fit:cover;display:block}
 .plan-nota{margin-top:18px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+/* el comparador de plantas se comporta como una hoja mas de la pestana */
+.plan-ba{margin-top:0;aspect-ratio:1942/809;background:#fff;border-radius:6px;cursor:ew-resize}
+
+/* ---------- selector de color de fachada ---------- */
+.color-vis{margin-top:clamp(30px,4vw,54px)}
+.color-stage{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--cream-2)}
+.color-stage picture{position:absolute;inset:0;display:block;opacity:0;transition:opacity .45s var(--ease)}
+.color-stage picture.on{opacity:1}
+.color-stage img{width:100%;height:100%;object-fit:cover;display:block}
+.color-botones{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.color-botones button{display:flex;align-items:center;gap:9px;cursor:pointer;
+  border:1px solid var(--line);background:transparent;border-radius:999px;padding:8px 18px 8px 9px;
+  font:600 11.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);
+  transition:border-color .25s var(--ease),color .25s var(--ease),background .25s var(--ease)}
+.color-botones button i{width:20px;height:20px;border-radius:50%;flex:none;
+  border:1px solid rgba(36,33,31,.2)}
+.color-botones button:hover{border-color:var(--ink-soft);color:var(--ink)}
+.color-botones button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+@media(min-width:760px){
+  .color-vis{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,40px);align-items:center}
+  .color-stage{aspect-ratio:3/2}
+  .color-botones{flex-direction:column;margin-top:0;align-items:stretch}
+}
 @media(max-width:860px){.plan-body{grid-template-columns:1fr}}
 
 /* ---------- patio: antes y despues ---------- */
@@ -563,7 +586,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       </div>
     </div>
 
-    <div class="colors" data-loop="colores"></div>
+    <div class="color-vis rv">
+      <div class="color-stage" id="colorStage" data-loop="colores"></div>
+      <div class="color-botones" id="colorBotones"></div>
+    </div>
   </div>
 </section>
 
@@ -577,7 +603,24 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 
     <div class="plan-tabs rv" id="planTabs" role="tablist" aria-label="Floor plans"></div>
     <div class="plan-body rv">
-      <div data-loop="plantas"></div>
+      <div>
+        <div class="plan-sheet ba plan-ba" data-plan="f1" tabindex="0" role="slider"
+             aria-label="Compare the first floor with and without the plunge pool"
+             aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <picture><source srcset="img/{{planComparador.despues}}.webp" type="image/webp">
+            <img src="img/{{planComparador.despues}}.jpg" alt="{{planComparador.altDespues}}" loading="lazy"></picture>
+          <picture class="ba-antes"><source srcset="img/{{planComparador.antes}}.webp" type="image/webp">
+            <img src="img/{{planComparador.antes}}.jpg" alt="{{planComparador.altAntes}}" loading="lazy"></picture>
+          <span class="ba-et izq" data-c="plans.etiquetaAntes"></span>
+          <span class="ba-et der" data-c="plans.etiquetaDespues"></span>
+          <div class="ba-linea"></div>
+          <div class="ba-tirador">
+            <svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M10 7l5 5-5 5"/></svg>
+          </div>
+        </div>
+        <div data-loop="plantasHojas"></div>
+      </div>
       <div data-loop="plantas" data-tpl="plantasFicha"></div>
     </div>
     <p class="plan-nota rv" data-c="plans.nota"></p>
@@ -835,9 +878,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
         barra=document.getElementById(cfg.barra),
         caja =document.getElementById(cfg.marcas),
         TOTAL=cfg.total;
-    var idx=[], marcas=[], N=0, pos=0, listo=false, anim=null, ext='.jpg', iniciado=false;
+    var idx=[], marcas=[], N=0, pos=0, listo=false, anim=null, ext='.jpg', suf='', iniciado=false;
 
-    function url(k){ var n=idx[k]; return 'video/'+cfg.prefijo+(n<10?'0':'')+n+ext; }
+    function url(k){ var n=idx[k]; return 'video/'+cfg.prefijo+(n<10?'0':'')+n+suf+ext; }
     function norm(k){ return ((k%N)+N)%N; }
     function pintar(k){
       pos=norm(Math.round(k));
@@ -853,7 +896,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       /* Se mide el visor, no la ventana: es el ancho que de verdad manda. En pantallas
          estrechas se usa una pose de cada dos, la mitad de bytes y la mitad de mapas
          de bits en memoria, que es lo que ahoga a un movil modesto. */
-      var PASO = (stage.clientWidth||innerWidth||360) < 560 ? 2 : 1, i;
+      var ancho = stage.clientWidth||innerWidth||360;
+      var PASO = ancho < 560 ? 2 : 1, i;
+      /* dos juegos de poses: el grande es de 1600 px, para que al parar no se vea
+         pixelado en monitores anchos; el ligero de 1000 evita que un movil cargue
+         una resolucion que no puede ni mostrar. */
+      suf = ancho < 700 ? '_s' : '';
       for(i=0;i<TOTAL;i+=PASO) idx.push(i);
       N=idx.length;
 
@@ -1021,6 +1069,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     });
     /* la hoja se abre a pantalla completa con el visor que ya tiene la pagina */
     hojas.forEach(function(h){
+      if(h.classList.contains('plan-ba')) return;   // ahi el clic sirve para arrastrar
       h.addEventListener('click',function(){
         var img=h.querySelector('img');
         if(window.abrirLightbox) window.abrirLightbox(img.currentSrc||img.src, img.alt);
@@ -1029,9 +1078,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   })();
 
   /* ---------- PATIO: comparador antes / despues ---------- */
-  (function(){
-    var caja=document.getElementById('ba');
-    if(!caja) return;
+  [].slice.call(document.querySelectorAll('.ba')).forEach(function(caja){
     var x=50, arrastrando=false;
 
     function pintar(){
@@ -1072,6 +1119,32 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       if(e.key==='End'){ x=100; pintar(); e.preventDefault(); }
     });
     pintar();
+  });
+
+  /* ---------- COLOR DE FACHADA: una imagen a la vez ---------- */
+  (function(){
+    var caja=document.getElementById('colorStage'), bot=document.getElementById('colorBotones');
+    if(!caja||!bot) return;
+    var fotos=[].slice.call(caja.querySelectorAll('picture'));
+    if(!fotos.length) return;
+    fotos.forEach(function(f,i){
+      var b=document.createElement('button');
+      b.type='button';
+      b.setAttribute('aria-pressed', i===0 ? 'true' : 'false');
+      var punto=document.createElement('i');
+      punto.style.background=f.getAttribute('data-muestra')||'#ccc';
+      b.appendChild(punto);
+      b.appendChild(document.createTextNode(f.getAttribute('data-nombre')||''));
+      if(i===0){ b.className='on'; f.classList.add('on'); }
+      b.addEventListener('click',function(){
+        fotos.forEach(function(o,k){ o.classList.toggle('on',k===i); });
+        [].slice.call(bot.children).forEach(function(o,k){
+          o.classList.toggle('on',k===i);
+          o.setAttribute('aria-pressed', k===i ? 'true' : 'false');
+        });
+      });
+      bot.appendChild(b);
+    });
   })();
 
   /* ---------- DIA / NOCHE ---------- */
@@ -1161,8 +1234,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
         <div><span>{{titulo}}</span><p>{{texto}}</p></div>
 </script>
 <script type="text/plantilla" data-for="colores">
-      <figure class="rv"><picture><source srcset="img/{{archivo}}.webp" type="image/webp">
-        <img src="img/{{archivo}}.jpg" alt="{{alt}}" loading="lazy"></picture><figcaption>{{nombre}}</figcaption></figure>
+        <picture data-nombre="{{nombre}}" data-muestra="{{muestra}}"><source srcset="img/{{archivo}}.webp" type="image/webp">
+          <img src="img/{{archivo}}.jpg" alt="{{alt}}" loading="lazy"></picture>
 </script>
 <script type="text/plantilla" data-for="galeria">
       <figure class="rv"><picture><source srcset="img/{{archivo}}.webp" type="image/webp">
@@ -1171,7 +1244,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 <script type="text/plantilla" data-for="hitos">
       <article class="rv"><span>{{fecha}}</span><b>{{titulo}}</b><p>{{texto}}</p></article>
 </script>
-<script type="text/plantilla" data-for="plantas">
+<script type="text/plantilla" data-for="plantasHojas">
         <figure class="plan-sheet" data-plan="{{id}}"><picture><source srcset="img/{{archivo}}.webp" type="image/webp">
           <img src="img/{{archivo}}.jpg" alt="{{alt}}" loading="lazy"></picture></figure>
 </script>

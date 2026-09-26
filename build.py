@@ -58,7 +58,7 @@ def construir():
                   guardar, html, flags=re.S)
 
     # ---------- 2. contenedores data-loop ----------
-    cuenta = {'listas': 0, 'campos': 0}
+    cuenta = {'listas': 0, 'campos': 0, 'ocultas': 0}
 
     def pinta_lista(m):
         tag, attrs, nombre = m.group(1), m.group(2), m.group(3)
@@ -76,6 +76,19 @@ def construir():
         return u'<%s%s>\n%s\n</%s>' % (tag, attrs, '\n'.join(filas), tag)
 
     html = re.sub(r'<(\w+)([^>]*\sdata-loop="([^"]+)"[^>]*)></\1>', pinta_lista, html)
+
+    # ---------- 2b. secciones con interruptor ----------
+    # data-si="flags.x" borra el elemento entero cuando la bandera es falsa. Se usa
+    # para apagar una seccion sin sacarla de la plantilla: volver a encenderla es
+    # cambiar un valor en medios.json.
+    def apaga(m):
+        tag, attrs, clave = m.group(1), m.group(2), m.group(3)
+        if valor(datos, clave):
+            return m.group(0)
+        cuenta['ocultas'] += 1
+        return ''
+
+    html = re.sub(r'<(\w+)([^>]*\sdata-si="([^"]+)"[^>]*)>.*?</\1>', apaga, html, flags=re.S)
 
     # ---------- 3. campos sueltos data-c ----------
     def pinta_campo(m):
@@ -101,7 +114,8 @@ def construir():
     html = re.sub(r'\{\{([\w.]+)\}\}', pinta_suelto, html)
 
     io.open(F_SALIDA, 'w', encoding='utf-8', newline='').write(html)
-    print('index.html generado: %d campos, %d listas.' % (cuenta['campos'], cuenta['listas']))
+    print('index.html generado: %d campos, %d listas, %d elementos ocultos.'
+          % (cuenta['campos'], cuenta['listas'], cuenta['ocultas']))
     if faltan:
         print('AVISO, sin valor: ' + ', '.join(sorted(set(faltan))))
         return 1

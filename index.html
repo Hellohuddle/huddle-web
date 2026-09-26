@@ -458,7 +458,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 
 <!-- ============ HERO ============ -->
 <section id="hero">
-  <video id="heroVid" poster="video/hero_poster.jpg" muted loop playsinline preload="none"
+  <video id="heroVid" poster="video/hero_poster.jpg" muted loop playsinline autoplay preload="none"
          data-pc-hd="video/hero_hd.mp4" data-pc-sd="video/hero_sd.mp4"
          data-movil="video/hero_movil.mp4" data-poster-movil="video/hero_poster_movil.jpg"
          aria-hidden="true"></video>
@@ -899,11 +899,30 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       }
       return ahorro ? v.getAttribute('data-pc-sd') : v.getAttribute('data-pc-hd');
     }
-    addEventListener('load',function(){
-      setTimeout(function(){
-        v.src=fuente(); v.load();
-        var p=v.play(); if(p&&p.catch) p.catch(function(){});
-      },400);
+    /* Arrancar el video es mas delicado de lo que parece:
+       - v.load() SOBRA (asignar src ya dispara la carga) y ademas CANCELA cualquier
+         play() pendiente, con un AbortError que antes se tragaba un catch vacio: el
+         video quedaba cargado y en pausa. Ese era el fallo en movil.
+       - Se intenta reproducir cuando ya hay datos, no antes.
+       - Si el navegador bloquea el autoarranque (iOS en ahorro de energia), se
+         reintenta con el primer gesto de la persona, que es lo unico que lo permite. */
+    var pedido=false;
+    function intentar(){
+      if(!v.paused) return;
+      var p=v.play();
+      if(p&&p.catch) p.catch(function(){});   // se reintentara con el primer gesto
+    }
+    function cargar(){
+      if(pedido) return;
+      pedido=true;
+      v.src=fuente();
+      v.addEventListener('loadeddata',intentar);
+      v.addEventListener('canplay',intentar);
+      intentar();
+    }
+    addEventListener('load',function(){ setTimeout(cargar,400); });
+    ['touchstart','pointerdown','click','scroll'].forEach(function(ev){
+      addEventListener(ev,function(){ cargar(); intentar(); },{passive:true});
     });
   })();
 

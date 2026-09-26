@@ -102,5 +102,12 @@
       "archivo": "int_living_wide",
       "alt": "Living room, wide view"
     }
-  ]
+  ],
+  "heroVideo": {
+    "pcHd": "video/hero_hd.mp4",
+    "pcSd": "video/hero_sd.mp4",
+    "movil": "",
+    "poster": "video/hero_poster.jpg",
+    "posterMovil": ""
+  }
 }

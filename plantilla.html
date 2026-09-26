@@ -458,8 +458,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 
 <!-- ============ HERO ============ -->
 <section id="hero">
-  <video id="heroVid" poster="video/hero_poster.jpg" muted loop playsinline preload="none"
-         data-hd="video/hero_hd.mp4" data-sd="video/hero_sd.mp4" aria-hidden="true"></video>
+  <video id="heroVid" poster="{{heroVideo.poster}}" muted loop playsinline preload="none"
+         data-pc-hd="{{heroVideo.pcHd}}" data-pc-sd="{{heroVideo.pcSd}}"
+         data-movil="{{heroVideo.movil}}" data-poster-movil="{{heroVideo.posterMovil}}"
+         aria-hidden="true"></video>
   <div class="hero-in">
     <p class="hero-tag" data-c="hero.etiqueta"></p>
     <h1 data-c="hero.titulo"></h1>
@@ -768,10 +770,22 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   (function(){
     var v=document.getElementById('heroVid');
     if(!v||RM) return;
+    /* En movil no basta con bajar la resolucion: un clip horizontal recortado a
+       vertical pierde dos tercios del encuadre. Si hay una version vertical, se usa
+       esa; si todavia no existe, se cae al horizontal ligero. */
     function fuente(){
       var ahorro=navigator.connection&&(navigator.connection.saveData||
                  /2g/.test(navigator.connection.effectiveType||''));
-      return (innerWidth>=820 && !ahorro) ? v.getAttribute('data-hd') : v.getAttribute('data-sd');
+      if(innerWidth < 820){
+        var mv=v.getAttribute('data-movil');
+        if(mv){
+          var pm=v.getAttribute('data-poster-movil');
+          if(pm) v.poster=pm;
+          return mv;
+        }
+        return v.getAttribute('data-pc-sd');
+      }
+      return ahorro ? v.getAttribute('data-pc-sd') : v.getAttribute('data-pc-hd');
     }
     addEventListener('load',function(){
       setTimeout(function(){

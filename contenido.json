@@ -187,11 +187,11 @@
   "patio": {
     "eyebrow": "Your backyard, your call",
     "titulo": "With pool.<br><em>Or without.</em>",
-    "lead": "Every home comes with a fenced backyard, and an 8&prime; &times; 10&prime; plunge pool is optional. Drag the handle to see the same floor both ways.",
+    "lead": "Every home comes with a fenced backyard, and an 8&prime; &times; 10&prime; plunge pool is optional. Drag the handle to see the same backyard both ways.",
     "etiquetaAntes": "Without pool",
     "etiquetaDespues": "With plunge pool",
-    "altAntes": "First floor plan with a lawn in the backyard",
-    "altDespues": "First floor plan with the optional plunge pool"
+    "altAntes": "Backyard with a lawn, without a plunge pool",
+    "altDespues": "The same backyard with an 8 by 10 foot plunge pool"
   },
   "plantas": [
     {
@@ -225,6 +225,14 @@
       "alt": "Plan of the four-home building",
       "area": "",
       "espacios": "Four homes per building, in two plans that mirror each other, so no two neighbours share the same front."
+    },
+    {
+      "id": "site",
+      "nombre": "The neighborhood",
+      "archivo": "plan_site",
+      "alt": "Axonometric site plan of the whole neighborhood",
+      "area": "",
+      "espacios": "The whole site from above: the homes, the walking trail, the Pickleball Commons, the dog park, the ponds and the Cool Eats building."
     }
   ]
 }

@@ -242,7 +242,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
    se desajuste al cambiar de pantalla. */
 #patio{background:var(--cream-2)}
 .ba{--x:50%;position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
-  background:#000;aspect-ratio:3/2;touch-action:pan-y;cursor:ew-resize;user-select:none;
+  background:#000;aspect-ratio:16/9;touch-action:pan-y;cursor:ew-resize;user-select:none;
   -webkit-user-select:none}
 .ba picture{position:absolute;inset:0;display:block}
 .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
@@ -263,7 +263,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .ba:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 @media(max-width:700px){
   #patio .ba{margin-left:calc(var(--pad) * -1);margin-right:calc(var(--pad) * -1);
-             border-radius:0;aspect-ratio:3/2}
+             border-radius:0;aspect-ratio:3/2}   /* en movil se sube la proporcion: a 16:9 quedaria una franja muy baja */
   .ba-tirador{width:42px;height:42px}
   .ba-et{font-size:9.5px;padding:7px 12px}
 }

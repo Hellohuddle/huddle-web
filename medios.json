@@ -26,8 +26,8 @@
     }
   ],
   "homeImagen": {
-    "archivo": "ext_row",
-    "alt": "The Huddle townhomes along the street"
+    "archivo": "ext_front",
+    "alt": "The four townhomes, one in each exterior colour"
   },
   "patioMedios": {
     "antes": "patio_sin",
@@ -35,76 +35,76 @@
   },
   "galeria": [
     {
-      "archivo": "ext_pair1",
-      "alt": "Two townhomes seen from the street"
-    },
-    {
-      "archivo": "ext_street",
-      "alt": "Street frontage with driveways"
+      "archivo": "ext_front",
+      "alt": "The four townhomes from the street, one in each colour"
     },
     {
       "archivo": "int_living",
-      "alt": "Living room with leather armchair"
+      "alt": "Open kitchen and living area with the fireplace wall"
     },
     {
-      "archivo": "ext_row",
-      "alt": "A row of townhomes"
-    },
-    {
-      "archivo": "int_open_plan",
-      "alt": "Open kitchen and living area from above"
-    },
-    {
-      "archivo": "ext_night",
-      "alt": "The townhomes at night"
+      "archivo": "ext_gables",
+      "alt": "Gables and standing-seam roofs along the row"
     },
     {
       "archivo": "int_kitchen",
-      "alt": "Kitchen with wall ovens and range hood"
+      "alt": "Kitchen island looking into the living room"
     },
     {
-      "archivo": "ext_aerial_street",
-      "alt": "Aerial view along the street"
+      "archivo": "aerial_site",
+      "alt": "The whole neighborhood from above"
+    },
+    {
+      "archivo": "int_dining",
+      "alt": "Dining room beside the covered lanai"
     },
     {
       "archivo": "ext_dusk",
       "alt": "The townhomes at dusk"
     },
     {
+      "archivo": "int_bedroom",
+      "alt": "Primary bedroom with balcony access"
+    },
+    {
+      "archivo": "ext_pair1",
+      "alt": "Two townhomes seen from the street"
+    },
+    {
+      "archivo": "int_kids",
+      "alt": "Second bedroom with built-in bunks"
+    },
+    {
+      "archivo": "ext_night",
+      "alt": "The townhomes at night"
+    },
+    {
+      "archivo": "int_mudroom",
+      "alt": "Mud room with bench, hooks and closed storage"
+    },
+    {
       "archivo": "pool_aerial",
       "alt": "Backyard with the plunge pool from above"
     },
     {
-      "archivo": "detail_facade",
-      "alt": "Facade detail with the round gable window"
-    },
-    {
-      "archivo": "int_living_detail",
-      "alt": "Living room detail"
+      "archivo": "int_laundry",
+      "alt": "Laundry room with full-height cabinetry"
     },
     {
       "archivo": "amen_dogpark",
       "alt": "The dog park from above"
     },
     {
+      "archivo": "detail_facade",
+      "alt": "Facade detail with the round gable window"
+    },
+    {
       "archivo": "amen_pickleball",
       "alt": "The Pickleball Commons from above"
     },
     {
-      "archivo": "ext_pair2",
-      "alt": "Two townhomes with contrasting exteriors"
-    },
-    {
-      "archivo": "int_kitchen_detail",
-      "alt": "Kitchen counter detail"
-    },
-    {
-      "archivo": "int_fireplace",
-      "alt": "Living room with fireplace"
-    },
-    {
-      "archivo": "int_living_wide",
-      "alt": "Living room, wide view"
+      "archivo": "ext_aerial_street",
+      "alt": "Aerial view along the street"
     }
   ],
   "heroVideo": {

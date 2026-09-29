@@ -140,5 +140,10 @@
       "archivo": "plan_site",
       "alt": "Axonometric site plan of the whole neighborhood"
     }
-  ]
+  ],
+  "videoProyecto": {
+    "id": "Op23DUeAowY",
+    "portada": "video_poster",
+    "alt": "Still from the Huddle Place film"
+  }
 }

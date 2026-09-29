@@ -344,6 +344,36 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .gal img{width:100%;height:auto;transition:transform .9s var(--ease)}
 .gal figure:hover img{transform:scale(1.03)}
 
+/* ---------- video del proyecto ----------
+   Se muestra una portada guardada AQUI y el reproductor de YouTube solo se carga
+   al pulsar play: asi la pagina no pide nada a Google mientras nadie lo pide, que
+   es mas rapido y no deja rastro del visitante antes de que decida ver el video. */
+#video{background:var(--ink);color:#fff}
+#video .eyebrow{color:var(--orange-soft)}
+#video .lead{color:rgba(255,255,255,.72)}
+.vid-box{position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
+  background:#000;aspect-ratio:16/9;cursor:pointer}
+.vid-box img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 1s var(--ease),opacity .4s}
+.vid-box:hover img{transform:scale(1.03)}
+.vid-box::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.42))}
+.vid-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;border:0;cursor:pointer;
+  background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;
+  transition:transform .35s var(--ease),background .35s var(--ease);
+  box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.vid-box:hover .vid-play{transform:translate(-50%,-50%) scale(1.08);background:#d95c2d}
+.vid-play svg{width:34%;height:34%;fill:currentColor;margin-left:8%}
+.vid-et{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(18px,3vw,30px);
+  pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.vid-et b{font-size:clamp(15px,1.8vw,20px);font-weight:600;letter-spacing:-.01em}
+.vid-et span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.72);
+  white-space:nowrap}
+.vid-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+.vid-box.reproduciendo img,.vid-box.reproduciendo::after,
+.vid-box.reproduciendo .vid-play,.vid-box.reproduciendo .vid-et{display:none}
+
 /* ---------- walkthrough ---------- */
 #tour{background:var(--ink);color:#fff}
 #tour .eyebrow{color:var(--orange-soft)}
@@ -460,6 +490,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <a href="#homes">Homes</a>
     <a href="#plans">Plans</a>
     <a href="#gallery">Gallery</a>
+    <a href="#video">Film</a>
     <a href="#tour">Walkthrough</a>
     <a href="#contact" class="btn" style="padding:11px 22px">Get in touch</a>
   </nav>
@@ -475,8 +506,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   <a href="#plans"><small>06</small>Plans</a>
   <a href="#patio"><small>07</small>Backyards</a>
   <a href="#gallery"><small>08</small>Gallery</a>
-  <a href="#tour"><small>09</small>Walkthrough</a>
-  <a href="#contact"><small>10</small>Get in touch</a>
+  <a href="#video"><small>09</small>Film</a>
+  <a href="#tour"><small>10</small>Walkthrough</a>
+  <a href="#contact"><small>11</small>Get in touch</a>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -662,7 +694,27 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   </div>
 </section>
 
-<!-- ============ 10 · WALKTHROUGH ============ -->
+<!-- ============ 10 · VIDEO ============ -->
+<section id="video">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="video.eyebrow"></p>
+    <h2 class="serif h2 rv" data-c="video.titulo"></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="video.lead"></p>
+
+    <div class="vid-box rv" id="vidBox" data-yt="{{videoProyecto.id}}">
+      <picture><source srcset="img/{{videoProyecto.portada}}.webp" type="image/webp">
+        <img src="img/{{videoProyecto.portada}}.jpg" alt="{{videoProyecto.alt}}" loading="lazy"></picture>
+      <button class="vid-play" id="vidPlay" aria-label="Play the film">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      <div class="vid-et">
+        <b data-c="video.rotulo"></b>
+        <span data-c="video.duracion"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 · WALKTHROUGH ============ -->
 <section id="tour">
   <div class="wrap">
     <p class="eyebrow rv" data-c="tour.eyebrow"></p>
@@ -677,7 +729,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   </div>
 </section>
 
-<!-- ============ 11 · TIMELINE ============ -->
+<!-- ============ 12 · TIMELINE ============ -->
 <section id="timeline">
   <div class="wrap">
     <p class="eyebrow rv" data-c="timeline.eyebrow"></p>
@@ -687,7 +739,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   </div>
 </section>
 
-<!-- ============ 12 · CONTACT ============ -->
+<!-- ============ 13 · CONTACT ============ -->
 <section id="contact">
   <div class="wrap">
     <div class="form-grid">
@@ -1120,6 +1172,30 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     });
     pintar();
   });
+
+  /* ---------- VIDEO: el reproductor se carga al pulsar play ---------- */
+  (function(){
+    var caja=document.getElementById('vidBox');
+    if(!caja) return;
+    var id=caja.getAttribute('data-yt');
+    if(!id) return;
+    function arrancar(){
+      if(caja.classList.contains('reproduciendo')) return;
+      var f=document.createElement('iframe');
+      /* nocookie: YouTube no deja cookies de seguimiento hasta que se reproduce */
+      f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title=document.querySelector('#video h2').textContent.replace(/\s+/g,' ').trim();
+      f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      f.setAttribute('allowfullscreen','');
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      caja.appendChild(f);
+      caja.classList.add('reproduciendo');
+    }
+    caja.addEventListener('click',arrancar);
+    caja.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); arrancar(); }
+    });
+  })();
 
   /* ---------- COLOR DE FACHADA: una imagen a la vez ---------- */
   (function(){

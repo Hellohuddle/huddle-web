@@ -260,6 +260,32 @@ collections:
             label: "Intro paragraph"
             widget: text
             required: true
+      - name: video
+        label: "video"
+        widget: object
+        collapsed: true
+        fields:
+          - name: eyebrow
+            label: "Small label above the headline"
+            widget: string
+            required: true
+          - name: titulo
+            label: "Headline"
+            widget: string
+            hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+            required: true
+          - name: lead
+            label: "Intro paragraph"
+            widget: text
+            required: true
+          - name: rotulo
+            label: "Rotulo"
+            widget: string
+            required: true
+          - name: duracion
+            label: "Duracion"
+            widget: string
+            required: true
       - name: tour
         label: "Section: 3D walkthrough"
         widget: object

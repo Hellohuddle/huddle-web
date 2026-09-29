@@ -143,6 +143,13 @@
     "titulo": "A closer<br><em>look</em>",
     "lead": "Exteriors, aerials and the first interiors. Tap any image to open it full size."
   },
+  "video": {
+    "eyebrow": "The film",
+    "titulo": "See Huddle<br><em>in motion</em>",
+    "lead": "A short film through the neighborhood: the homes, the shared spaces and the way the whole place fits together.",
+    "rotulo": "Huddle Place",
+    "duracion": "Watch the film"
+  },
   "tour": {
     "eyebrow": "Interactive 3D walkthrough",
     "titulo": "Step inside,<br><em>from anywhere</em>",

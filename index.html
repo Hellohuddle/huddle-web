@@ -218,7 +218,12 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .homes-shot img{width:100%;height:100%;object-fit:cover;display:block}
 .plan-nota{margin-top:18px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 /* el comparador de plantas se comporta como una hoja mas de la pestana */
-.plan-ba{margin-top:0;aspect-ratio:1942/809;background:#fff;border-radius:6px;cursor:ew-resize}
+/* Doble clase A PROPOSITO: '.ba' aparece mas abajo en esta hoja y, con la misma
+   especificidad, ganaba su aspect-ratio 16/9 (y 3/2 en movil). El plano es 2.4:1,
+   asi que con object-fit:cover se recortaba el 26% del ancho y lo que desaparecia
+   era justo el jardin trasero. La proporcion es la real de la imagen, 1900x792,
+   para que 'cover' no tenga nada que recortar. */
+.ba.plan-ba{margin-top:0;aspect-ratio:1900/792;background:#fff;border-radius:6px;cursor:ew-resize}
 
 /* ---------- selector de color de fachada ---------- */
 .color-vis{margin-top:clamp(30px,4vw,54px)}

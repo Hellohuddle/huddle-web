@@ -4,15 +4,15 @@
 
 backend:
   name: github
-  repo: USUARIO-GITHUB/huddle-web     # <-- cambiar por el repo real
+  repo: Hellohuddle/huddle-web
   branch: main
   base_url: https://api.netlify.com   # proveedor OAuth de Netlify
   commit_messages:
     update: "contenido: {{collection}} actualizado desde el CMS"
 
 publish_mode: simple
-site_url: https://huddle.netlify.app  # <-- cambiar por el dominio real
-display_url: https://huddle.netlify.app
+site_url: https://hellohuddleplace.com
+display_url: https://hellohuddleplace.com
 media_folder: img
 public_folder: /img
 

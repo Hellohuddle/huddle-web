@@ -261,7 +261,7 @@ collections:
                 widget: text
                 required: true
           - name: video
-            label: "video"
+            label: "Section: The film"
             widget: object
             collapsed: true
             fields:
@@ -279,11 +279,11 @@ collections:
                 widget: text
                 required: true
               - name: rotulo
-                label: "Rotulo"
+                label: "Caption over the video"
                 widget: string
                 required: true
               - name: duracion
-                label: "Duracion"
+                label: "Small text next to the caption"
                 widget: string
                 required: true
           - name: tour
@@ -390,7 +390,7 @@ collections:
                 widget: text
                 required: false
               - name: resumen
-                label: "Resumen"
+                label: "One-line summary of the home"
                 widget: string
                 required: true
               - name: etiquetaAntes
@@ -460,8 +460,8 @@ collections:
               - name: area
                 label: "Square footage"
                 widget: string
-                required: true
+                required: false
               - name: espacios
-                label: "Espacios"
+                label: "Rooms on this floor"
                 widget: string
                 required: true

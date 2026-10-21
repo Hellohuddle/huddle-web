@@ -401,6 +401,28 @@ collections:
                 label: "Right label"
                 widget: string
                 required: true
+          - name: selector
+            label: "Section: Choose your home"
+            widget: object
+            collapsed: true
+            fields:
+              - name: eyebrow
+                label: "Small label above the headline"
+                widget: string
+                required: true
+              - name: titulo
+                label: "Headline"
+                widget: string
+                hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+                required: true
+              - name: lead
+                label: "Intro paragraph"
+                widget: text
+                required: true
+              - name: nota
+                label: "Footnote"
+                widget: text
+                required: false
           - name: patio
             label: "Section: Backyard with / without pool"
             widget: object

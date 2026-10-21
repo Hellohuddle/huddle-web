@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retail at Huddle — Eat. Shop. Gather.</title>
+<meta name="description" content="The retail village at Huddle: suites around a shaded courtyard, covered walkways and patio seating, at the heart of the 2027 Dream Home Neighborhood.">
+<meta name="theme-color" content="#F6F1EA">
+<meta property="og:title" content="Retail at Huddle">
+<meta property="og:description" content="One place. Eat, shop, gather.">
+<meta property="og:image" content="/img/retail_sign.jpg">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HUDDLE — los locales comerciales
+   Pagina aparte de la landing del barrio, con las mismas fichas de
+   marca: crema #F6F1EA, naranja #ED6B3A, tinta #24211F. No se
+   construye con build.py; es HTML plano, asi que el CMS no la toca.
+   ============================================================ */
+:root{
+  --cream:#F6F1EA; --cream-2:#EFE8DE; --orange:#ED6B3A; --orange-soft:#F4CCB9;
+  --ink:#24211F; --ink-soft:#5A534E; --line:rgba(36,33,31,.14);
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --pad:clamp(20px,5vw,88px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.65;
+  overflow-x:clip;max-width:100%;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+.wrap{padding:clamp(72px,10vh,130px) var(--pad)}
+.serif{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.08}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);
+  font-weight:600;margin-bottom:20px}
+.h2{font-size:clamp(30px,4.4vw,62px)}
+.h2 em{font-style:normal;color:var(--orange)}
+.lead{font-size:clamp(15px,1.25vw,18px);color:var(--ink-soft);max-width:56ch}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border:0;
+  border-radius:999px;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:600;
+  letter-spacing:.04em;padding:16px 30px;transition:background .3s var(--ease),transform .3s var(--ease);
+  text-decoration:none}
+.btn:hover{background:#d95c2d;transform:translateY(-2px)}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- cabecera ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;padding:18px var(--pad);
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease)}
+header.solid{background:rgba(246,241,234,.94);backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:12px var(--pad)}
+.logo{font-family:var(--sans);font-weight:700;font-size:24px;letter-spacing:-.03em;color:var(--orange);
+  display:inline-flex;align-items:center;min-height:46px;text-decoration:none}
+header nav{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
+header nav a{font-size:13px;font-weight:500;color:var(--ink-soft);text-decoration:none;
+  transition:color .25s var(--ease);white-space:nowrap}
+header nav a:hover{color:var(--ink)}
+header.on-hero .logo{color:#fff}
+header.on-hero nav a{color:rgba(255,255,255,.9)}
+@media(max-width:760px){header nav a.oculta-movil{display:none}}
+
+/* ---------- portada ---------- */
+#hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+#hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(36,33,31,.42) 0%,rgba(36,33,31,0) 38%,rgba(36,33,31,.78) 100%)}
+.hero-txt{position:relative;z-index:2;padding:0 var(--pad) clamp(54px,8vh,96px);color:#fff;max-width:900px}
+.hero-txt .eyebrow{color:var(--orange-soft)}
+.hero-txt h1{font-size:clamp(38px,6.6vw,86px)}
+.hero-txt p{margin-top:20px;font-size:clamp(15px,1.3vw,19px);color:rgba(255,255,255,.82);max-width:52ch}
+
+/* ---------- recorrido ---------- */
+#tour{background:var(--ink);color:#fff}
+#tour .eyebrow{color:var(--orange-soft)}
+#tour .lead{color:rgba(255,255,255,.72)}
+.tour-box{position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
+  background:#000;aspect-ratio:16/9;max-height:78vh;min-height:420px}
+.tour-box iframe{display:block;width:100%;height:100%;border:0}
+@media(max-width:760px){.tour-box{aspect-ratio:auto;height:min(74vh,600px);min-height:0;max-height:none}}
+
+/* ---------- vistas ---------- */
+#vistas{background:var(--cream-2)}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(30px,4vw,54px)}
+.shot{margin:0;border-radius:6px;overflow:hidden;background:#fff}
+/* alto automatico: con height:100% la imagen ocupaba toda la figura y el pie
+   quedaba cortado por el overflow:hidden */
+.shot img{width:100%;height:auto;display:block}
+.shot figcaption{padding:12px 15px;font-size:12.5px;color:var(--ink-soft)}
+@media(max-width:760px){.shots{grid-template-columns:1fr}}
+
+/* ---------- plano ---------- */
+#plano{background:var(--cream)}
+.plano-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,3.5vw,52px);
+  align-items:center;margin-top:clamp(30px,4vw,54px)}
+.plano-grid figure{margin:0;border-radius:6px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.lista{list-style:none;display:grid;gap:14px}
+.lista li{padding-left:22px;position:relative;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+.lista li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;
+  background:var(--orange-soft)}
+.lista li b{color:var(--ink);font-weight:600}
+.nota{margin-top:26px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+@media(max-width:860px){.plano-grid{grid-template-columns:1fr}}
+
+/* ---------- formulario ---------- */
+#contact{background:var(--ink);color:#fff}
+#contact .eyebrow{color:var(--orange-soft)}
+.form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,70px)}
+#contact p.sub{margin-top:22px;color:rgba(255,255,255,.72);font-size:15px;max-width:40ch}
+.field{display:grid;gap:7px;margin-bottom:16px}
+.field label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.field input,.field textarea{background:transparent;border:1px solid rgba(255,255,255,.22);border-radius:6px;
+  color:#fff;font:400 15px/1.5 var(--sans);padding:13px 15px;outline:0;transition:border-color .2s;width:100%}
+.field input:focus,.field textarea:focus{border-color:var(--orange)}
+.field textarea{min-height:110px;resize:vertical}
+.field.err input,.field.err textarea{border-color:#E05B4B}
+.f-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hp{position:absolute;left:-9999px}
+#formNote{margin-top:16px;font-size:14px;color:rgba(255,255,255,.8)}
+@media(max-width:860px){.form-grid,.f-cols{grid-template-columns:1fr}}
+
+/* ---------- pie ---------- */
+footer{background:var(--cream-2);padding:46px var(--pad);display:flex;flex-wrap:wrap;gap:16px;
+  align-items:center;justify-content:space-between;font-size:13px;color:var(--ink-soft)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<header id="top" class="on-hero">
+  <a href="/" class="logo">huddle</a>
+  <nav>
+    <a href="/" class="oculta-movil">The neighborhood</a>
+    <a href="#tour" class="oculta-movil">Walkthrough</a>
+    <a href="#plano" class="oculta-movil">Site plan</a>
+    <a href="#contact" class="btn" style="padding:11px 22px">Enquire</a>
+  </nav>
+</header>
+
+<!-- ============ PORTADA ============ -->
+<section id="hero">
+  <img src="/img/retail_sign.webp" alt="The huddle monument sign at the entrance to the retail village">
+  <div class="hero-txt">
+    <p class="eyebrow">One place &middot; Eat, shop, gather</p>
+    <h1 class="serif">Retail at <em style="font-style:normal;color:var(--orange)">Huddle</em></h1>
+    <p>A short row of suites around a shaded courtyard, at the centre of the neighborhood
+      and in front of its parking. Walk it below before a single wall goes up.</p>
+  </div>
+</section>
+
+<!-- ============ RECORRIDO ============ -->
+<section id="tour">
+  <div class="wrap">
+    <p class="eyebrow rv">Interactive 3D walkthrough</p>
+    <h2 class="serif h2 rv">Step into the<br><em>retail village</em></h2>
+    <p class="lead rv" style="margin-top:24px">Drag to look around and use the floor points to move
+      between spaces. Runs in the browser, nothing to install.</p>
+    <div class="tour-box rv">
+      <iframe src="https://dynamiccomposition.viewin360.co/share/collection/7dG1Y?logo=bWVkaWEvNDMwMDM2LzZhOWItMTMwYy01ZWY1LWI3OTkucG5n&amp;info=0&amp;fs=1&amp;vr=1&amp;zoom=1&amp;sd=1&amp;initload=0&amp;thumbs=1"
+              title="Huddle retail interactive 3D walkthrough" loading="lazy"
+              allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+              allowfullscreen scrolling="no" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISTAS ============ -->
+<section id="vistas">
+  <div class="wrap">
+    <p class="eyebrow rv">The courtyard</p>
+    <h2 class="serif h2 rv">Shade, water<br><em>and a reason to stay</em></h2>
+    <p class="lead rv" style="margin-top:24px">The suites turn their fronts onto a brick courtyard:
+      sail shades over the walkway, planting between the tables and a fountain with lounge seating
+      where the two wings meet.</p>
+    <div class="shots">
+      <figure class="shot rv">
+        <img src="/img/retail_aerial.webp" alt="Aerial view of the retail courtyard with sail shades and the fountain" loading="lazy">
+        <figcaption>The courtyard from above, with the covered walkway running along both wings.</figcaption>
+      </figure>
+      <figure class="shot rv">
+        <img src="/img/retail_court.webp" alt="The fountain plaza with lounge chairs, looking back at the storefronts" loading="lazy">
+        <figcaption>The fountain plaza, looking back at the storefronts and the patio seating.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANO ============ -->
+<section id="plano">
+  <div class="wrap">
+    <p class="eyebrow rv">Site plan</p>
+    <h2 class="serif h2 rv">How the <em>block</em><br>is laid out</h2>
+    <div class="plano-grid">
+      <figure class="rv">
+        <img src="/img/retail_plan.webp" alt="Site plan of the retail block, showing the suites, the courtyard and the parking" loading="lazy">
+      </figure>
+      <div class="rv">
+        <ul class="lista">
+          <li><b>Two wings around a courtyard.</b> The suites meet at the corner, so every front
+            looks onto the same open space.</li>
+          <li><b>Covered walkway and patio seating</b> along both fronts, with planting between the
+            tables and the drive.</li>
+          <li><b>Fountain plaza</b> with lounge seating at the open end of the courtyard.</li>
+          <li><b>Parking wrapping the block</b>, with the accessible stalls and the crossing right
+            at the plaza.</li>
+          <li><b>Monument sign at the entrance</b>, facing the arrival drive.</li>
+        </ul>
+        <p class="nota">The interiors and the names on the storefronts are shown to illustrate how
+          the suites can be fitted out. Suite sizes, layouts and terms are issued on request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="form-grid">
+      <div>
+        <p class="eyebrow rv">Enquire</p>
+        <h2 class="serif h2 rv">Interested in<br><em>a space here?</em></h2>
+        <p class="sub rv">Tell us what you are looking for and we will come back to you with the
+          plans and the details.</p>
+      </div>
+
+      <form id="leadForm" class="rv" name="huddle-retail" method="POST"
+            data-netlify="true" netlify-honeypot="company-website">
+        <input type="hidden" name="form-name" value="huddle-retail">
+        <input type="hidden" name="interest" value="Retail space">
+        <p class="hp"><label>Do not fill this in <input name="company-website" tabindex="-1"></label></p>
+
+        <div class="f-cols">
+          <div class="field"><label for="name">Full name *</label>
+            <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
+          <div class="field"><label for="business">Business</label>
+            <input id="business" name="business" type="text" placeholder="What you run" autocomplete="organization"></div>
+        </div>
+        <div class="f-cols">
+          <div class="field"><label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required></div>
+          <div class="field"><label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="(000) 000-0000" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="The kind of space you need, and when"></textarea></div>
+
+        <button type="submit" class="btn" id="submitBtn">Send enquiry</button>
+        <p id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Huddle &middot; One place. Eat, shop, gather.</span>
+  <span><a href="/">Back to the neighborhood</a></span>
+</footer>
+
+<script>
+/* La cabecera va transparente sobre la portada y solida en cuanto se baja. */
+(function(){
+  var h = document.getElementById('top'), hero = document.getElementById('hero');
+  function pinta(){
+    var tope = hero.getBoundingClientRect().bottom - 70;
+    h.classList.toggle('solid', scrollY > 10);
+    h.classList.toggle('on-hero', tope > 0);
+  }
+  addEventListener('scroll', pinta, {passive:true});
+  addEventListener('resize', pinta);
+  pinta();
+
+  /* Reveals; si el navegador no trae IntersectionObserver se muestran y ya. */
+  var piezas = [].slice.call(document.querySelectorAll('.rv'));
+  if(!('IntersectionObserver' in window)){
+    piezas.forEach(function(p){ p.classList.add('in'); });
+  } else {
+    var ob = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ob.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -12% 0px'});
+    piezas.forEach(function(p){ ob.observe(p); });
+  }
+
+  /* El formulario se envia sin recargar, igual que el de la landing: Netlify
+     recibe el POST en la raiz con el form-name. */
+  var f = document.getElementById('leadForm');
+  if(!f) return;
+  var btn = document.getElementById('submitBtn'), note = document.getElementById('formNote');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    f.querySelectorAll('[required]').forEach(function(c){
+      var v = c.value.trim();
+      var bien = c.type === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) : v.length > 1;
+      c.closest('.field').classList.toggle('err', !bien);
+      if(!bien) ok = false;
+    });
+    if(!ok){ note.textContent = 'Please check the highlighted fields.'; return; }
+    btn.disabled = true; btn.textContent = 'Sending…'; note.textContent = '';
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+                body:new URLSearchParams(new FormData(f)).toString()})
+      .then(function(){
+        f.style.display = 'none';
+        note.innerHTML = '<strong>Thank you.</strong> We received your enquiry and will be in touch shortly.';
+      })
+      .catch(function(err){
+        console.error(err);
+        btn.disabled = false; btn.textContent = 'Try again';
+        note.textContent = 'Something went wrong. Please email us instead.';
+      });
+  });
+})();
+</script>
+</body>
+</html>

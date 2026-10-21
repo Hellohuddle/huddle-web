@@ -193,6 +193,12 @@
     "etiquetaAntes": "Without pool",
     "etiquetaDespues": "With plunge pool"
   },
+  "selector": {
+    "eyebrow": "Choose your home",
+    "titulo": "Forty&#8209;eight homes,<br><em>four configurations</em>",
+    "lead": "Every block holds four homes: two corner homes with an extra facade on the side, and two middle homes between neighbours. Pick any home on the plan to see which one it is and how its floors are laid out.",
+    "nota": "Plans are illustrative. <b>B homes are the mirror of the A homes</b>, as the architect labels them. Interior areas, prices and availability are released with the price list."
+  },
   "patio": {
     "eyebrow": "Your backyard, your call",
     "titulo": "With pool.<br><em>Or without.</em>",

@@ -247,6 +247,59 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 }
 @media(max-width:860px){.plan-body{grid-template-columns:1fr}}
 
+/* ---------- selector de viviendas ----------
+   Las 48 son clicables sobre el masterplan. Las zonas son poligonos SVG y no
+   rectangulos: las manzanas estan giradas en distintos angulos sobre el plano.
+   La geometria sale de detectar los tejados y ajustar a cada manzana su eje
+   principal, dividiendolo en cuatro. */
+#selector{background:var(--cream-2)}
+.sel-barra{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:clamp(26px,3.4vw,42px) 0 14px}
+.sel-barra button{border:1px solid var(--line);background:#fff;border-radius:999px;
+  padding:8px 16px;cursor:pointer;font:600 11.5px/1 var(--sans);letter-spacing:.04em;
+  color:var(--ink-soft);transition:border-color .2s,color .2s,background .2s}
+.sel-barra button:hover{border-color:var(--ink-soft);color:var(--ink)}
+.sel-barra button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.sel-barra i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.sel-barra .cuenta{margin-left:auto;font-size:12px;color:var(--ink-soft)}
+
+.sel-escena{display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:start}
+@media(max-width:900px){.sel-escena{grid-template-columns:1fr}}
+.sel-mapa{position:relative;border-radius:6px;overflow:hidden;background:#fff;line-height:0}
+.sel-mapa img{width:100%;display:block}
+.sel-mapa svg{position:absolute;inset:0;width:100%;height:100%}
+.sel-u{fill:transparent;stroke:#fff;stroke-width:.18;stroke-opacity:.5;cursor:pointer;
+  transition:fill .16s,stroke-opacity .16s}
+.sel-u.t1{fill:rgba(47,111,107,.34)} .sel-u.t2{fill:rgba(200,128,60,.34)}
+.sel-u:hover{fill:rgba(237,107,58,.62);stroke-opacity:1}
+.sel-u.on{fill:rgba(237,107,58,.8);stroke-opacity:1;stroke-width:.35}
+.sel-u.off{fill:transparent;stroke-opacity:.1;pointer-events:none}
+.sel-globo{position:absolute;pointer-events:none;background:rgba(36,33,31,.88);color:#fff;
+  font:600 11px var(--sans);padding:4px 8px;border-radius:4px;white-space:nowrap;
+  transform:translate(-50%,-150%);opacity:0;transition:opacity .14s}
+
+.sel-panel{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px}
+.sel-panel .nada{color:var(--ink-soft);font-size:13.5px;text-align:center;padding:34px 6px}
+.sel-etq{display:inline-block;font:600 10.5px var(--sans);letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;color:#fff;margin-bottom:11px}
+.sel-etq.t1{background:#2F6F6B} .sel-etq.t2{background:#C8803C}
+.sel-panel h3{margin:0 0 4px;font:600 21px/1.2 var(--serif)}
+.sel-panel .res{margin:0 0 15px;font-size:13px;color:var(--ink-soft);line-height:1.55}
+.sel-panel dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0 0 15px;font-size:13px}
+.sel-panel dt{color:var(--ink-soft)} .sel-panel dd{margin:0;text-align:right;font-weight:500}
+.sel-pend{color:#9A5B1E;font-weight:500}
+.sel-planos{display:grid;gap:10px;margin:15px 0}
+.sel-plano{border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.sel-plano h4{margin:0;padding:7px 10px;font:600 10px var(--sans);letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--line);background:var(--cream)}
+.sel-plano img{width:100%;display:block}
+/* Las B son el espejo de las A: lo dice el plano del arquitecto ("MIRRORED") */
+.sel-plano img.espejo{transform:scaleX(-1)}
+.sel-nota{font-size:11.5px;color:var(--ink-soft);border-top:1px solid var(--line);
+  padding-top:12px;line-height:1.5}
+.sel-cta{display:block;width:100%;margin-top:14px;border:0;border-radius:999px;background:var(--orange);
+  color:#fff;font:600 12.5px var(--sans);padding:13px;cursor:pointer}
+.sel-cta:hover{background:#d95c2d}
+
 /* ---------- patio: antes y despues ---------- */
 /* La comparacion se hace con clip-path sobre la imagen de encima: las dos fotos
    quedan a tamano completo y superpuestas, asi que no hay calculo de anchos que
@@ -500,9 +553,11 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <a href="#block360" data-si="flags.aereo360">Aerial</a>
     <a href="#homes">Homes</a>
     <a href="#plans">Plans</a>
+    <a href="#selector">Choose</a>
     <a href="#gallery">Gallery</a>
     <a href="#video">Film</a>
     <a href="#tour">Walkthrough</a>
+    <a href="/comercial/">Retail</a>
     <a href="#contact" class="btn" style="padding:11px 22px">Get in touch</a>
   </nav>
   <button id="burger" aria-label="Menu"><i></i></button>
@@ -515,11 +570,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   <a href="#block360" data-si="flags.aereo360"><small>04</small>Aerial 360</a>
   <a href="#homes"><small>05</small>Homes</a>
   <a href="#plans"><small>06</small>Plans</a>
-  <a href="#patio"><small>07</small>Backyards</a>
-  <a href="#gallery"><small>08</small>Gallery</a>
-  <a href="#video"><small>09</small>Film</a>
-  <a href="#tour"><small>10</small>Walkthrough</a>
-  <a href="#contact"><small>11</small>Get in touch</a>
+  <a href="#selector"><small>07</small>Choose your home</a>
+  <a href="#patio"><small>08</small>Backyards</a>
+  <a href="#gallery"><small>09</small>Gallery</a>
+  <a href="#video"><small>10</small>Film</a>
+  <a href="#tour"><small>11</small>Walkthrough</a>
+  <a href="/comercial/"><small>12</small>Retail spaces</a>
+  <a href="#contact"><small>13</small>Get in touch</a>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -670,6 +727,28 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   </div>
 </section>
 
+<!-- ============ 07b · SELECTOR DE VIVIENDAS ============ -->
+<section id="selector">
+  <div class="wrap">
+    <p class="eyebrow rv" data-c="selector.eyebrow"></p>
+    <h2 class="serif h2 rv" data-c="selector.titulo"></h2>
+    <p class="lead rv" style="margin-top:24px" data-c="selector.lead"></p>
+
+    <div class="sel-barra rv" id="selBarra"></div>
+
+    <div class="sel-escena rv">
+      <div class="sel-mapa" id="selMapa">
+        <img src="img/plan_site.webp" alt="Huddle site plan with the twelve blocks">
+        <svg id="selCapa" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+        <div class="sel-globo" id="selGlobo"></div>
+      </div>
+      <aside class="sel-panel" id="selPanel"></aside>
+    </div>
+
+    <p class="plan-nota rv" data-c="selector.nota"></p>
+  </div>
+</section>
+
 <!-- ============ 08 · PATIO ANTES Y DESPUES ============ -->
 <section id="patio">
   <div class="wrap">
@@ -764,6 +843,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       <form id="leadForm" class="rv" name="huddle-leads" method="POST"
             data-netlify="true" netlify-honeypot="company-website">
         <input type="hidden" name="form-name" value="huddle-leads">
+        <input type="hidden" name="unit" id="fUnit" value="">
         <p class="hp"><label>Do not fill this in <input name="company-website" tabindex="-1"></label></p>
 
         <div class="f-cols">
@@ -1302,6 +1382,109 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
         });
     });
   })();
+})();
+</script>
+
+<script src="manzanas.js"></script>
+<script>
+/* ---------- SELECTOR DE VIVIENDAS ----------
+   De un extremo al otro de cada manzana: esquinera, medianera, medianera,
+   esquinera. Es lo que dice el plano del 4-plex de Powell Studio.
+   Aqui NO hay ningun dato de actividad: eso es informacion interna. */
+(function(){
+  var ORDEN = [{c:'1A',t:'1',m:'A'},{c:'2A',t:'2',m:'A'},{c:'2B',t:'2',m:'B'},{c:'1B',t:'1',m:'B'}];
+  var TIPOS = {
+    '1':{n:'Corner home', k:'t1', r:'End of the block, with an exterior wall on its free side.',
+         v:'Extra facade on the side elevation'},
+    '2':{n:'Middle home', k:'t2', r:'Between two neighbouring homes.',
+         v:'Central position within the block'}
+  };
+  var capa = document.getElementById('selCapa');
+  if(!capa || typeof MANZANAS === 'undefined') return;
+  var barra = document.getElementById('selBarra'),
+      panel = document.getElementById('selPanel'),
+      globo = document.getElementById('selGlobo'),
+      mapa  = document.getElementById('selMapa');
+  var filtro = 'todas', sel = null;
+  function id(m, c){ return 'B' + m + '-' + c; }
+
+  function barraHTML(){
+    var o = [['todas','All homes',null], ['1',TIPOS['1'].n,'#2F6F6B'], ['2',TIPOS['2'].n,'#C8803C']];
+    var n = {todas:48,'1':24,'2':24};
+    barra.innerHTML = o.map(function(x){
+      var p = x[2] ? '<i style="background:' + x[2] + '"></i>' : '';
+      return '<button class="' + (filtro===x[0]?'on':'') + '" data-f="' + x[0] + '">' + p + x[1] + ' (' + n[x[0]] + ')</button>';
+    }).join('') + '<span class="cuenta">12 blocks &middot; 48 homes</span>';
+  }
+  barra.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    filtro = b.getAttribute('data-f'); barraHTML(); capaHTML();
+  });
+
+  function capaHTML(){
+    var h = '';
+    MANZANAS.forEach(function(mz){
+      mz.u.forEach(function(poly, i){
+        var u = ORDEN[i], k = id(mz.n, u.c);
+        var off = (filtro !== 'todas' && filtro !== u.t) ? ' off' : '';
+        h += '<polygon class="sel-u ' + TIPOS[u.t].k + off + (sel===k?' on':'') + '" points="'
+           + poly.map(function(q){ return q[0] + ',' + q[1]; }).join(' ')
+           + '" data-k="' + k + '" data-i="' + i + '" data-m="' + mz.n + '"></polygon>';
+      });
+    });
+    capa.innerHTML = h;
+  }
+
+  capa.addEventListener('click', function(e){
+    var p = e.target.closest('polygon'); if(!p) return;
+    sel = p.getAttribute('data-k'); capaHTML();
+    abrir(+p.getAttribute('data-m'), +p.getAttribute('data-i'));
+  });
+  capa.addEventListener('mousemove', function(e){
+    var p = e.target.closest('polygon');
+    if(!p){ globo.style.opacity = 0; return; }
+    var u = ORDEN[+p.getAttribute('data-i')], r = mapa.getBoundingClientRect();
+    globo.textContent = p.getAttribute('data-k') + ' \u00b7 ' + TIPOS[u.t].n;
+    globo.style.left = (e.clientX - r.left) + 'px';
+    globo.style.top = (e.clientY - r.top) + 'px';
+    globo.style.opacity = 1;
+  });
+  capa.addEventListener('mouseleave', function(){ globo.style.opacity = 0; });
+
+  function vacio(){ panel.innerHTML = '<p class="nada">Select a home on the plan<br>to see its details.</p>'; }
+
+  function abrir(m, i){
+    var u = ORDEN[i], t = TIPOS[u.t], k = id(m, u.c), esp = u.m === 'B' ? 'espejo' : '';
+    panel.innerHTML =
+      '<span class="sel-etq ' + t.k + '">' + t.n + '</span>' +
+      '<h3>' + k + '</h3><p class="res">' + t.r + '</p>' +
+      '<dl><dt>Bedrooms</dt><dd>3</dd><dt>Bathrooms</dt><dd>2.5</dd>' +
+      '<dt>Garage</dt><dd>2 cars</dd><dt>Module width</dt><dd>~24 ft</dd>' +
+      '<dt>Orientation</dt><dd>' + (u.m === 'B' ? 'Mirrored' : 'As drawn') + '</dd>' +
+      '<dt>Interior area</dt><dd class="sel-pend">on request</dd>' +
+      '<dt>Price</dt><dd class="sel-pend">on request</dd></dl>' +
+      '<div class="sel-planos">' +
+        '<div class="sel-plano"><h4>First floor</h4><img class="' + esp + '" src="img/plan_floor1.webp" alt=""></div>' +
+        '<div class="sel-plano"><h4>Second floor</h4><img class="' + esp + '" src="img/plan_floor2.webp" alt=""></div>' +
+      '</div>' +
+      '<p class="sel-nota"><b>' + t.v + '.</b> Bedrooms, bathrooms, garage and module width come from the ' +
+      'architect\u2019s drawings.</p>' +
+      '<button class="sel-cta" data-u="' + k + '">Ask about this home</button>';
+  }
+
+  /* El boton lleva al formulario con la vivienda ya puesta: el lead llega
+     etiquetado y de ahi sale el interes real por unidad. */
+  panel.addEventListener('click', function(e){
+    var b = e.target.closest('.sel-cta'); if(!b) return;
+    var k = b.getAttribute('data-u');
+    var msg = document.getElementById('message');   // este formulario lo llama 'message'
+    if(msg) msg.value = 'I would like to know more about home ' + k + '.';
+    var oculto = document.getElementById('fUnit');
+    if(oculto) oculto.value = k;
+    location.hash = '#contact';
+  });
+
+  barraHTML(); capaHTML(); vacio();
 })();
 </script>
 

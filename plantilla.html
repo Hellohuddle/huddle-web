@@ -88,8 +88,12 @@ header{
 }
 header.solid{background:rgba(246,241,234,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
              box-shadow:0 1px 0 var(--line);padding:12px var(--pad)}
-.logo{font-family:var(--sans);font-weight:700;font-size:24px;letter-spacing:-.03em;color:var(--orange);
-      display:inline-flex;align-items:center;min-height:46px}
+.logo{display:inline-flex;align-items:center;min-height:46px;line-height:0}
+.logo img{height:30px;width:auto;display:block;transition:opacity .3s var(--ease)}
+.logo .claro{display:none}
+header.on-hero .logo .claro{display:block}
+header.on-hero .logo .color{display:none}
+@media(max-width:700px){.logo img{height:26px}}
 header.on-hero .logo{color:#fff}
 nav.links{display:flex;gap:clamp(16px,2vw,34px);align-items:center}
 nav.links a{font-size:13px;font-weight:500;color:var(--ink);transition:color .3s}
@@ -282,6 +286,14 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .sel-etq{display:inline-block;font:600 10.5px var(--sans);letter-spacing:.09em;text-transform:uppercase;
   padding:4px 9px;border-radius:999px;color:#fff;margin-bottom:11px}
 .sel-etq.t1{background:#2F6F6B} .sel-etq.t2{background:#C8803C}
+.sel-dir{margin:0 0 13px;font-size:13.5px;color:var(--ink-soft)}
+.sel-dir b{color:var(--ink);font-weight:600}
+.sel-sellos{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 13px}
+.sel-sello{font:600 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft)}
+.sel-sello.piscina{border-color:#2F6F6B;color:#2F6F6B}
+.sel-sello.fase1{border-color:var(--orange);color:var(--orange)}
+.sel-u.piscina{stroke:#fff;stroke-width:.3}
 .sel-panel h3{margin:0 0 4px;font:600 21px/1.2 var(--serif)}
 .sel-panel .res{margin:0 0 15px;font-size:13px;color:var(--ink-soft);line-height:1.55}
 .sel-panel dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0 0 15px;font-size:13px}
@@ -487,7 +499,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 /* ---------- pie ---------- */
 footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,80px) var(--pad) 34px}
 .f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:44px}
-.f-top .logo{color:var(--orange);font-size:30px}
+.f-top .logo img{height:36px}
 .f-top p{max-width:34ch;font-size:14.5px;margin-top:12px}
 .f-links{display:flex;gap:clamp(28px,5vw,70px);flex-wrap:wrap}
 .f-links div span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);
@@ -545,7 +557,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 </style>
 
 <header id="hdr" class="on-hero">
-  <a href="#hero" class="logo">huddle</a>
+  <a href="#hero" class="logo" aria-label="Huddle">
+    <img class="color" src="img/logo_huddle.png" alt="Huddle" width="900" height="239">
+    <img class="claro" src="img/logo_huddle_claro.png" alt="" aria-hidden="true" width="900" height="239">
+  </a>
   <nav class="links">
     <a href="#experience">Experience</a>
     <a href="#spin">360° View</a>
@@ -738,7 +753,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 
     <div class="sel-escena rv">
       <div class="sel-mapa" id="selMapa">
-        <img src="img/plan_site.webp" alt="Huddle site plan with the twelve blocks">
+        <img src="img/plan_site_2.webp" alt="Huddle site plan with the twelve blocks" loading="lazy">
         <svg id="selCapa" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
         <div class="sel-globo" id="selGlobo"></div>
       </div>
@@ -878,7 +893,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 <footer>
   <div class="f-top">
     <div>
-      <div class="logo">huddle</div>
+      <div class="logo"><img src="img/logo_huddle.png" alt="Huddle" width="900" height="239"></div>
       <p>Cool Eats. Smart Homes. One Place. The 2027 Dream Home Neighborhood.</p>
     </div>
     <div class="f-links">
@@ -1388,11 +1403,11 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 <script src="manzanas.js"></script>
 <script>
 /* ---------- SELECTOR DE VIVIENDAS ----------
-   De un extremo al otro de cada manzana: esquinera, medianera, medianera,
-   esquinera. Es lo que dice el plano del 4-plex de Powell Studio.
-   Aqui NO hay ningun dato de actividad: eso es informacion interna. */
+   Las 48 viviendas del masterplan, con el numero, la direccion, la fase y la
+   piscina que trae el Community Site Plan. De un extremo al otro de cada manzana
+   van esquinera, medianera, medianera, esquinera, como en el plano del 4-plex.
+   Aqui NO hay dato de actividad: el interes por vivienda viaja en el formulario. */
 (function(){
-  var ORDEN = [{c:'1A',t:'1',m:'A'},{c:'2A',t:'2',m:'A'},{c:'2B',t:'2',m:'B'},{c:'1B',t:'1',m:'B'}];
   var TIPOS = {
     '1':{n:'Corner home', k:'t1', r:'End of the block, with an exterior wall on its free side.',
          v:'Extra facade on the side elevation'},
@@ -1405,15 +1420,30 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       panel = document.getElementById('selPanel'),
       globo = document.getElementById('selGlobo'),
       mapa  = document.getElementById('selMapa');
-  var filtro = 'todas', sel = null;
-  function id(m, c){ return 'B' + m + '-' + c; }
+  var filtro = 'todas', sel = null, TODAS = [];
+  MANZANAS.forEach(function(mz){
+    mz.u.forEach(function(u, i){ TODAS.push({mz:mz.L, i:i, u:u}); });
+  });
+  function pasa(u){
+    if(filtro === 'todas') return true;
+    if(filtro === 'piscina') return u.p === 1;
+    if(filtro === 'fase1')  return u.f === 1;
+    return filtro === u.t;
+  }
+  function cuenta(f){
+    var g = filtro; filtro = f;
+    var n = TODAS.filter(function(x){ return pasa(x.u); }).length;
+    filtro = g; return n;
+  }
 
   function barraHTML(){
-    var o = [['todas','All homes',null], ['1',TIPOS['1'].n,'#2F6F6B'], ['2',TIPOS['2'].n,'#C8803C']];
-    var n = {todas:48,'1':24,'2':24};
+    var o = [['todas','All homes',null],
+             ['1',TIPOS['1'].n,'#2F6F6B'], ['2',TIPOS['2'].n,'#C8803C'],
+             ['fase1','Phase I',null], ['piscina','Pool home',null]];
     barra.innerHTML = o.map(function(x){
       var p = x[2] ? '<i style="background:' + x[2] + '"></i>' : '';
-      return '<button class="' + (filtro===x[0]?'on':'') + '" data-f="' + x[0] + '">' + p + x[1] + ' (' + n[x[0]] + ')</button>';
+      return '<button class="' + (filtro===x[0]?'on':'') + '" data-f="' + x[0] + '">'
+           + p + x[1] + ' (' + cuenta(x[0]) + ')</button>';
     }).join('') + '<span class="cuenta">12 blocks &middot; 48 homes</span>';
   }
   barra.addEventListener('click', function(e){
@@ -1422,42 +1452,49 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   });
 
   function capaHTML(){
-    var h = '';
-    MANZANAS.forEach(function(mz){
-      mz.u.forEach(function(poly, i){
-        var u = ORDEN[i], k = id(mz.n, u.c);
-        var off = (filtro !== 'todas' && filtro !== u.t) ? ' off' : '';
-        h += '<polygon class="sel-u ' + TIPOS[u.t].k + off + (sel===k?' on':'') + '" points="'
-           + poly.map(function(q){ return q[0] + ',' + q[1]; }).join(' ')
-           + '" data-k="' + k + '" data-i="' + i + '" data-m="' + mz.n + '"></polygon>';
-      });
-    });
-    capa.innerHTML = h;
+    capa.innerHTML = TODAS.map(function(x){
+      var u = x.u;
+      var off = pasa(u) ? '' : ' off';
+      return '<polygon class="sel-u ' + TIPOS[u.t].k + off + (sel===u.k?' on':'')
+           + (u.p ? ' piscina' : '') + '" points="'
+           + u.g.map(function(q){ return q[0] + ',' + q[1]; }).join(' ')
+           + '" data-k="' + u.k + '"></polygon>';
+    }).join('');
+  }
+  function busca(k){
+    for(var i = 0; i < TODAS.length; i++) if(TODAS[i].u.k === k) return TODAS[i];
+    return null;
   }
 
   capa.addEventListener('click', function(e){
     var p = e.target.closest('polygon'); if(!p) return;
-    sel = p.getAttribute('data-k'); capaHTML();
-    abrir(+p.getAttribute('data-m'), +p.getAttribute('data-i'));
+    sel = p.getAttribute('data-k'); capaHTML(); abrir(sel);
   });
   capa.addEventListener('mousemove', function(e){
     var p = e.target.closest('polygon');
     if(!p){ globo.style.opacity = 0; return; }
-    var u = ORDEN[+p.getAttribute('data-i')], r = mapa.getBoundingClientRect();
-    globo.textContent = p.getAttribute('data-k') + ' \u00b7 ' + TIPOS[u.t].n;
+    var x = busca(p.getAttribute('data-k')), r = mapa.getBoundingClientRect();
+    globo.textContent = x.u.k + ' \u00b7 ' + x.u.d + ' \u00b7 ' + TIPOS[x.u.t].n;
     globo.style.left = (e.clientX - r.left) + 'px';
-    globo.style.top = (e.clientY - r.top) + 'px';
+    globo.style.top  = (e.clientY - r.top) + 'px';
     globo.style.opacity = 1;
   });
   capa.addEventListener('mouseleave', function(){ globo.style.opacity = 0; });
 
   function vacio(){ panel.innerHTML = '<p class="nada">Select a home on the plan<br>to see its details.</p>'; }
 
-  function abrir(m, i){
-    var u = ORDEN[i], t = TIPOS[u.t], k = id(m, u.c), esp = u.m === 'B' ? 'espejo' : '';
+  function abrir(k){
+    var x = busca(k); if(!x) return;
+    var u = x.u, t = TIPOS[u.t], esp = u.m === 'B' ? 'espejo' : '';
+    var sellos = '<span class="sel-sello">Block ' + x.mz + '</span>'
+               + '<span class="sel-sello' + (u.f === 1 ? ' fase1' : '') + '">Phase ' + (u.f === 1 ? 'I' : 'II') + '</span>'
+               + (u.p ? '<span class="sel-sello piscina">Pool home</span>' : '');
     panel.innerHTML =
       '<span class="sel-etq ' + t.k + '">' + t.n + '</span>' +
-      '<h3>' + k + '</h3><p class="res">' + t.r + '</p>' +
+      '<h3>' + u.k + '</h3>' +
+      '<p class="sel-dir"><b>' + u.d + '</b> Huddle Loop</p>' +
+      '<div class="sel-sellos">' + sellos + '</div>' +
+      '<p class="res">' + t.r + '</p>' +
       '<dl><dt>Bedrooms</dt><dd>3</dd><dt>Bathrooms</dt><dd>2.5</dd>' +
       '<dt>Garage</dt><dd>2 cars</dd><dt>Module width</dt><dd>~24 ft</dd>' +
       '<dt>Orientation</dt><dd>' + (u.m === 'B' ? 'Mirrored' : 'As drawn') + '</dd>' +
@@ -1467,20 +1504,20 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
         '<div class="sel-plano"><h4>First floor</h4><img class="' + esp + '" src="img/plan_floor1.webp" alt=""></div>' +
         '<div class="sel-plano"><h4>Second floor</h4><img class="' + esp + '" src="img/plan_floor2.webp" alt=""></div>' +
       '</div>' +
-      '<p class="sel-nota"><b>' + t.v + '.</b> Bedrooms, bathrooms, garage and module width come from the ' +
-      'architect\u2019s drawings.</p>' +
-      '<button class="sel-cta" data-u="' + k + '">Ask about this home</button>';
+      '<p class="sel-nota"><b>' + t.v + '.</b> Home number, address, phase and pool homes come from the ' +
+      'community site plan; bedrooms, bathrooms, garage and module width from the architect\u2019s drawings.</p>' +
+      '<button class="sel-cta" data-u="' + u.k + '" data-d="' + u.d + '">Ask about this home</button>';
   }
 
   /* El boton lleva al formulario con la vivienda ya puesta: el lead llega
      etiquetado y de ahi sale el interes real por unidad. */
   panel.addEventListener('click', function(e){
     var b = e.target.closest('.sel-cta'); if(!b) return;
-    var k = b.getAttribute('data-u');
+    var k = b.getAttribute('data-u'), dir = b.getAttribute('data-d');
     var msg = document.getElementById('message');   // este formulario lo llama 'message'
-    if(msg) msg.value = 'I would like to know more about home ' + k + '.';
+    if(msg) msg.value = 'I would like to know more about home ' + k + ', ' + dir + ' Huddle Loop.';
     var oculto = document.getElementById('fUnit');
-    if(oculto) oculto.value = k;
+    if(oculto) oculto.value = k + ' / ' + dir;
     location.hash = '#contact';
   });
 

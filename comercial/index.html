@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#F6F1EA">
 <meta property="og:title" content="Retail at Huddle">
 <meta property="og:description" content="One place. Eat, shop, gather.">
-<meta property="og:image" content="/img/retail_sign_2.jpg">
+<meta property="og:image" content="/img/retail_hero.jpg">
 <meta property="og:type" content="website">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -65,8 +65,12 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:
   transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease)}
 header.solid{background:rgba(246,241,234,.94);backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:12px var(--pad)}
-.logo{font-family:var(--sans);font-weight:700;font-size:24px;letter-spacing:-.03em;color:var(--orange);
-  display:inline-flex;align-items:center;min-height:46px;text-decoration:none}
+.logo{display:inline-flex;align-items:center;min-height:46px;line-height:0;text-decoration:none}
+.logo img{height:30px;width:auto;display:block}
+.logo .claro{display:none}
+header.on-hero .logo .claro{display:block}
+header.on-hero .logo .color{display:none}
+@media(max-width:700px){.logo img{height:26px}}
 header nav{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
 header nav a{font-size:13px;font-weight:500;color:var(--ink-soft);text-decoration:none;
   transition:color .25s var(--ease);white-space:nowrap}
@@ -96,7 +100,7 @@ header.on-hero nav a{color:rgba(255,255,255,.9)}
 
 /* ---------- vistas ---------- */
 #vistas{background:var(--cream-2)}
-.shots{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(30px,4vw,54px)}
+.shot.ancha{margin-top:clamp(30px,4vw,54px)}
 .shot{margin:0;border-radius:6px;overflow:hidden;background:#fff}
 /* alto automatico: con height:100% la imagen ocupaba toda la figura y el pie
    quedaba cortado por el overflow:hidden */
@@ -106,10 +110,44 @@ header.on-hero nav a{color:rgba(255,255,255,.9)}
 
 /* ---------- plano ---------- */
 #plano{background:var(--cream)}
-.plano-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,3.5vw,52px);
-  align-items:center;margin-top:clamp(30px,4vw,54px)}
-.plano-grid figure{margin:0;border-radius:6px;overflow:hidden;background:#fff;border:1px solid var(--line)}
-.lista{list-style:none;display:grid;gap:14px}
+/* ---------- plano de locales ---------- */
+.loc-barra{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:clamp(26px,3.4vw,42px) 0 14px}
+.loc-barra button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;
+  cursor:pointer;font:600 11.5px/1 var(--sans);letter-spacing:.04em;color:var(--ink-soft);
+  transition:border-color .2s,color .2s,background .2s}
+.loc-barra button:hover{border-color:var(--ink-soft);color:var(--ink)}
+.loc-barra button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.loc-barra .cuenta{margin-left:auto;font-size:12px;color:var(--ink-soft)}
+.loc-escena{display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:start}
+@media(max-width:900px){.loc-escena{grid-template-columns:1fr}}
+.loc-mapa{position:relative;border-radius:6px;overflow:hidden;background:#fff;line-height:0}
+.loc-mapa img{width:100%;display:block}
+.loc-mapa svg{position:absolute;inset:0;width:100%;height:100%}
+.loc-u{fill:rgba(237,107,58,.26);stroke:#fff;stroke-width:.22;stroke-opacity:.75;cursor:pointer;
+  transition:fill .16s,stroke-opacity .16s}
+.loc-u.b2{fill:rgba(47,111,107,.3)}
+.loc-u:hover{fill:rgba(237,107,58,.66);stroke-opacity:1}
+.loc-u.on{fill:rgba(237,107,58,.82);stroke-opacity:1;stroke-width:.4}
+.loc-u.off{fill:transparent;stroke-opacity:.12;pointer-events:none}
+.loc-globo{position:absolute;pointer-events:none;background:rgba(36,33,31,.88);color:#fff;
+  font:600 11px var(--sans);padding:4px 8px;border-radius:4px;white-space:nowrap;
+  transform:translate(-50%,-150%);opacity:0;transition:opacity .14s}
+.loc-panel{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px}
+.loc-panel .nada{color:var(--ink-soft);font-size:13.5px;text-align:center;padding:34px 6px}
+.loc-etq{display:inline-block;font:600 10.5px var(--sans);letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;color:#fff;margin-bottom:11px;background:var(--orange)}
+.loc-etq.b2{background:#2F6F6B}
+.loc-panel h3{margin:0 0 3px;font:600 21px/1.2 var(--serif)}
+.loc-panel .sf{margin:0 0 15px;font-size:13.5px;color:var(--ink-soft)}
+.loc-panel .sf b{color:var(--ink);font-weight:600;font-size:16px}
+.loc-panel dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0 0 14px;font-size:13px}
+.loc-panel dt{color:var(--ink-soft)} .loc-panel dd{margin:0;text-align:right;font-weight:500}
+.loc-nota{font-size:11.5px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px;line-height:1.5}
+.loc-cta{display:block;width:100%;margin-top:14px;border:0;border-radius:999px;background:var(--orange);
+  color:#fff;font:600 12.5px var(--sans);padding:13px;cursor:pointer}
+.loc-cta:hover{background:#d95c2d}
+.lista{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:clamp(26px,3vw,44px)}
+@media(max-width:760px){.lista{grid-template-columns:1fr}}
 .lista li{padding-left:22px;position:relative;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
 .lista li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;
   background:var(--orange-soft)}
@@ -138,12 +176,17 @@ header.on-hero nav a{color:rgba(255,255,255,.9)}
 footer{background:var(--cream-2);padding:46px var(--pad);display:flex;flex-wrap:wrap;gap:16px;
   align-items:center;justify-content:space-between;font-size:13px;color:var(--ink-soft)}
 footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.pie-marca{display:inline-flex;align-items:center;gap:11px}
+.pie-marca img{height:30px;width:auto;display:block}
 </style>
 </head>
 <body>
 
 <header id="top" class="on-hero">
-  <a href="/" class="logo">huddle</a>
+  <a href="/" class="logo" aria-label="Huddle">
+    <img class="color" src="/img/logo_huddle.png" alt="Huddle" width="900" height="239">
+    <img class="claro" src="/img/logo_huddle_claro.png" alt="" aria-hidden="true" width="900" height="239">
+  </a>
   <nav>
     <a href="/" class="oculta-movil">The neighborhood</a>
     <a href="#tour" class="oculta-movil">Walkthrough</a>
@@ -154,7 +197,7 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 
 <!-- ============ PORTADA ============ -->
 <section id="hero">
-  <img src="/img/retail_sign_2.webp" alt="The huddle monument sign at the entrance to the retail village">
+  <img src="/img/retail_hero.webp" alt="The huddle monument sign at the entrance to the retail village at dusk">
   <div class="hero-txt">
     <p class="eyebrow">One place &middot; Eat, shop, gather</p>
     <h1 class="serif">Retail at <em style="font-style:normal;color:var(--orange)">Huddle</em></h1>
@@ -186,44 +229,46 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
     <h2 class="serif h2 rv">Shade, water<br><em>and a reason to stay</em></h2>
     <p class="lead rv" style="margin-top:24px">The suites turn their fronts onto a brick courtyard:
       sail shades over the walkway, planting between the tables and a fountain with lounge seating
-      where the two wings meet.</p>
-    <div class="shots">
-      <figure class="shot rv">
-        <img src="/img/retail_aerial.webp" alt="Aerial view of the retail courtyard with sail shades and the fountain" loading="lazy">
-        <figcaption>The courtyard from above, with the covered walkway running along both wings.</figcaption>
-      </figure>
-      <figure class="shot rv">
-        <img src="/img/retail_court_2.webp" alt="The fountain plaza with lounge chairs, looking back at the storefronts" loading="lazy">
-        <figcaption>The fountain plaza, looking back at the storefronts and the patio seating.</figcaption>
-      </figure>
-    </div>
+      where the two buildings meet.</p>
+    <figure class="shot ancha rv">
+      <img src="/img/retail_plaza.webp" alt="The fountain plaza at dusk, with the storefronts behind" loading="lazy">
+      <figcaption>The fountain plaza, looking back at the storefronts and the covered walkway.</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ============ PLANO ============ -->
 <section id="plano">
   <div class="wrap">
-    <p class="eyebrow rv">Site plan</p>
-    <h2 class="serif h2 rv">How the <em>block</em><br>is laid out</h2>
-    <div class="plano-grid">
-      <figure class="rv">
-        <img src="/img/retail_plan.webp" alt="Site plan of the retail block, showing the suites, the courtyard and the parking" loading="lazy">
-      </figure>
-      <div class="rv">
-        <ul class="lista">
-          <li><b>Two wings around a courtyard.</b> The suites meet at the corner, so every front
-            looks onto the same open space.</li>
-          <li><b>Covered walkway and patio seating</b> along both fronts, with planting between the
-            tables and the drive.</li>
-          <li><b>Fountain plaza</b> with lounge seating at the open end of the courtyard.</li>
-          <li><b>Parking wrapping the block</b>, with the accessible stalls and the crossing right
-            at the plaza.</li>
-          <li><b>Monument sign at the entrance</b>, facing the arrival drive.</li>
-        </ul>
-        <p class="nota">The interiors and the names on the storefronts are shown to illustrate how
-          the suites can be fitted out. Suite sizes, layouts and terms are issued on request.</p>
+    <p class="eyebrow rv">The suites</p>
+    <h2 class="serif h2 rv">Seven suites,<br><em>two buildings</em></h2>
+    <p class="lead rv" style="margin-top:24px">From 732 to 1,500 square feet, around the same
+      courtyard. Pick any suite on the plan to see its area, its lease dimensions and the services
+      that reach it.</p>
+
+    <div class="loc-barra rv" id="locBarra"></div>
+
+    <div class="loc-escena rv">
+      <div class="loc-mapa" id="locMapa">
+        <img src="/img/retail_plan.webp" alt="Plan of the retail block, with the suites, the courtyard and the parking" loading="lazy">
+        <svg id="locCapa" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+        <div class="loc-globo" id="locGlobo"></div>
       </div>
+      <aside class="loc-panel" id="locPanel"></aside>
     </div>
+
+    <ul class="lista rv">
+      <li><b>Two buildings around a courtyard.</b> Building 1 holds four suites, building 2 holds
+        three, and every front looks onto the same open space.</li>
+      <li><b>Covered walkway and patio seating</b> along both fronts, with planting between the
+        tables and the drive.</li>
+      <li><b>Fountain plaza</b> with lounge seating at the open end of the courtyard.</li>
+      <li><b>Parking wrapping the block</b>, with the accessible stalls and the crossing right
+        at the plaza.</li>
+    </ul>
+    <p class="nota rv">Areas, lease dimensions and services are taken from the lease suite plans by
+      Powell Studio Architecture, 06/29/26. The outlines drawn over the plan are a guide, not a
+      measurement, and the interiors and storefront names are illustrative. Final terms on request.</p>
   </div>
 </section>
 
@@ -242,6 +287,7 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
             data-netlify="true" netlify-honeypot="company-website">
         <input type="hidden" name="form-name" value="huddle-retail">
         <input type="hidden" name="interest" value="Retail space">
+        <input type="hidden" name="suite" id="fSuite" value="">
         <p class="hp"><label>Do not fill this in <input name="company-website" tabindex="-1"></label></p>
 
         <div class="f-cols">
@@ -267,9 +313,100 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 </section>
 
 <footer>
-  <span>Huddle &middot; One place. Eat, shop, gather.</span>
+  <span class="pie-marca"><img src="/img/logo_huddle_marca.png" alt="" width="400" height="435">
+    Huddle &middot; One place. Eat, shop, gather.</span>
   <span><a href="/">Back to the neighborhood</a></span>
 </footer>
+
+<script src="/locales.js"></script>
+<script>
+/* ---------- PLANO DE LOCALES ----------
+   Los siete locales sobre el render del plano. Superficie, ancho de arriendo y
+   servicios salen de los Lease Suite Plans; los contornos son una guia dibujada
+   sobre el render, no una medicion. */
+(function(){
+  var capa = document.getElementById('locCapa');
+  if(!capa || typeof LOCALES === 'undefined') return;
+  var barra = document.getElementById('locBarra'),
+      panel = document.getElementById('locPanel'),
+      globo = document.getElementById('locGlobo'),
+      mapa  = document.getElementById('locMapa');
+  var filtro = 0, sel = null;
+  function pasa(l){ return filtro === 0 || l.b === filtro; }
+  function busca(k){ for(var i=0;i<LOCALES.length;i++) if(LOCALES[i].k === k) return LOCALES[i]; }
+
+  function barraHTML(){
+    var o = [[0,'All suites'], [1,'Building 1'], [2,'Building 2']];
+    barra.innerHTML = o.map(function(x){
+      var n = LOCALES.filter(function(l){ return x[0] === 0 || l.b === x[0]; }).length;
+      return '<button class="' + (filtro===x[0]?'on':'') + '" data-f="' + x[0] + '">'
+           + x[1] + ' (' + n + ')</button>';
+    }).join('') + '<span class="cuenta">732 &ndash; 1,500 sq ft</span>';
+  }
+  barra.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    filtro = +b.getAttribute('data-f'); barraHTML(); capaHTML();
+  });
+
+  function capaHTML(){
+    capa.innerHTML = LOCALES.map(function(l){
+      return '<polygon class="loc-u' + (l.b === 2 ? ' b2' : '') + (pasa(l) ? '' : ' off')
+           + (sel === l.k ? ' on' : '') + '" points="'
+           + l.g.map(function(q){ return q[0] + ',' + q[1]; }).join(' ')
+           + '" data-k="' + l.k + '"></polygon>';
+    }).join('');
+  }
+
+  capa.addEventListener('click', function(e){
+    var p = e.target.closest('polygon'); if(!p) return;
+    sel = p.getAttribute('data-k'); capaHTML(); abrir(sel);
+  });
+  capa.addEventListener('mousemove', function(e){
+    var p = e.target.closest('polygon');
+    if(!p){ globo.style.opacity = 0; return; }
+    var l = busca(p.getAttribute('data-k')), r = mapa.getBoundingClientRect();
+    globo.textContent = 'Suite ' + l.k + ' \u00b7 ' + l.sf + ' sq ft';
+    globo.style.left = (e.clientX - r.left) + 'px';
+    globo.style.top  = (e.clientY - r.top) + 'px';
+    globo.style.opacity = 1;
+  });
+  capa.addEventListener('mouseleave', function(){ globo.style.opacity = 0; });
+
+  function vacio(){ panel.innerHTML = '<p class="nada">Select a suite on the plan<br>to see its details.</p>'; }
+
+  function abrir(k){
+    var l = busca(k); if(!l) return;
+    panel.innerHTML =
+      '<span class="loc-etq' + (l.b === 2 ? ' b2' : '') + '">Building ' + l.b + '</span>' +
+      '<h3>Suite ' + l.k + '</h3>' +
+      '<p class="sf"><b>' + l.sf + '</b> sq ft</p>' +
+      '<dl>' +
+      '<dt>Lease width</dt><dd>' + l.w + '</dd>' +
+      (l.d ? '<dt>Depth</dt><dd>' + l.d + '</dd>' : '') +
+      '<dt>Outdoor</dt><dd>' + l.patio + '</dd>' +
+      '<dt>Power</dt><dd>' + l.pw + '</dd>' +
+      '<dt>Grease sewer</dt><dd>' + (l.gs ? 'Connection provided' : 'Not shown') + '</dd>' +
+      '</dl>' +
+      (l.x ? '<p class="loc-nota" style="border:0;padding:0;margin:-6px 0 12px"><b>' + l.x + '.</b></p>' : '') +
+      '<p class="loc-nota">Area and lease dimensions as stated on the lease suite plan for this ' +
+      'suite. Rent and terms on request.</p>' +
+      '<button class="loc-cta" data-k="' + l.k + '">Ask about this suite</button>';
+  }
+
+  /* El boton deja el local escrito en el formulario: el lead llega etiquetado. */
+  panel.addEventListener('click', function(e){
+    var b = e.target.closest('.loc-cta'); if(!b) return;
+    var k = b.getAttribute('data-k'), l = busca(k);
+    var msg = document.getElementById('message');
+    if(msg) msg.value = 'I would like to know more about suite ' + k + ' (building ' + l.b + ', ' + l.sf + ' sq ft).';
+    var oculto = document.getElementById('fSuite');
+    if(oculto) oculto.value = 'Suite ' + k;
+    location.hash = '#contact';
+  });
+
+  barraHTML(); capaHTML(); vacio();
+})();
+</script>
 
 <script>
 /* La cabecera va transparente sobre la portada y solida en cuanto se baja. */

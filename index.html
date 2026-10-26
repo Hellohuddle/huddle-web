@@ -277,6 +277,17 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .sel-u:hover{fill:rgba(237,107,58,.62);stroke-opacity:1}
 .sel-u.on{fill:rgba(237,107,58,.8);stroke-opacity:1;stroke-width:.35}
 .sel-u.off{fill:transparent;stroke-opacity:.1;pointer-events:none}
+.sel-nums{position:absolute;inset:0;pointer-events:none}
+.sel-num{position:absolute;transform:translate(-50%,-50%);text-align:center;line-height:1.05;
+  color:#fff;text-shadow:0 1px 2px rgba(20,18,16,.62);white-space:nowrap;
+  transition:opacity .16s}
+.sel-num b{display:block;font:700 9.5px/1.05 var(--sans);letter-spacing:.01em}
+.sel-num span{display:block;font:500 7.5px/1.25 var(--sans);opacity:.82}
+.sel-num.off{opacity:.2}
+.sel-num.on b{font-size:11px}
+@media(max-width:760px){.sel-num span{display:none}}
+@media(max-width:520px){.sel-nums{display:none}}
+
 .sel-globo{position:absolute;pointer-events:none;background:rgba(36,33,31,.88);color:#fff;
   font:600 11px var(--sans);padding:4px 8px;border-radius:4px;white-space:nowrap;
   transform:translate(-50%,-150%);opacity:0;transition:opacity .14s}
@@ -817,6 +828,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       <div class="sel-mapa" id="selMapa">
         <img src="img/plan_site_2.webp" alt="Huddle site plan with the twelve blocks" loading="lazy">
         <svg id="selCapa" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+        <div class="sel-nums" id="selNums" aria-hidden="true"></div>
         <div class="sel-globo" id="selGlobo"></div>
       </div>
       <aside class="sel-panel" id="selPanel"></aside>
@@ -1527,6 +1539,7 @@ Orange Slice Properties</p>
   var barra = document.getElementById('selBarra'),
       panel = document.getElementById('selPanel'),
       globo = document.getElementById('selGlobo'),
+      nums  = document.getElementById('selNums'),
       mapa  = document.getElementById('selMapa');
   var filtro = 'todas', sel = null, TODAS = [];
   MANZANAS.forEach(function(mz){
@@ -1559,6 +1572,11 @@ Orange Slice Properties</p>
     filtro = b.getAttribute('data-f'); barraHTML(); capaHTML();
   });
 
+  function centro(g){
+    var x = 0, y = 0;
+    for(var i = 0; i < g.length; i++){ x += g[i][0]; y += g[i][1]; }
+    return [x / g.length, y / g.length];
+  }
   function capaHTML(){
     capa.innerHTML = TODAS.map(function(x){
       var u = x.u;
@@ -1567,6 +1585,13 @@ Orange Slice Properties</p>
            + (u.p ? ' piscina' : '') + '" points="'
            + u.g.map(function(q){ return q[0] + ',' + q[1]; }).join(' ')
            + '" data-k="' + u.k + '"></polygon>';
+    }).join('');
+    /* el numero de vivienda sobre la direccion, como en el plano de ventas */
+    nums.innerHTML = TODAS.map(function(x){
+      var u = x.u, c = centro(u.g);
+      return '<div class="sel-num' + (pasa(u) ? '' : ' off') + (sel===u.k ? ' on' : '')
+           + '" style="left:' + c[0].toFixed(2) + '%;top:' + c[1].toFixed(2) + '%">'
+           + '<b>' + u.k + '</b><span>' + u.d + '</span></div>';
     }).join('');
   }
   function busca(k){

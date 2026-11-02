@@ -577,6 +577,48 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   .gal{column-count:1}
   .hero-facts{gap:18px}
 }
+
+/* ---------- pantallas grandes: monitores de oficina y televisores ----------
+   Ver cabecera de pantalla_grande.py. Resumen: por encima de 1024px no existia
+   ninguna regla y el diseno se estiraba sin tope. Aqui se acota el ancho y se
+   sube la escala para que la pagina se lea a distancia. */
+@media(min-width:1500px){
+  /* el sobrante pasa a ser margen: contenido centrado y acotado a 1400px, y los
+     margenes negativos que usan --pad siguen funcionando sin cambios */
+  :root{--pad:calc((100vw - 1400px) / 2)}
+  body{font-size:17px}
+
+  /* texto corrido */
+  .lead{font-size:20px;max-width:58ch}
+  .pillar p{font-size:16px}
+  .pillar b{font-size:27px}
+  .step p{font-size:16px}
+
+  /* amenidades: eran 14px sueltos en un renglon de 860px */
+  .amen b{font-size:17px}
+  .amen p{font-size:15.5px}
+  .amen i{font-size:14px}
+
+  /* planos y selector: las dos notas que llegaban a 277 caracteres */
+  .plan-nota{font-size:14px;max-width:88ch}
+  .plan-resumen{font-size:15px}
+  .plan-info .plan-sq{font-size:14px}
+  .sel-dir{font-size:15px}
+  .sel-panel .res{font-size:14.5px}
+  .sel-panel dl{font-size:14.5px}
+  .sel-nota{font-size:13px;max-width:88ch}
+  .sel-barra .cuenta{font-size:13.5px}
+
+  /* navegacion, portada y pie */
+  nav.links a{font-size:14px}
+  .hero-facts div b{font-size:30px}
+  .hero-facts div span{font-size:11.5px}
+  .f-links a,.f-links p{font-size:15px}
+
+  /* formulario */
+  .field label{font-size:12px}
+  .field input,.field select,.field textarea{font-size:16px}
+}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}

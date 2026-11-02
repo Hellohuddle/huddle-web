@@ -189,6 +189,16 @@ footer{background:var(--cream-2);padding:46px var(--pad);display:flex;flex-wrap:
 footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .pie-marca{display:inline-flex;align-items:center;gap:11px}
 .pie-marca img{height:30px;width:auto;display:block}
+
+/* ---------- pantallas grandes: mismo criterio que la pagina principal ---------- */
+@media(min-width:1500px){
+  :root{--pad:calc((100vw - 1400px) / 2)}
+  body{font-size:17px}
+  .lead{font-size:20px;max-width:58ch}
+  nav a{font-size:14px}
+  .field label{font-size:12px}
+  .field input,.field textarea{font-size:16px}
+}
 </style>
 </head>
 <body>

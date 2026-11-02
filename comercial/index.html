@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Retail at Huddle — Eat. Shop. Gather.</title>
-<meta name="description" content="The retail village at Huddle: suites around a shaded courtyard, covered walkways and patio seating, at the heart of the 2027 Dream Home Neighborhood.">
+<title>Commercial Space for Lease at Huddle — Eustis, Florida</title>
+<meta name="description" content="Commercial space for lease at Huddle, Eustis: approximately 9,000 square feet for restaurants, wellness and lifestyle businesses alongside 48 townhomes.">
 <meta name="theme-color" content="#F6F1EA">
-<meta property="og:title" content="Retail at Huddle">
-<meta property="og:description" content="One place. Eat, shop, gather.">
+<meta property="og:title" content="Commercial Space for Lease at Huddle">
+<meta property="og:description" content="Cool Eats. Smart Homes. One Place.">
 <meta property="og:image" content="/img/retail_hero.jpg">
 <meta property="og:type" content="website">
 
@@ -19,7 +19,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Taviraj:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
@@ -29,10 +29,12 @@
    construye con build.py; es HTML plano, asi que el CMS no la toca.
    ============================================================ */
 :root{
-  --cream:#F6F1EA; --cream-2:#EFE8DE; --orange:#ED6B3A; --orange-soft:#F4CCB9;
-  --ink:#24211F; --ink-soft:#5A534E; --line:rgba(36,33,31,.14);
-  --serif:'Source Serif 4',Georgia,serif;
-  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  /* Misma paleta de marca que la pagina principal */
+  --cream:#F6F2EC; --cream-2:#ECE7DE; --orange:#E76D3E; --orange-soft:#F3C7B4;
+  --ink:#060606; --gris:#93918D; --ink-soft:#56544F; --accent:#789EB5;
+  --line:rgba(6,6,6,.14);
+  --serif:'Taviraj',Georgia,serif;
+  --sans:'Figtree',system-ui,-apple-system,sans-serif;
   --pad:clamp(20px,5vw,88px);
   --ease:cubic-bezier(.22,1,.36,1);
 }
@@ -52,8 +54,8 @@ a{color:inherit}
 .lead{font-size:clamp(15px,1.25vw,18px);color:var(--ink-soft);max-width:56ch}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border:0;
   border-radius:999px;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:600;
-  letter-spacing:.04em;padding:16px 30px;transition:background .3s var(--ease),transform .3s var(--ease);
-  text-decoration:none}
+  letter-spacing:.04em;padding:16px 30px;white-space:nowrap;
+  transition:background .3s var(--ease),transform .3s var(--ease);text-decoration:none}
 .btn:hover{background:#d95c2d;transform:translateY(-2px)}
 
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
@@ -77,6 +79,8 @@ header nav a{font-size:13px;font-weight:500;color:var(--ink-soft);text-decoratio
 header nav a:hover{color:var(--ink)}
 header.on-hero .logo{color:#fff}
 header.on-hero nav a{color:rgba(255,255,255,.9)}
+header.on-hero .btn{background:var(--cream);color:var(--ink)}
+header.on-hero .btn:hover{background:#fff}
 @media(max-width:760px){header nav a.oculta-movil{display:none}}
 
 /* ---------- portada ---------- */
@@ -85,14 +89,16 @@ header.on-hero nav a{color:rgba(255,255,255,.9)}
 #hero::after{content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(36,33,31,.42) 0%,rgba(36,33,31,0) 38%,rgba(36,33,31,.78) 100%)}
 .hero-txt{position:relative;z-index:2;padding:0 var(--pad) clamp(54px,8vh,96px);color:#fff;max-width:900px}
-.hero-txt .eyebrow{color:var(--orange-soft)}
+.hero-txt .eyebrow{color:var(--cream)}
 .hero-txt h1{font-size:clamp(38px,6.6vw,86px)}
-.hero-txt p{margin-top:20px;font-size:clamp(15px,1.3vw,19px);color:rgba(255,255,255,.82);max-width:52ch}
+.hero-txt p{margin-top:20px;font-size:clamp(15px,1.3vw,19px);color:rgba(255,255,255,.82);max-width:54ch}
+.hero-txt .hero-2{font-size:clamp(14px,1.1vw,16.5px);color:rgba(255,255,255,.72)}
+.hero-cta{margin-top:26px;background:var(--cream);color:var(--ink)}
+.hero-cta:hover{background:#fff}
 
 /* ---------- recorrido ---------- */
-#tour{background:var(--ink);color:#fff}
-#tour .eyebrow{color:var(--orange-soft)}
-#tour .lead{color:rgba(255,255,255,.72)}
+#tour{background:var(--cream)}
+#tour .eyebrow{color:var(--orange)}
 .tour-box{position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
   background:#000;aspect-ratio:16/9;max-height:78vh;min-height:420px}
 .tour-box iframe{display:block;width:100%;height:100%;border:0}
@@ -156,20 +162,25 @@ header.on-hero nav a{color:rgba(255,255,255,.9)}
 @media(max-width:860px){.plano-grid{grid-template-columns:1fr}}
 
 /* ---------- formulario ---------- */
-#contact{background:var(--ink);color:#fff}
-#contact .eyebrow{color:var(--orange-soft)}
+#contact{background:var(--cream-2)}
+#contact .eyebrow{color:var(--orange)}
 .form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,70px)}
-#contact p.sub{margin-top:22px;color:rgba(255,255,255,.72);font-size:15px;max-width:40ch}
+#contact p.sub{margin-top:22px;color:var(--ink-soft);font-size:15px;max-width:40ch}
+.tel-grande{display:inline-flex;flex-direction:column;gap:4px;margin-top:24px;text-decoration:none;
+  color:var(--ink);border-top:2px solid var(--orange);padding-top:14px}
+.tel-grande span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.tel-grande b{font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-.02em}
+.tel-grande:hover b{color:var(--orange)}
 .field{display:grid;gap:7px;margin-bottom:16px}
-.field label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-.field input,.field textarea{background:transparent;border:1px solid rgba(255,255,255,.22);border-radius:6px;
-  color:#fff;font:400 15px/1.5 var(--sans);padding:13px 15px;outline:0;transition:border-color .2s;width:100%}
+.field label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.field input,.field textarea{background:#fff;border:1px solid var(--line);border-radius:6px;
+  color:var(--ink);font:400 15px/1.5 var(--sans);padding:13px 15px;outline:0;transition:border-color .2s;width:100%}
 .field input:focus,.field textarea:focus{border-color:var(--orange)}
 .field textarea{min-height:110px;resize:vertical}
 .field.err input,.field.err textarea{border-color:#E05B4B}
 .f-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .hp{position:absolute;left:-9999px}
-#formNote{margin-top:16px;font-size:14px;color:rgba(255,255,255,.8)}
+#formNote{margin-top:16px;font-size:14px;color:var(--ink-soft)}
 @media(max-width:860px){.form-grid,.f-cols{grid-template-columns:1fr}}
 
 /* ---------- pie ---------- */
@@ -191,18 +202,26 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
     <a href="/" class="oculta-movil">The neighborhood</a>
     <a href="#tour" class="oculta-movil">Walkthrough</a>
     <a href="#plano" class="oculta-movil">Site plan</a>
-    <a href="#contact" class="btn" style="padding:11px 22px">Enquire</a>
+    <a href="#contact" class="btn" style="padding:11px 22px">Leasing Inquiries</a>
   </nav>
 </header>
 
 <!-- ============ PORTADA ============ -->
 <section id="hero">
-  <img src="/img/retail_hero.webp" alt="The huddle monument sign at the entrance to the retail village at dusk">
+  <img src="/img/retail_hero.webp" alt="The Huddle monument sign at the entrance to the commercial microdistrict at dusk">
   <div class="hero-txt">
-    <p class="eyebrow">One place &middot; Eat, shop, gather</p>
-    <h1 class="serif">Retail at <em style="font-style:normal;color:var(--orange)">Huddle</em></h1>
-    <p>A short row of suites around a shaded courtyard, at the centre of the neighborhood
-      and in front of its parking. Walk it below before a single wall goes up.</p>
+    <p class="eyebrow">Restaurants &middot; Wellness &middot; Lifestyle</p>
+    <h1 class="serif">Commercial Space <em style="font-style:normal">for Lease</em></h1>
+    <p>Huddle&rsquo;s commercial microdistrict is designed to bring distinctive food and beverage
+      experiences, wellness concepts and complementary lifestyle retail together in one welcoming
+      place. With approximately 9,000 square feet of commercial space alongside a neighborhood of
+      48 townhomes, the vision is a thoughtfully selected mix of businesses that gives residents
+      and visitors reasons to return, from a morning coffee or a wellness appointment to dinner
+      with friends.</p>
+    <p class="hero-2">We&rsquo;re welcoming restaurant, caf&eacute;, beverage, wellness and lifestyle
+      businesses that share that vision. Outdoor gathering spaces and a connected setting create
+      opportunities for businesses to become part of everyday life at Huddle.</p>
+    <a class="btn hero-cta" href="#contact">Explore Leasing Opportunities</a>
   </div>
 </section>
 
@@ -210,7 +229,7 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 <section id="tour">
   <div class="wrap">
     <p class="eyebrow rv">Interactive 3D walkthrough</p>
-    <h2 class="serif h2 rv">Step into the<br><em>retail village</em></h2>
+    <h2 class="serif h2 rv">Explore the<br><em>Commercial Spaces</em></h2>
     <p class="lead rv" style="margin-top:24px">Drag to look around and use the floor points to move
       between spaces. Runs in the browser, nothing to install.</p>
     <div class="tour-box rv">
@@ -226,10 +245,10 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 <section id="vistas">
   <div class="wrap">
     <p class="eyebrow rv">The courtyard</p>
-    <h2 class="serif h2 rv">Shade, water<br><em>and a reason to stay</em></h2>
-    <p class="lead rv" style="margin-top:24px">The suites turn their fronts onto a brick courtyard:
-      sail shades over the walkway, planting between the tables and a fountain with lounge seating
-      where the two buildings meet.</p>
+    <h2 class="serif h2 rv">A place to meet.<br><em>A reason to stay.</em></h2>
+    <p class="lead rv" style="margin-top:24px">Outdoor seating and gathering spaces are part of the
+      Huddle experience, places to enjoy a bite, meet a friend or linger between stops. The
+      commercial microdistrict is designed to feel like a destination within the neighborhood.</p>
     <figure class="shot ancha rv">
       <img src="/img/retail_plaza.webp" alt="The fountain plaza at dusk, with the storefronts behind" loading="lazy">
       <figcaption>The fountain plaza, looking back at the storefronts and the covered walkway.</figcaption>
@@ -240,11 +259,11 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 <!-- ============ PLANO ============ -->
 <section id="plano">
   <div class="wrap">
-    <p class="eyebrow rv">The suites</p>
-    <h2 class="serif h2 rv">Seven suites,<br><em>two buildings</em></h2>
-    <p class="lead rv" style="margin-top:24px">From 732 to 1,500 square feet, around the same
-      courtyard. Pick any suite on the plan to see its area, its lease dimensions and the services
-      that reach it.</p>
+    <p class="eyebrow rv">Leasing opportunities</p>
+    <h2 class="serif h2 rv">Find the right space<br><em>for your concept.</em></h2>
+    <p class="lead rv" style="margin-top:24px">Explore the commercial plan and select a space to
+      learn more. Contact our leasing team for current availability, floor plans and leasing
+      details for your business.</p>
 
     <div class="loc-barra rv" id="locBarra"></div>
 
@@ -277,24 +296,25 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
   <div class="wrap">
     <div class="form-grid">
       <div>
-        <p class="eyebrow rv">Enquire</p>
-        <h2 class="serif h2 rv">Interested in<br><em>a space here?</em></h2>
-        <p class="sub rv">Tell us what you are looking for and we will come back to you with the
-          plans and the details.</p>
+        <p class="eyebrow rv">Leasing inquiries</p>
+        <h2 class="serif h2 rv">Bring your business<br><em>to Huddle.</em></h2>
+        <p class="sub rv">Tell us about your concept, the space you need and your preferred opening
+          timeline. We&rsquo;d love to hear how your business could become part of Huddle.</p>
+        <a class="tel-grande rv" href="tel:+14077341220"><span>Huddle Sales Team</span><b>407-734-1220</b></a>
       </div>
 
       <form id="leadForm" class="rv" name="huddle-retail" method="POST"
             data-netlify="true" netlify-honeypot="company-website">
         <input type="hidden" name="form-name" value="huddle-retail">
-        <input type="hidden" name="interest" value="Retail space">
+        <input type="hidden" name="interest" value="Commercial space lease">
         <input type="hidden" name="suite" id="fSuite" value="">
         <p class="hp"><label>Do not fill this in <input name="company-website" tabindex="-1"></label></p>
 
         <div class="f-cols">
-          <div class="field"><label for="name">Full name *</label>
+          <div class="field"><label for="name">Name *</label>
             <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
-          <div class="field"><label for="business">Business</label>
-            <input id="business" name="business" type="text" placeholder="What you run" autocomplete="organization"></div>
+          <div class="field"><label for="business">Business Name</label>
+            <input id="business" name="business" type="text" placeholder="Your business" autocomplete="organization"></div>
         </div>
         <div class="f-cols">
           <div class="field"><label for="email">Email *</label>
@@ -302,10 +322,16 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
           <div class="field"><label for="phone">Phone</label>
             <input id="phone" name="phone" type="tel" placeholder="(000) 000-0000" autocomplete="tel"></div>
         </div>
+        <div class="f-cols">
+          <div class="field"><label for="concepto">Business Concept</label>
+            <input id="concepto" name="concept" type="text" placeholder="Restaurant, caf&eacute;, wellness&hellip;"></div>
+          <div class="field"><label for="espacio">Approximate Space Needed</label>
+            <input id="espacio" name="space" type="text" placeholder="Square feet"></div>
+        </div>
         <div class="field"><label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="The kind of space you need, and when"></textarea></div>
+          <textarea id="message" name="message" placeholder="Your concept and your preferred opening timeline"></textarea></div>
 
-        <button type="submit" class="btn" id="submitBtn">Send enquiry</button>
+        <button type="submit" class="btn" id="submitBtn">Send Leasing Inquiry</button>
         <p id="formNote"></p>
       </form>
     </div>
@@ -314,8 +340,9 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 
 <footer>
   <span class="pie-marca"><img src="/img/logo_huddle_marca.png" alt="" width="400" height="435">
-    Huddle &middot; One place. Eat, shop, gather.</span>
-  <span><a href="/">Back to the neighborhood</a></span>
+    Huddle &middot; Cool Eats. Smart Homes. One Place.</span>
+  <span><a href="tel:+14077341220">Huddle Sales Team &middot; 407-734-1220</a> &nbsp;&middot;&nbsp;
+    <a href="/">Back to the neighborhood</a></span>
 </footer>
 
 <script src="/locales.js"></script>
@@ -452,12 +479,12 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
                 body:new URLSearchParams(new FormData(f)).toString()})
       .then(function(){
         f.style.display = 'none';
-        note.innerHTML = '<strong>Thank you.</strong> We received your enquiry and will be in touch shortly.';
+        note.innerHTML = '<strong>Thank you.</strong> We received your leasing inquiry and our team will be in touch shortly.';
       })
       .catch(function(err){
         console.error(err);
         btn.disabled = false; btn.textContent = 'Try again';
-        note.textContent = 'Something went wrong. Please email us instead.';
+        note.textContent = 'Something went wrong. Please call our sales team at 407-734-1220 instead.';
       });
   });
 })();

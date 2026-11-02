@@ -1,9 +1,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Huddle — Cool Eats. Smart Homes. One Place.</title>
-<meta name="description" content="Huddle is the 2027 Dream Home Neighborhood: 48 townhomes where distinctive design, outdoor living, everyday convenience and genuine connection come together.">
+<meta name="description" content="Huddle is the 2027 Dream Home Community of the Year: 48 townhomes in Eustis with private outdoor living and a planned mix of dining, wellness and lifestyle businesses.">
 <meta name="theme-color" content="#F6F1EA">
-<meta property="og:title" content="Huddle — 2027 Dream Home Neighborhood">
+<meta property="og:title" content="Huddle — 2027 Dream Home Community of the Year">
 <meta property="og:description" content="Cool Eats. Smart Homes. One Place.">
 <meta property="og:image" content="video/hero_poster.jpg">
 <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Taviraj:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
@@ -26,16 +26,19 @@
    El azul de acento esta estimado del kit (solo lo tengo en captura).
    ============================================================ */
 :root{
-  --cream:#F6F1EA;
-  --cream-2:#EFE8DE;
-  --orange:#ED6B3A;
-  --orange-soft:#F4CCB9;
-  --ink:#24211F;
-  --ink-soft:#5A534E;
-  --accent:#7BA2BE;
-  --line:rgba(36,33,31,.14);
-  --serif:'Source Serif 4',Georgia,serif;
-  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  /* Paleta de la guia de marca (correo del 1-nov-2026) */
+  --cream:#F6F2EC;        /* neutro claro  */
+  --cream-2:#ECE7DE;      /* el mismo neutro, un punto mas hondo, para alternar */
+  --orange:#E76D3E;
+  --orange-soft:#F3C7B4;
+  --ink:#060606;          /* negro de marca */
+  --gris:#93918D;         /* gris de marca: filetes y etiquetas pequenas */
+  --ink-soft:#56544F;     /* texto secundario: el gris de marca no da contraste
+                             suficiente para parrafos, asi que se oscurece */
+  --accent:#789EB5;       /* azul de marca */
+  --line:rgba(6,6,6,.14);
+  --serif:'Taviraj',Georgia,serif;
+  --sans:'Figtree',system-ui,-apple-system,sans-serif;
   --pad:clamp(20px,5vw,88px);
   --ease:cubic-bezier(.22,1,.36,1);
 }
@@ -69,7 +72,8 @@ a{color:inherit;text-decoration:none}
   display:inline-flex;align-items:center;gap:10px;
   background:var(--orange);color:#fff;border:0;border-radius:999px;cursor:pointer;
   font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.04em;
-  padding:16px 30px;transition:background .3s var(--ease),transform .3s var(--ease);
+  padding:16px 30px;white-space:nowrap;   /* si se parte, el pildora se vuelve circulo */
+  transition:background .3s var(--ease),transform .3s var(--ease);
 }
 .btn:hover{background:#d95c2d;transform:translateY(-2px)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
@@ -97,7 +101,13 @@ header.on-hero .logo .color{display:none}
 header.on-hero .logo{color:#fff}
 nav.links{display:flex;gap:clamp(16px,2vw,34px);align-items:center}
 nav.links a{font-size:13px;font-weight:500;color:var(--ink);transition:color .3s}
+header nav.links a.btn{color:#fff}            /* si no, hereda el negro del menu */
 header.on-hero nav.links a{color:rgba(255,255,255,.9)}
+header.on-hero nav.links a.btn{color:var(--ink)}
+/* Sobre la portada el boton quedaba naranja flotando en un video casi negro, que
+   es justo el emparejamiento que la marca no admite: ahi va en neutro claro. */
+header.on-hero .btn{background:var(--cream);color:var(--ink)}
+header.on-hero .btn:hover{background:#fff}
 nav.links a:hover{color:var(--orange)}
 #burger{display:none;width:46px;height:46px;align-items:center;justify-content:center;
         background:none;border:0;cursor:pointer}
@@ -125,7 +135,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 #hero::after{content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(36,33,31,.34) 0%,rgba(36,33,31,.04) 34%,rgba(36,33,31,.6) 100%)}
 .hero-in{position:relative;z-index:2;width:100%;padding:0 var(--pad) clamp(44px,7vh,80px);color:#fff}
-.hero-tag{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--orange-soft);margin-bottom:18px}
+.hero-tag{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);margin-bottom:18px}
 .hero-in h1{font-family:var(--serif);font-weight:700;font-size:clamp(44px,8.5vw,120px);line-height:.98;letter-spacing:-.03em}
 .hero-sub{margin-top:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap}
 .hero-sub p{font-size:clamp(15px,1.5vw,21px);color:rgba(255,255,255,.9);max-width:34ch}
@@ -154,7 +164,8 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 
 /* ---------- visor de rotacion 360 ---------- */
 #spin{background:var(--ink);color:#fff}
-#spin .eyebrow{color:var(--orange-soft)}
+#spin .eyebrow{color:var(--cream)}
+#spin .h2 em,#block360 .h2 em{color:var(--accent)}
 #spin .lead{color:rgba(255,255,255,.72)}
 .spin-stage{
   position:relative;margin-top:clamp(30px,4vw,54px);background:#000;
@@ -167,10 +178,10 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .spin-arrow{
   position:absolute;top:50%;transform:translateY(-50%);z-index:3;
   width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;
-  background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;
+  background:var(--cream);color:var(--ink);display:flex;align-items:center;justify-content:center;
   transition:background .3s,transform .3s var(--ease),opacity .3s;
 }
-.spin-arrow:hover{background:#d95c2d;transform:translateY(-50%) scale(1.07)}
+.spin-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.07)}
 .spin-arrow:disabled{opacity:.45;cursor:default;transform:translateY(-50%)}
 .spin-arrow.prev{left:clamp(10px,2vw,26px)}
 .spin-arrow.next{right:clamp(10px,2vw,26px)}
@@ -181,7 +192,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
   display:flex;align-items:center;justify-content:center}
 .spin-dots button::after{content:'';width:8px;height:8px;border-radius:50%;
   background:rgba(255,255,255,.38);transition:background .3s var(--ease),transform .3s var(--ease)}
-.spin-dots button.on::after{background:var(--orange);transform:scale(1.4)}
+.spin-dots button.on::after{background:var(--cream);transform:scale(1.4)}
 .spin-hint{
   position:absolute;left:50%;top:18px;transform:translateX(-50%);z-index:3;pointer-events:none;
   font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;
@@ -309,7 +320,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .sel-panel .res{margin:0 0 15px;font-size:13px;color:var(--ink-soft);line-height:1.55}
 .sel-panel dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0 0 15px;font-size:13px}
 .sel-panel dt{color:var(--ink-soft)} .sel-panel dd{margin:0;text-align:right;font-weight:500}
-.sel-pend{color:#9A5B1E;font-weight:500}
+.sel-pend{color:#8A4A15;font-weight:500;font-size:12px;line-height:1.45}
 .sel-planos{display:grid;gap:10px;margin:15px 0}
 .sel-plano{border:1px solid var(--line);border-radius:5px;overflow:hidden}
 .sel-plano h4{margin:0;padding:7px 10px;font:600 10px var(--sans);letter-spacing:.09em;
@@ -360,7 +371,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
    asi el giro responde al instante, se puede arrastrar de forma continua y desaparece
    la clase de fallo que daba el parpadeo en el visor de seis clips. */
 #block360{background:var(--ink);color:#fff}
-#block360 .eyebrow{color:var(--orange-soft)}
+#block360 .eyebrow{color:var(--cream)}
 #block360 .lead{color:rgba(255,255,255,.72)}
 .orbit-stage{
   position:relative;margin-top:clamp(30px,4vw,54px);background:#000;
@@ -374,14 +385,14 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
    encontrarse nunca con un fotograma a medio cargar. */
 .orbit-load{position:absolute;left:0;right:0;bottom:0;height:2px;z-index:4;
   background:rgba(255,255,255,.14)}
-.orbit-load i{display:block;height:100%;width:0;background:var(--orange);
+.orbit-load i{display:block;height:100%;width:0;background:var(--cream);
   transition:width .2s linear}
 .orbit-stage.ready .orbit-load{opacity:0;transition:opacity .6s .2s var(--ease)}
 .orbit-scrub{position:absolute;left:50%;transform:translateX(-50%);bottom:15px;z-index:3;
   display:flex;align-items:center;gap:3px;pointer-events:none}
 .orbit-scrub span{display:block;width:2px;height:8px;border-radius:2px;
   background:rgba(255,255,255,.28);transition:background .25s var(--ease),height .25s var(--ease)}
-.orbit-scrub span.on{background:var(--orange);height:14px}
+.orbit-scrub span.on{background:var(--cream);height:14px}
 
 /* ---------- siete experiencias ---------- */
 #amenities{background:var(--cream)}
@@ -411,7 +422,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
   font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   padding:9px 16px;transition:background .3s,color .3s;
 }
-.dn-toggle button.on{background:var(--orange);color:#fff}
+.dn-toggle button.on{background:var(--cream);color:var(--ink)}
 .homes-facts div{border-top:1px solid var(--line);padding:18px 0}
 .homes-facts span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);
   font-weight:600;margin-bottom:7px}
@@ -435,9 +446,9 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
    Se muestra una portada guardada AQUI y el reproductor de YouTube solo se carga
    al pulsar play: asi la pagina no pide nada a Google mientras nadie lo pide, que
    es mas rapido y no deja rastro del visitante antes de que decida ver el video. */
-#video{background:var(--ink);color:#fff}
-#video .eyebrow{color:var(--orange-soft)}
-#video .lead{color:rgba(255,255,255,.72)}
+#video{background:var(--cream-2)}
+#video .eyebrow{color:var(--orange)}
+#video .lead{color:var(--ink-soft)}
 .vid-box{position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
   background:#000;aspect-ratio:16/9;cursor:pointer}
 .vid-box img{width:100%;height:100%;object-fit:cover;display:block;
@@ -447,10 +458,10 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
   background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.42))}
 .vid-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
   width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;border:0;cursor:pointer;
-  background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;
+  background:var(--cream);color:var(--orange);display:flex;align-items:center;justify-content:center;
   transition:transform .35s var(--ease),background .35s var(--ease);
   box-shadow:0 10px 40px rgba(0,0,0,.4)}
-.vid-box:hover .vid-play{transform:translate(-50%,-50%) scale(1.08);background:#d95c2d}
+.vid-box:hover .vid-play{transform:translate(-50%,-50%) scale(1.08);background:#fff}
 .vid-play svg{width:34%;height:34%;fill:currentColor;margin-left:8%}
 .vid-et{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:clamp(18px,3vw,30px);
   pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
@@ -462,15 +473,14 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 .vid-box.reproduciendo .vid-play,.vid-box.reproduciendo .vid-et{display:none}
 
 /* ---------- walkthrough ---------- */
-#tour{background:var(--ink);color:#fff}
-#tour .eyebrow{color:var(--orange-soft)}
-#tour .lead{color:rgba(255,255,255,.72)}
+#tour{background:var(--cream)}
+#tour .eyebrow{color:var(--orange)}
+#tour .lead{color:var(--ink-soft)}
 .tour-box{position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;background:#000;
   aspect-ratio:16/9;max-height:78vh;min-height:420px}
 .tour-box iframe{display:block;width:100%;height:100%;border:0}
 
 /* ---------- calendario ---------- */
-#timeline{background:var(--cream-2)}
 .tl{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,50px);margin-top:clamp(36px,5vw,60px)}
 .tl article{background:var(--cream);border-radius:6px;padding:clamp(24px,2.6vw,38px)}
 .tl span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);
@@ -481,7 +491,7 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 /* ---------- formulario ---------- */
 #contact{background:var(--orange);color:#fff}
 #contact .eyebrow{color:rgba(255,255,255,.72)}
-#contact .h2 em{color:var(--ink)}
+#contact .h2 em{color:var(--cream)}
 #contact .lead{color:rgba(255,255,255,.9)}
 .form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:start}
 .field{margin-bottom:20px}
@@ -494,17 +504,23 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 }
 .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.55)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:#fff;background:rgba(255,255,255,.2)}
-.field select option{background:var(--ink);color:#fff}
+.field select option{background:var(--cream);color:var(--ink)}
 .field textarea{resize:vertical;min-height:110px}
-.field.err input,.field.err select,.field.err textarea{border-color:var(--ink)}
-.field .msg{display:none;font-size:12px;color:var(--ink);margin-top:7px;font-weight:600}
+.field.err input,.field.err select,.field.err textarea{border-color:#7B1E12}
+.field .msg{display:none;font-size:12px;color:#5E1409;margin-top:7px;font-weight:600}
 .field.err .msg{display:block}
 .f-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
-#contact .btn{background:var(--ink)}
-#contact .btn:hover{background:#000}
+/* El boton iba negro sobre naranja, que es el emparejamiento prohibido */
+#contact .btn{background:var(--cream);color:var(--ink)}
+#contact .btn:hover{background:#fff}
 .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
 #formNote{font-size:13.5px;margin-top:16px;color:rgba(255,255,255,.9)}
 .contact-side p{color:rgba(255,255,255,.9);font-size:15px;margin-bottom:14px}
+.tel-grande{display:inline-flex;flex-direction:column;gap:4px;margin-top:22px;text-decoration:none;
+  color:#fff;border-top:2px solid rgba(255,255,255,.5);padding-top:14px}
+.tel-grande span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.tel-grande b{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-.02em}
+.tel-grande:hover b{text-decoration:underline;text-underline-offset:5px}
 .contact-side a{text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- pie ---------- */
@@ -513,8 +529,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 .f-top .logo img{height:36px}
 .f-top p{max-width:34ch;font-size:14.5px;margin-top:12px}
 .f-links{display:flex;gap:clamp(28px,5vw,70px);flex-wrap:wrap}
-.f-links div span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);
+.f-links div span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);
   font-weight:600;margin-bottom:12px}
+.f-tel{font-family:var(--serif);font-size:21px;font-weight:600;letter-spacing:-.01em;color:#fff!important;margin-bottom:12px}
 .f-links a,.f-links p{display:block;font-size:14px;margin-bottom:7px;color:rgba(255,255,255,.72)}
 .f-links a:hover{color:#fff}
 .f-bot{border-top:1px solid rgba(255,255,255,.14);padding-top:24px;display:flex;justify-content:space-between;
@@ -529,7 +546,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   transform:scale(.97);transition:transform .45s var(--ease)}
 #lb.open img{transform:scale(1)}
 #lbClose{position:absolute;top:clamp(14px,3vw,30px);right:clamp(14px,3vw,30px);
-  width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:var(--orange);color:#fff;
+  width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:var(--cream);color:var(--ink);
   font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center}
 
 /* ---------- responsive ---------- */
@@ -583,7 +600,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     <a href="#gallery">Gallery</a>
     <a href="#video">Film</a>
     <a href="#tour">Walkthrough</a>
-    <a href="/comercial/">Retail</a>
+    <a href="/comercial/">Commercial</a>
     <a href="#contact" class="btn" style="padding:11px 22px">Get in touch</a>
   </nav>
   <button id="burger" aria-label="Menu"><i></i></button>
@@ -601,7 +618,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   <a href="#gallery"><small>09</small>Gallery</a>
   <a href="#video"><small>10</small>Film</a>
   <a href="#tour"><small>11</small>Walkthrough</a>
-  <a href="/comercial/"><small>12</small>Retail spaces</a>
+  <a href="/comercial/"><small>12</small>Commercial Space</a>
   <a href="#contact"><small>13</small>Get in touch</a>
 </div>
 
@@ -846,16 +863,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   </div>
 </section>
 
-<!-- ============ 12 · TIMELINE ============ -->
-<section id="timeline">
-  <div class="wrap">
-    <p class="eyebrow rv" data-c="timeline.eyebrow"></p>
-    <h2 class="serif h2 rv" data-c="timeline.titulo"></h2>
-    <p class="lead rv" style="margin-top:24px" data-c="timeline.lead"></p>
-    <div class="tl" data-loop="hitos"></div>
-  </div>
-</section>
-
 <!-- ============ 13 · CONTACT ============ -->
 <section id="contact">
   <div class="wrap">
@@ -865,6 +872,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
         <h2 class="serif h2 rv" data-c="contact.titulo"></h2>
         <p class="rv" style="margin-top:24px" data-c="contact.parrafo1"></p>
         <p class="rv" data-c="contact.parrafo2"></p>
+        <a class="tel-grande rv" href="tel:+14077341220">
+          <span>Huddle Sales Team</span>
+          <b>407-734-1220</b>
+        </a>
       </div>
 
       <form id="leadForm" class="rv" name="huddle-leads" method="POST"
@@ -906,7 +917,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   <div class="f-top">
     <div>
       <div class="logo"><img src="img/logo_huddle.png" alt="Huddle" width="900" height="239"></div>
-      <p>Cool Eats. Smart Homes. One Place. The 2027 Dream Home Neighborhood.</p>
+      <p>Cool Eats. Smart Homes. One Place.<br>2027 Dream Home Community of the Year.</p>
     </div>
     <div class="f-links">
       <div>
@@ -917,10 +928,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
         <a href="#tour">Walkthrough</a>
       </div>
       <div>
-        <span>The neighborhood</span>
-        <p>48 townhomes</p>
-        <p>Optional plunge pools</p>
-        <p>Community-wide Wi-Fi</p>
+        <span>Huddle Sales Team</span>
+        <a class="f-tel" href="tel:+14077341220">407-734-1220</a>
+        <a href="/comercial/">Commercial Space</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </div>
@@ -1421,10 +1432,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
    Aqui NO hay dato de actividad: el interes por vivienda viaja en el formulario. */
 (function(){
   var TIPOS = {
-    '1':{n:'Corner home', k:'t1', r:'End of the block, with an exterior wall on its free side.',
-         v:'Extra facade on the side elevation'},
-    '2':{n:'Middle home', k:'t2', r:'Between two neighbouring homes.',
-         v:'Central position within the block'}
+    '1':{n:'End-unit townhome', k:'t1',
+         r:'An end-unit townhome with an additional exterior side wall.'},
+    '2':{n:'Interior townhome', k:'t2',
+         r:'An interior townhome positioned between two neighboring residences.'}
   };
   var capa = document.getElementById('selCapa');
   if(!capa || typeof MANZANAS === 'undefined') return;
@@ -1457,7 +1468,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       var p = x[2] ? '<i style="background:' + x[2] + '"></i>' : '';
       return '<button class="' + (filtro===x[0]?'on':'') + '" data-f="' + x[0] + '">'
            + p + x[1] + ' (' + cuenta(x[0]) + ')</button>';
-    }).join('') + '<span class="cuenta">12 blocks &middot; 48 homes</span>';
+    }).join('') + '<span class="cuenta">12 buildings &middot; 48 townhomes</span>';
   }
   barra.addEventListener('click', function(e){
     var b = e.target.closest('button'); if(!b) return;
@@ -1511,7 +1522,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   function abrir(k){
     var x = busca(k); if(!x) return;
     var u = x.u, t = TIPOS[u.t], esp = u.m === 'B' ? 'espejo' : '';
-    var sellos = '<span class="sel-sello">Block ' + x.mz + '</span>'
+    var sellos = '<span class="sel-sello">Building ' + x.mz + '</span>'
                + '<span class="sel-sello' + (u.f === 1 ? ' fase1' : '') + '">Phase ' + (u.f === 1 ? 'I' : 'II') + '</span>'
                + (u.p ? '<span class="sel-sello piscina">Pool home</span>' : '');
     panel.innerHTML =
@@ -1521,17 +1532,14 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
       '<div class="sel-sellos">' + sellos + '</div>' +
       '<p class="res">' + t.r + '</p>' +
       '<dl><dt>Bedrooms</dt><dd>3</dd><dt>Bathrooms</dt><dd>2.5</dd>' +
-      '<dt>Garage</dt><dd>2 cars</dd><dt>Module width</dt><dd>~24 ft</dd>' +
-      '<dt>Orientation</dt><dd>' + (u.m === 'B' ? 'Mirrored' : 'As drawn') + '</dd>' +
-      '<dt>Interior area</dt><dd class="sel-pend">on request</dd>' +
-      '<dt>Price</dt><dd class="sel-pend">on request</dd></dl>' +
+      '<dt>Garage</dt><dd>2 cars</dd>' +
+      '<dt>Living area</dt><dd class="sel-pend">Contact our sales team for living-area details</dd>' +
+      '<dt>Pricing</dt><dd class="sel-pend">Contact our sales team for current pricing</dd></dl>' +
       '<div class="sel-planos">' +
         '<div class="sel-plano"><h4>First floor</h4><img class="' + esp + '" src="img/plan_floor1.webp" alt=""></div>' +
         '<div class="sel-plano"><h4>Second floor</h4><img class="' + esp + '" src="img/plan_floor2.webp" alt=""></div>' +
       '</div>' +
-      '<p class="sel-nota"><b>' + t.v + '.</b> Home number, address, phase and pool homes come from the ' +
-      'community site plan; bedrooms, bathrooms, garage and module width from the architect\u2019s drawings.</p>' +
-      '<button class="sel-cta" data-u="' + u.k + '" data-d="' + u.d + '">Ask about this home</button>';
+      '<button class="sel-cta" data-u="' + u.k + '" data-d="' + u.d + '">Ask About This Home</button>';
   }
 
   /* El boton lleva al formulario con la vivienda ya puesta: el lead llega
@@ -1572,9 +1580,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
 <script type="text/plantilla" data-for="galeria">
       <figure class="rv"><picture><source srcset="img/{{archivo}}.webp" type="image/webp">
         <img src="img/{{archivo}}.jpg" alt="{{alt}}" loading="lazy"></picture></figure>
-</script>
-<script type="text/plantilla" data-for="hitos">
-      <article class="rv"><span>{{fecha}}</span><b>{{titulo}}</b><p>{{texto}}</p></article>
 </script>
 <script type="text/plantilla" data-for="plantasHojas">
         <figure class="plan-sheet" data-plan="{{id}}"><picture><source srcset="img/{{archivo}}.webp" type="image/webp">

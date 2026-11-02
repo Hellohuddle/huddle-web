@@ -1,8 +1,8 @@
 {
   "hero": {
-    "etiqueta": "2027 Dream Home Neighborhood",
+    "etiqueta": "2027 Dream Home Community of the Year",
     "titulo": "Cool Eats.<br>Smart Homes.<br>One Place.",
-    "sub": "A neighborhood where distinctive homes, outdoor living and genuine connection come together."
+    "sub": "Your own place. Your kind of day. Huddle brings 48 distinctive townhomes, private outdoor living and a planned mix of dining, wellness and lifestyle businesses together in Eustis. Start with a walk. Make time for a match. End with friends."
   },
   "heroDatos": [
     {
@@ -10,8 +10,8 @@
       "valor": "48"
     },
     {
-      "etiqueta": "Presales",
-      "valor": "Oct 2026"
+      "etiqueta": "Pre-sales",
+      "valor": "Now underway"
     },
     {
       "etiqueta": "First homes",
@@ -20,25 +20,25 @@
   ],
   "experience": {
     "eyebrow": "The Huddle experience",
-    "titulo": "Why Huddle is a<br><em>dream neighborhood</em>",
-    "lead": "A thoughtfully designed neighborhood where distinctive homes, outdoor living, everyday convenience and genuine connection come together."
+    "titulo": "More life,<br><em>right outside your door.</em>",
+    "lead": "Room to unwind at home. Places to gather just beyond your door. Huddle brings thoughtful home design and shared outdoor spaces together with a commercial microdistrict planned around food, wellness and everyday enjoyment."
   },
   "pilares": [
     {
       "titulo": "Connection",
-      "texto": "Shared spaces placed where neighborhood life naturally happens."
+      "texto": "Meet for a walk, a game or a little time outside."
     },
     {
       "titulo": "Convenience",
-      "texto": "Food, coffee and daily essentials always just around the corner."
+      "texto": "A planned mix of dining, wellness and lifestyle businesses within Huddle."
     },
     {
       "titulo": "Personality",
-      "texto": "Varied architecture and streetscapes with real character."
+      "texto": "Distinctive townhomes with architectural details and individual character."
     },
     {
       "titulo": "Outdoor living",
-      "texto": "Private yards, plunge pools and room to actually be outside."
+      "texto": "Covered lanais, fenced outdoor spaces and private plunge pool options."
     }
   ],
   "howitworks": {
@@ -81,37 +81,37 @@
     {
       "n": "01",
       "titulo": "The Walking Trail",
-      "texto": "A landscaped route connecting homes, shared spaces and daily movement."
+      "texto": "Take the long way home. A landscaped walking trail connects the neighborhood&rsquo;s homes and shared outdoor spaces."
     },
     {
       "n": "02",
-      "titulo": "Connected Everywhere",
-      "texto": "Community-wide Wi-Fi keeps residents connected at home and throughout the neighborhood."
+      "titulo": "Connected Living",
+      "texto": "Community Wi-Fi brings another layer of convenience to life at Huddle."
     },
     {
       "n": "03",
-      "titulo": "Cool Eats Close By",
-      "texto": "Food, coffee and everyday connection are always just around the corner."
+      "titulo": "Cool Eats &amp; More",
+      "texto": "A planned commercial microdistrict for distinctive food and beverage experiences, wellness and complementary lifestyle businesses."
     },
     {
       "n": "04",
-      "titulo": "Cart to Coffee. Cart to Dinner.",
-      "texto": "Golf-cart access makes getting around Huddle convenient, and a little more fun."
+      "titulo": "A Short Ride Away",
+      "texto": "Enjoy the convenience of getting around within Huddle by golf cart."
     },
     {
       "n": "05",
       "titulo": "The Pool Collection",
-      "texto": "Every home can add an 8′ × 10′ plunge pool, a private backyard retreat without leaving the neighborhood."
+      "texto": "Make room for a little splash. Private 8&prime; &times; 14&prime; plunge pools bring a refreshing retreat to Huddle&rsquo;s backyard living. Contact our sales team for pool availability for your preferred home."
     },
     {
       "n": "06",
       "titulo": "The Quiet Lawn",
-      "texto": "A Wi-Fi enabled outdoor living room and a natural place to meet neighbors without having to host at home."
+      "texto": "Bring a book. Catch up with a neighbor. The Quiet Lawn offers a shared outdoor place to slow down."
     },
     {
       "n": "07",
       "titulo": "Pickle &amp; Play",
-      "texto": "The Pickleball Commons builds movement, fun, wellness and friendship into neighborhood life."
+      "texto": "Meet for a match at Huddle&rsquo;s two pickleball courts, with a pavilion for gathering between games."
     }
   ],
   "block360": {
@@ -135,7 +135,7 @@
     },
     {
       "titulo": "Private Florida living",
-      "texto": "Fenced outdoor spaces with optional 8′ × 10′ plunge pools."
+      "texto": "Fenced outdoor spaces, covered lanais and private 8&prime; &times; 14&prime; plunge pool options."
     }
   ],
   "gallery": {
@@ -155,39 +155,17 @@
     "titulo": "Step inside,<br><em>from anywhere</em>",
     "lead": "Drag to look around and use the floor points to move between spaces. Runs in the browser, nothing to install."
   },
-  "timeline": {
-    "eyebrow": "Partnership + readiness",
-    "titulo": "Ready to partner.<br><em>Ready to launch.</em>",
-    "lead": "Huddle gives the 2027 Dream Home Neighborhood campaign a clear runway, from presales through completed homes."
-  },
-  "hitos": [
-    {
-      "fecha": "October 2026",
-      "titulo": "Marketing + presales begin",
-      "texto": "Marketing launches alongside buyer outreach, creating a full runway for the campaign."
-    },
-    {
-      "fecha": "Q4 2026",
-      "titulo": "A steady stream of content",
-      "texto": "Construction updates, interviews, site access and digital storytelling build momentum."
-    },
-    {
-      "fecha": "Q1 2027",
-      "titulo": "First 12 homes complete",
-      "texto": "A tangible neighborhood milestone aligned with the 2027 program."
-    }
-  ],
   "contact": {
     "eyebrow": "Get in touch",
     "titulo": "Let's chat about Huddle",
-    "parrafo1": "Pre-sales begin soon - don't miss your opportunity to be the first to own one of the first Huddle residences in Central Florida.",
-    "parrafo2": "Together, we can show what it means to live connected.\n\nText or Call for information 407.734.1220\n\nRiley Hoffer, REALTOR\nOrange Slice Properties",
+    "parrafo1": "Pre-sales are now underway. Contact our sales team for floor plans, current pricing, availability and details about making Huddle home.",
+    "parrafo2": "Find your Huddle. Connect with our sales team today.",
     "boton": "Send message"
   },
   "plans": {
     "eyebrow": "Floor plans",
     "titulo": "Room to live,<br><em>inside and out</em>",
-    "lead": "Two floors per home, four homes per building. Every unit has its own garage, a covered lanai and the option of a plunge pool in the backyard.",
+    "lead": "Explore two-story townhomes with three bedrooms, two-and-a-half baths, a two-car garage, a covered lanai and a covered balcony. View the floor plans and backyard options below.",
     "nota": "Plans are illustrative. Dimensions and finishes may vary by homesite.",
     "resumen": "<b>3</b> bedrooms &nbsp;&middot;&nbsp; <b>2.5</b> baths &nbsp;&middot;&nbsp; <b>2</b>-car garage &nbsp;&middot;&nbsp; covered lanai and balcony",
     "etiquetaAntes": "Without pool",
@@ -195,18 +173,18 @@
   },
   "selector": {
     "eyebrow": "Choose your home",
-    "titulo": "Forty&#8209;eight homes,<br><em>four configurations</em>",
-    "lead": "Every block holds four homes: two corner homes with an extra facade on the side, and two middle homes between neighbours. Pick any home on the plan to see which one it is and how its floors are laid out.",
-    "nota": "Plans are illustrative. <b>B homes are the mirror of the A homes</b>, as the architect labels them. Interior areas, prices and availability are released with the price list."
+    "titulo": "Find your place<br><em>at Huddle.</em>",
+    "lead": "Explore 48 townhomes across 12 buildings, with end-unit and interior layouts. Select a home to view its location and floor plans, then connect with our sales team for current pricing and availability.",
+    "nota": "Some floor plans are mirrored by home location. Plans and renderings are illustrative. Contact your sales representative for details about your selected home."
   },
   "patio": {
     "eyebrow": "Your backyard, your call",
     "titulo": "With pool.<br><em>Or without.</em>",
-    "lead": "Every home comes with a fenced backyard, and an 8&prime; &times; 10&prime; plunge pool is optional. Drag the handle to see the same backyard both ways.",
+    "lead": "Room to lounge. Room to splash. Explore the backyard with and without an 8&prime; &times; 14&prime; plunge pool. Contact our sales team for options for your preferred home.",
     "etiquetaAntes": "Without pool",
     "etiquetaDespues": "With plunge pool",
     "altAntes": "Backyard with a lawn, without a plunge pool",
-    "altDespues": "The same backyard with an 8 by 10 foot plunge pool"
+    "altDespues": "The same backyard with an 8 by 14 foot plunge pool"
   },
   "plantas": [
     {
@@ -227,7 +205,7 @@
     },
     {
       "id": "blk",
-      "nombre": "The four-plex",
+      "nombre": "Building Layout",
       "archivo": "plan_block",
       "alt": "Plan of the four-home building",
       "area": "",

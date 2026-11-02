@@ -88,8 +88,18 @@ header.on-hero .btn:hover{background:#fff}
 #hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
 #hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #hero::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(36,33,31,.42) 0%,rgba(36,33,31,0) 38%,rgba(36,33,31,.78) 100%)}
-.hero-txt{position:relative;z-index:2;padding:0 var(--pad) clamp(54px,8vh,96px);color:#fff;max-width:900px}
+  /* Dos velos. El vertical sostiene el encabezado arriba y asienta el pie del
+     hero. El HORIZONTAL es el que hace el trabajo: el texto vive en la columna
+     izquierda y detras hay cielo de atardecer y letreros iluminados, asi que se
+     oscurece solo ese lado y el render se mantiene limpio a la derecha. */
+  background:linear-gradient(90deg,rgba(6,6,6,.78) 0%,rgba(6,6,6,.62) 34%,rgba(6,6,6,.18) 62%,rgba(6,6,6,0) 78%),
+             linear-gradient(180deg,rgba(6,6,6,.45) 0%,rgba(6,6,6,.05) 32%,rgba(6,6,6,.55) 100%)}
+/* El encabezado es fijo y mide 82px. El hero alinea su contenido abajo, asi que
+   al crecer el texto (punto 7 anadio un segundo parrafo y el boton) el bloque
+   se desbordo hacia ARRIBA y el antetitulo quedo debajo del logo. El relleno
+   superior reserva la banda del encabezado y empuja el hero a crecer. */
+.hero-txt{position:relative;z-index:2;padding:clamp(108px,14vh,150px) var(--pad) clamp(54px,8vh,96px);
+  color:#fff;max-width:900px}
 .hero-txt .eyebrow{color:var(--cream)}
 .hero-txt h1{font-size:clamp(38px,6.6vw,86px)}
 .hero-txt p{margin-top:20px;font-size:clamp(15px,1.3vw,19px);color:rgba(255,255,255,.82);max-width:54ch}
@@ -162,6 +172,20 @@ header.on-hero .btn:hover{background:#fff}
 .lista li b{color:var(--ink);font-weight:600}
 .nota{margin-top:26px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 @media(max-width:860px){.plano-grid{grid-template-columns:1fr}}
+
+/* ---------- puente a las viviendas ----------
+   De la portada al comercial habia tres caminos; de vuelta, solo dos enlaces
+   discretos. Este bloque es el espejo del preview de la portada. */
+#viviendas{background:var(--cream)}
+.cp-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,64px);align-items:center}
+.cp-grid .lead{max-width:38ch}
+.cp-cta{margin-top:30px}
+.cp-img{display:block;border-radius:7px;overflow:hidden}
+.cp-img img{width:100%;height:auto}
+@media(max-width:900px){
+  .cp-grid{grid-template-columns:1fr}
+  .cp-img{order:-1}
+}
 
 /* ---------- formulario ---------- */
 #contact{background:var(--cream-2)}
@@ -313,6 +337,27 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 </section>
 
 <!-- ============ CONTACTO ============ -->
+<!-- ============ PUENTE A LAS VIVIENDAS ============ -->
+<section id="viviendas">
+  <div class="wrap">
+    <div class="cp-grid">
+      <div>
+        <p class="eyebrow rv">The neighborhood</p>
+        <h2 class="serif h2 rv">Looking for<br><em>a home instead?</em></h2>
+        <p class="lead rv" style="margin-top:24px">Huddle is 48 distinctive townhomes with
+          private outdoor living, built around the same commercial microdistrict. Explore the
+          floor plans, the backyard options and the homes still available.</p>
+        <a class="btn cp-cta rv" href="/">Explore the Townhomes</a>
+      </div>
+      <picture class="cp-img rv">
+        <source srcset="/img/ext_dusk.webp" type="image/webp">
+        <img src="/img/ext_dusk.jpg" width="1600" height="1067" loading="lazy"
+             alt="Huddle townhomes at dusk">
+      </picture>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <div class="wrap">
     <div class="form-grid">

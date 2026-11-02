@@ -1113,14 +1113,17 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
   var reveal=[].slice.call(document.querySelectorAll('.rv'));
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  },{threshold:.01});
+  },{threshold:0});
   reveal.forEach(function(el,i){ el.style.transitionDelay=(i%4)*0.06+'s'; io.observe(el); });
   function rescatar(){
     for(var i=reveal.length-1;i>=0;i--){
       var el=reveal[i];
       if(el.classList.contains('in')){ reveal.splice(i,1); continue; }
       var r=el.getBoundingClientRect();
-      if(r.top<innerHeight && r.bottom>0){ el.classList.add('in'); io.unobserve(el); reveal.splice(i,1); }
+      /* Sin la condicion r.bottom>0: si el bloque ya se paso de largo (scroll
+         rapido, salto de ancla, pagina entera de un control remoto) igual se
+         muestra. Antes se quedaba invisible para siempre. */
+      if(r.top<innerHeight){ el.classList.add('in'); io.unobserve(el); reveal.splice(i,1); }
     }
   }
   addEventListener('scroll',function(){
@@ -1129,7 +1132,20 @@ footer{background:var(--ink);color:rgba(255,255,255,.72);padding:clamp(50px,7vw,
     hdr.classList.toggle('on-hero', scrollY < hero.offsetHeight-90);
   },{passive:true});
   addEventListener('load',function(){ rescatar(); setTimeout(rescatar,600); });
+  addEventListener('resize',rescatar,{passive:true});
+  addEventListener('hashchange',rescatar);
   setTimeout(rescatar,1200);
+  setTimeout(rescatar,2600);
+  /* Vigia por reloj. Los eventos de scroll se agrupan: en un desplazamiento
+     suave largo, o en el navegador de un televisor, pueden llegar tan pocos que
+     un bloque entero pase entre dos. Medido sin esto: 46 de 90 bloques
+     invisibles tras saltar por el menu. Se apaga solo cuando no queda ninguno
+     pendiente, y en todo caso a los 20 segundos. */
+  var vigia=setInterval(function(){
+    rescatar();
+    if(!reveal.length) clearInterval(vigia);
+  },250);
+  setTimeout(function(){ clearInterval(vigia); },20000);
 
   /* ---------- HERO: el video se carga al entrar, no en el primer pintado ---------- */
   (function(){

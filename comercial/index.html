@@ -467,6 +467,30 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
       es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ob.unobserve(e.target); } });
     }, {rootMargin:'0px 0px -12% 0px'});
     piezas.forEach(function(p){ ob.observe(p); });
+
+    /* Red de seguridad. El observador solo no basta: un bloque que se salte con
+       la rueda, con el menu o con el salto de pagina de un control remoto no
+       vuelve a intersecar nunca y se queda invisible para siempre. Aqui se
+       muestra todo lo que este en pantalla O YA SE HAYA PASADO, y se revisa
+       tambien por reloj porque los eventos de scroll llegan agrupados. */
+    var rescatar = function(){
+      for(var i=piezas.length-1;i>=0;i--){
+        var el=piezas[i];
+        if(el.classList.contains('in')){ piezas.splice(i,1); continue; }
+        if(el.getBoundingClientRect().top < innerHeight){
+          el.classList.add('in'); ob.unobserve(el); piezas.splice(i,1);
+        }
+      }
+    };
+    addEventListener('scroll',rescatar,{passive:true});
+    addEventListener('resize',rescatar,{passive:true});
+    addEventListener('hashchange',rescatar);
+    setTimeout(rescatar,1200);
+    var vigia=setInterval(function(){
+      rescatar();
+      if(!piezas.length) clearInterval(vigia);
+    },250);
+    setTimeout(function(){ clearInterval(vigia); },20000);
   }
 
   /* El formulario se envia sin recargar, igual que el de la landing: Netlify

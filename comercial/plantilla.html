@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Commercial Space for Lease at Huddle — Eustis, Florida</title>
+<meta name="description" content="Commercial space for lease at Huddle, Eustis: approximately 9,000 square feet for restaurants, wellness and lifestyle businesses alongside 48 townhomes.">
+<meta name="theme-color" content="#F6F1EA">
+<meta property="og:title" content="Commercial Space for Lease at Huddle">
+<meta property="og:description" content="Cool Eats. Smart Homes. One Place.">
+<meta property="og:image" content="/img/retail_hero.jpg">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Taviraj:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   HUDDLE — los locales comerciales
+   Pagina aparte de la landing del barrio, con las mismas fichas de
+   marca: crema #F6F1EA, naranja #ED6B3A, tinta #24211F. No se
+   construye con build.py; es HTML plano, asi que el CMS no la toca.
+   ============================================================ */
+:root{
+  /* Misma paleta de marca que la pagina principal */
+  --cream:#F6F2EC; --cream-2:#ECE7DE; --orange:#E76D3E; --orange-soft:#F3C7B4;
+  --ink:#060606; --gris:#93918D; --ink-soft:#56544F; --accent:#789EB5;
+  --line:rgba(6,6,6,.14);
+  --serif:'Taviraj',Georgia,serif;
+  --sans:'Figtree',system-ui,-apple-system,sans-serif;
+  --pad:clamp(20px,5vw,88px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.65;
+  overflow-x:clip;max-width:100%;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+.wrap{padding:clamp(72px,10vh,130px) var(--pad)}
+.serif{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.08}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);
+  font-weight:600;margin-bottom:20px}
+.h2{font-size:clamp(30px,4.4vw,62px)}
+.h2 em{font-style:normal;color:var(--orange)}
+.lead{font-size:clamp(15px,1.25vw,18px);color:var(--ink-soft);max-width:56ch}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border:0;
+  border-radius:999px;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:600;
+  letter-spacing:.04em;padding:16px 30px;white-space:nowrap;
+  transition:background .3s var(--ease),transform .3s var(--ease);text-decoration:none}
+.btn:hover{background:#d95c2d;transform:translateY(-2px)}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- cabecera ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;padding:18px var(--pad);
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease)}
+header.solid{background:rgba(246,242,236,.94);backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:12px var(--pad)}
+.logo{display:inline-flex;align-items:center;min-height:46px;line-height:0;text-decoration:none}
+.logo img{height:30px;width:auto;display:block}
+.logo .claro{display:none}
+header.on-hero .logo .claro{display:block}
+header.on-hero .logo .color{display:none}
+@media(max-width:700px){.logo img{height:26px}}
+header nav{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
+header nav a{font-size:13px;font-weight:500;color:var(--ink-soft);text-decoration:none;
+  transition:color .25s var(--ease);white-space:nowrap}
+header nav a:hover{color:var(--ink)}
+header.on-hero .logo{color:#fff}
+header.on-hero nav a{color:rgba(255,255,255,.9)}
+header.on-hero .btn{background:var(--cream);color:var(--ink)}
+header.on-hero .btn:hover{background:#fff}
+@media(max-width:760px){header nav a.oculta-movil{display:none}}
+
+/* ---------- portada ---------- */
+#hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+#hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(36,33,31,.42) 0%,rgba(36,33,31,0) 38%,rgba(36,33,31,.78) 100%)}
+.hero-txt{position:relative;z-index:2;padding:0 var(--pad) clamp(54px,8vh,96px);color:#fff;max-width:900px}
+.hero-txt .eyebrow{color:var(--cream)}
+.hero-txt h1{font-size:clamp(38px,6.6vw,86px)}
+.hero-txt p{margin-top:20px;font-size:clamp(15px,1.3vw,19px);color:rgba(255,255,255,.82);max-width:54ch}
+.hero-txt .hero-2{font-size:clamp(14px,1.1vw,16.5px);color:rgba(255,255,255,.72)}
+.hero-cta{margin-top:26px;background:var(--cream);color:var(--ink)}
+.hero-cta:hover{background:#fff}
+
+/* ---------- recorrido ---------- */
+#tour{background:var(--cream)}
+#tour .eyebrow{color:var(--orange)}
+.tour-box{position:relative;margin-top:clamp(30px,4vw,54px);border-radius:6px;overflow:hidden;
+  background:#000;aspect-ratio:16/9;max-height:78vh;min-height:420px}
+.tour-box iframe{display:block;width:100%;height:100%;border:0}
+@media(max-width:760px){.tour-box{aspect-ratio:auto;height:min(74vh,600px);min-height:0;max-height:none}}
+
+/* ---------- vistas ---------- */
+#vistas{background:var(--cream-2)}
+.shot.ancha{margin-top:clamp(30px,4vw,54px)}
+.shot{margin:0;border-radius:6px;overflow:hidden;background:#fff}
+/* alto automatico: con height:100% la imagen ocupaba toda la figura y el pie
+   quedaba cortado por el overflow:hidden */
+.shot img{width:100%;height:auto;display:block}
+.shot figcaption{padding:12px 15px;font-size:12.5px;color:var(--ink-soft)}
+@media(max-width:760px){.shots{grid-template-columns:1fr}}
+
+/* ---------- plano ---------- */
+#plano{background:var(--cream)}
+/* ---------- plano de locales ---------- */
+.loc-barra{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:clamp(26px,3.4vw,42px) 0 14px}
+.loc-barra button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;
+  cursor:pointer;font:600 11.5px/1 var(--sans);letter-spacing:.04em;color:var(--ink-soft);
+  transition:border-color .2s,color .2s,background .2s}
+.loc-barra button:hover{border-color:var(--ink-soft);color:var(--ink)}
+.loc-barra button.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.loc-barra .cuenta{margin-left:auto;font-size:12px;color:var(--ink-soft)}
+.loc-escena{display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:start}
+@media(max-width:900px){.loc-escena{grid-template-columns:1fr}}
+.loc-mapa{position:relative;border-radius:6px;overflow:hidden;background:#fff;line-height:0}
+.loc-mapa img{width:100%;display:block}
+.loc-mapa svg{position:absolute;inset:0;width:100%;height:100%}
+.loc-u{fill:rgba(237,107,58,.26);stroke:#fff;stroke-width:.22;stroke-opacity:.75;cursor:pointer;
+  transition:fill .16s,stroke-opacity .16s}
+.loc-u.b2{fill:rgba(47,111,107,.3)}
+.loc-u:hover{fill:rgba(237,107,58,.66);stroke-opacity:1}
+.loc-u.on{fill:rgba(237,107,58,.82);stroke-opacity:1;stroke-width:.4}
+.loc-u.off{fill:transparent;stroke-opacity:.12;pointer-events:none}
+.loc-globo{position:absolute;pointer-events:none;background:rgba(36,33,31,.88);color:#fff;
+  font:600 11px var(--sans);padding:4px 8px;border-radius:4px;white-space:nowrap;
+  transform:translate(-50%,-150%);opacity:0;transition:opacity .14s}
+.loc-panel{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px}
+.loc-panel .nada{color:var(--ink-soft);font-size:13.5px;text-align:center;padding:34px 6px}
+.loc-etq{display:inline-block;font:600 10.5px var(--sans);letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;color:#fff;margin-bottom:11px;background:var(--orange)}
+.loc-etq.b2{background:#2F6F6B}
+.loc-panel h3{margin:0 0 3px;font:600 21px/1.2 var(--serif)}
+.loc-panel .sf{margin:0 0 15px;font-size:13.5px;color:var(--ink-soft)}
+.loc-panel .sf b{color:var(--ink);font-weight:600;font-size:16px}
+.loc-panel dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0 0 14px;font-size:13px}
+.loc-panel dt{color:var(--ink-soft)} .loc-panel dd{margin:0;text-align:right;font-weight:500}
+.loc-nota{font-size:11.5px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px;line-height:1.5}
+.loc-cta{display:block;width:100%;margin-top:14px;border:0;border-radius:999px;background:var(--orange);
+  color:#fff;font:600 12.5px var(--sans);padding:13px;cursor:pointer}
+.loc-cta:hover{background:#d95c2d}
+.lista{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:clamp(26px,3vw,44px)}
+@media(max-width:760px){.lista{grid-template-columns:1fr}}
+.lista li{padding-left:22px;position:relative;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+.lista li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;
+  background:var(--orange-soft)}
+.lista li b{color:var(--ink);font-weight:600}
+.nota{margin-top:26px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+@media(max-width:860px){.plano-grid{grid-template-columns:1fr}}
+
+/* ---------- formulario ---------- */
+#contact{background:var(--cream-2)}
+#contact .eyebrow{color:var(--orange)}
+.form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,70px)}
+#contact p.sub{margin-top:22px;color:var(--ink-soft);font-size:15px;max-width:40ch}
+.tel-grande{display:inline-flex;flex-direction:column;gap:4px;margin-top:24px;text-decoration:none;
+  color:var(--ink);border-top:2px solid var(--orange);padding-top:14px}
+.tel-grande span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.tel-grande b{font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-.02em}
+.tel-grande:hover b{color:var(--orange)}
+.field{display:grid;gap:7px;margin-bottom:16px}
+.field label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.field input,.field textarea{background:#fff;border:1px solid var(--line);border-radius:6px;
+  color:var(--ink);font:400 15px/1.5 var(--sans);padding:13px 15px;outline:0;transition:border-color .2s;width:100%}
+.field input:focus,.field textarea:focus{border-color:var(--orange)}
+.field textarea{min-height:110px;resize:vertical}
+.field.err input,.field.err textarea{border-color:#E05B4B}
+.f-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hp{position:absolute;left:-9999px}
+#formNote{margin-top:16px;font-size:14px;color:var(--ink-soft)}
+@media(max-width:860px){.form-grid,.f-cols{grid-template-columns:1fr}}
+
+/* ---------- pie ---------- */
+.pie-fila{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;
+  width:100%;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.pie-legal{width:100%;padding-top:24px;display:grid;gap:15px;max-width:92ch}
+.pie-legal p{font-size:12.5px;line-height:1.62;color:var(--ink);opacity:.72}
+.pie-legal a{border-bottom:1px solid var(--line)}
+.pie-eho{display:flex;gap:16px;align-items:flex-start}
+.pie-eho img{width:46px;height:auto;flex:none;margin-top:2px}
+.pie-eho b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:600;color:var(--ink);margin-bottom:7px}
+footer{background:var(--cream-2);padding:46px var(--pad);display:flex;flex-wrap:wrap;gap:16px;
+  align-items:center;justify-content:space-between;font-size:13px;color:var(--ink-soft)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.pie-marca{display:inline-flex;align-items:center;gap:11px}
+.pie-marca img{height:30px;width:auto;display:block}
+
+/* ---------- pantallas grandes: mismo criterio que la pagina principal ---------- */
+@media(min-width:1500px){
+  :root{--pad:calc((100vw - 1400px) / 2)}
+  body{font-size:17px}
+  .lead{font-size:20px;max-width:58ch}
+  nav a{font-size:14px}
+  .field label{font-size:12px}
+  .field input,.field textarea{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<header id="top" class="on-hero">
+  <a href="/" class="logo" aria-label="Huddle">
+    <img class="color" src="/img/logo_huddle.png" alt="Huddle" width="900" height="239">
+    <img class="claro" src="/img/logo_huddle_claro.png" alt="" aria-hidden="true" width="900" height="239">
+  </a>
+  <nav>
+    <a href="/" class="oculta-movil">The neighborhood</a>
+    <a href="#tour" class="oculta-movil">Walkthrough</a>
+    <a href="#plano" class="oculta-movil">Site plan</a>
+    <a href="#contact" class="btn" style="padding:11px 22px">Leasing Inquiries</a>
+  </nav>
+</header>
+
+<!-- ============ PORTADA ============ -->
+<section id="hero">
+  <img src="/img/retail_hero.webp" alt="The Huddle monument sign at the entrance to the commercial microdistrict at dusk">
+  <div class="hero-txt">
+    <p class="eyebrow">Restaurants &middot; Wellness &middot; Lifestyle</p>
+    <h1 class="serif">Commercial Space <em style="font-style:normal">for Lease</em></h1>
+    <p>Huddle&rsquo;s commercial microdistrict is designed to bring distinctive food and beverage
+      experiences, wellness concepts and complementary lifestyle retail together in one welcoming
+      place. With approximately 9,000 square feet of commercial space alongside a neighborhood of
+      48 townhomes, the vision is a thoughtfully selected mix of businesses that gives residents
+      and visitors reasons to return, from a morning coffee or a wellness appointment to dinner
+      with friends.</p>
+    <p class="hero-2">We&rsquo;re welcoming restaurant, caf&eacute;, beverage, wellness and lifestyle
+      businesses that share that vision. Outdoor gathering spaces and a connected setting create
+      opportunities for businesses to become part of everyday life at Huddle.</p>
+    <a class="btn hero-cta" href="#contact">Explore Leasing Opportunities</a>
+  </div>
+</section>
+
+<!-- ============ RECORRIDO ============ -->
+<section id="tour">
+  <div class="wrap">
+    <p class="eyebrow rv">Interactive 3D walkthrough</p>
+    <h2 class="serif h2 rv">Explore the<br><em>Commercial Spaces</em></h2>
+    <p class="lead rv" style="margin-top:24px">Drag to look around and use the floor points to move
+      between spaces. Runs in the browser, nothing to install.</p>
+    <div class="tour-box rv">
+      <iframe src="https://dynamiccomposition.viewin360.co/share/collection/7dG1Y?logo=bWVkaWEvNDMwMDM2LzZhOWItMTMwYy01ZWY1LWI3OTkucG5n&amp;info=0&amp;fs=1&amp;vr=1&amp;zoom=1&amp;sd=1&amp;initload=0&amp;thumbs=1"
+              title="Huddle retail interactive 3D walkthrough" loading="lazy"
+              allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+              allowfullscreen scrolling="no" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISTAS ============ -->
+<section id="vistas">
+  <div class="wrap">
+    <p class="eyebrow rv">The courtyard</p>
+    <h2 class="serif h2 rv">A place to meet.<br><em>A reason to stay.</em></h2>
+    <p class="lead rv" style="margin-top:24px">Outdoor seating and gathering spaces are part of the
+      Huddle experience, places to enjoy a bite, meet a friend or linger between stops. The
+      commercial microdistrict is designed to feel like a destination within the neighborhood.</p>
+    <figure class="shot ancha rv">
+      <img src="/img/retail_plaza.webp" alt="The fountain plaza at dusk, with the storefronts behind" loading="lazy">
+      <figcaption>The fountain plaza, looking back at the storefronts and the covered walkway.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ PLANO ============ -->
+<section id="plano">
+  <div class="wrap">
+    <p class="eyebrow rv">Leasing opportunities</p>
+    <h2 class="serif h2 rv">Find the right space<br><em>for your concept.</em></h2>
+    <p class="lead rv" style="margin-top:24px">Explore the commercial plan and select a space to
+      learn more. Contact our leasing team for current availability, floor plans and leasing
+      details for your business.</p>
+
+    <div class="loc-barra rv" id="locBarra"></div>
+
+    <div class="loc-escena rv">
+      <div class="loc-mapa" id="locMapa">
+        <img src="/img/retail_plan.webp" alt="Plan of the retail block, with the suites, the courtyard and the parking" loading="lazy">
+        <svg id="locCapa" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+        <div class="loc-globo" id="locGlobo"></div>
+      </div>
+      <aside class="loc-panel" id="locPanel"></aside>
+    </div>
+
+    <ul class="lista rv">
+      <li><b>Two buildings around a courtyard.</b> Building 1 holds four suites, building 2 holds
+        three, and every front looks onto the same open space.</li>
+      <li><b>Covered walkway and patio seating</b> along both fronts, with planting between the
+        tables and the drive.</li>
+      <li><b>Fountain plaza</b> with lounge seating at the open end of the courtyard.</li>
+      <li><b>Parking wrapping the block</b>, with the accessible stalls and the crossing right
+        at the plaza.</li>
+    </ul>
+    <p class="nota rv">Areas, lease dimensions and services are taken from the lease suite plans by
+      Powell Studio Architecture, 06/29/26. The outlines drawn over the plan are a guide, not a
+      measurement, and the interiors and storefront names are illustrative. Final terms on request.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="form-grid">
+      <div>
+        <p class="eyebrow rv">Leasing inquiries</p>
+        <h2 class="serif h2 rv">Bring your business<br><em>to Huddle.</em></h2>
+        <p class="sub rv">Tell us about your concept, the space you need and your preferred opening
+          timeline. We&rsquo;d love to hear how your business could become part of Huddle.</p>
+        <a class="tel-grande rv" href="tel:+14077341220"><span>Huddle Sales Team</span><b>407-734-1220</b></a>
+      </div>
+
+      <form id="leadForm" class="rv" name="huddle-retail" method="POST"
+            data-netlify="true" netlify-honeypot="company-website">
+        <input type="hidden" name="form-name" value="huddle-retail">
+        <input type="hidden" name="interest" value="Commercial space lease">
+        <input type="hidden" name="suite" id="fSuite" value="">
+        <p class="hp"><label>Do not fill this in <input name="company-website" tabindex="-1"></label></p>
+
+        <div class="f-cols">
+          <div class="field"><label for="name">Name *</label>
+            <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
+          <div class="field"><label for="business">Business Name</label>
+            <input id="business" name="business" type="text" placeholder="Your business" autocomplete="organization"></div>
+        </div>
+        <div class="f-cols">
+          <div class="field"><label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required></div>
+          <div class="field"><label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="(000) 000-0000" autocomplete="tel"></div>
+        </div>
+        <div class="f-cols">
+          <div class="field"><label for="concepto">Business Concept</label>
+            <input id="concepto" name="concept" type="text" placeholder="Restaurant, caf&eacute;, wellness&hellip;"></div>
+          <div class="field"><label for="espacio">Approximate Space Needed</label>
+            <input id="espacio" name="space" type="text" placeholder="Square feet"></div>
+        </div>
+        <div class="field"><label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Your concept and your preferred opening timeline"></textarea></div>
+
+        <button type="submit" class="btn" id="submitBtn">Send Leasing Inquiry</button>
+        <p id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="pie-fila">
+    <span class="pie-marca"><img src="/img/logo_huddle_marca.png" alt="" width="400" height="435">
+      Huddle &middot; Cool Eats. Smart Homes. One Place.</span>
+    <span><a href="tel:+14077341220">Huddle Sales Team &middot; 407-734-1220</a> &nbsp;&middot;&nbsp;
+      <a href="/">Back to the neighborhood</a> &nbsp;&middot;&nbsp;
+      <a href="/#huddlenews">Event Updates</a></span>
+  </div>
+  <div class="pie-legal">
+    <div class="pie-eho">
+      <picture data-si="flags.eho">
+        <source srcset="/img/eho_logo.webp" type="image/webp">
+        <img src="/img/eho_logo.png" width="120" height="120" loading="lazy"
+             alt="Equal Housing Opportunity">
+      </picture>
+      <div>
+        <b>Equal Housing Opportunity</b>
+        <p>Huddle is committed to equal housing opportunity. Homes are offered without discrimination based on race, color, religion, sex, national origin, familial status, disability, or any other characteristic protected by applicable law.</p>
+      </div>
+    </div>
+    <p>Renderings, floor plans and illustrations are for illustrative purposes and may show optional features, furnishings and finishes. Prices, availability, specifications, amenities and anticipated completion dates are subject to change. Contact our sales team for current information, included features and available options.</p>
+    <p data-si="flags.brokerage">{{legal.brokerage}}</p>
+    <p>&copy; 2026 Huddle. All rights reserved.
+      <a href="{{legal.privacidadUrl}}" data-si="flags.privacidad">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script src="/locales.js"></script>
+<script>
+/* ---------- PLANO DE LOCALES ----------
+   Los siete locales sobre el render del plano. Superficie, ancho de arriendo y
+   servicios salen de los Lease Suite Plans; los contornos son una guia dibujada
+   sobre el render, no una medicion. */
+(function(){
+  var capa = document.getElementById('locCapa');
+  if(!capa || typeof LOCALES === 'undefined') return;
+  var barra = document.getElementById('locBarra'),
+      panel = document.getElementById('locPanel'),
+      globo = document.getElementById('locGlobo'),
+      mapa  = document.getElementById('locMapa');
+  var filtro = 0, sel = null;
+  function pasa(l){ return filtro === 0 || l.b === filtro; }
+  function busca(k){ for(var i=0;i<LOCALES.length;i++) if(LOCALES[i].k === k) return LOCALES[i]; }
+
+  function barraHTML(){
+    var o = [[0,'All suites'], [1,'Building 1'], [2,'Building 2']];
+    barra.innerHTML = o.map(function(x){
+      var n = LOCALES.filter(function(l){ return x[0] === 0 || l.b === x[0]; }).length;
+      return '<button class="' + (filtro===x[0]?'on':'') + '" data-f="' + x[0] + '">'
+           + x[1] + ' (' + n + ')</button>';
+    }).join('') + '<span class="cuenta">732 &ndash; 1,500 sq ft</span>';
+  }
+  barra.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    filtro = +b.getAttribute('data-f'); barraHTML(); capaHTML();
+  });
+
+  function capaHTML(){
+    capa.innerHTML = LOCALES.map(function(l){
+      return '<polygon class="loc-u' + (l.b === 2 ? ' b2' : '') + (pasa(l) ? '' : ' off')
+           + (sel === l.k ? ' on' : '') + '" points="'
+           + l.g.map(function(q){ return q[0] + ',' + q[1]; }).join(' ')
+           + '" data-k="' + l.k + '"></polygon>';
+    }).join('');
+  }
+
+  capa.addEventListener('click', function(e){
+    var p = e.target.closest('polygon'); if(!p) return;
+    sel = p.getAttribute('data-k'); capaHTML(); abrir(sel);
+  });
+  capa.addEventListener('mousemove', function(e){
+    var p = e.target.closest('polygon');
+    if(!p){ globo.style.opacity = 0; return; }
+    var l = busca(p.getAttribute('data-k')), r = mapa.getBoundingClientRect();
+    globo.textContent = 'Suite ' + l.k + ' \u00b7 ' + l.sf + ' sq ft';
+    globo.style.left = (e.clientX - r.left) + 'px';
+    globo.style.top  = (e.clientY - r.top) + 'px';
+    globo.style.opacity = 1;
+  });
+  capa.addEventListener('mouseleave', function(){ globo.style.opacity = 0; });
+
+  function vacio(){ panel.innerHTML = '<p class="nada">Select a suite on the plan<br>to see its details.</p>'; }
+
+  function abrir(k){
+    var l = busca(k); if(!l) return;
+    panel.innerHTML =
+      '<span class="loc-etq' + (l.b === 2 ? ' b2' : '') + '">Building ' + l.b + '</span>' +
+      '<h3>Suite ' + l.k + '</h3>' +
+      '<p class="sf"><b>' + l.sf + '</b> sq ft</p>' +
+      '<dl>' +
+      '<dt>Lease width</dt><dd>' + l.w + '</dd>' +
+      (l.d ? '<dt>Depth</dt><dd>' + l.d + '</dd>' : '') +
+      '<dt>Outdoor</dt><dd>' + l.patio + '</dd>' +
+      '<dt>Power</dt><dd>' + l.pw + '</dd>' +
+      '<dt>Grease sewer</dt><dd>' + (l.gs ? 'Connection provided' : 'Not shown') + '</dd>' +
+      '</dl>' +
+      (l.x ? '<p class="loc-nota" style="border:0;padding:0;margin:-6px 0 12px"><b>' + l.x + '.</b></p>' : '') +
+      '<p class="loc-nota">Area and lease dimensions as stated on the lease suite plan for this ' +
+      'suite. Rent and terms on request.</p>' +
+      '<button class="loc-cta" data-k="' + l.k + '">Ask about this suite</button>';
+  }
+
+  /* El boton deja el local escrito en el formulario: el lead llega etiquetado. */
+  panel.addEventListener('click', function(e){
+    var b = e.target.closest('.loc-cta'); if(!b) return;
+    var k = b.getAttribute('data-k'), l = busca(k);
+    var msg = document.getElementById('message');
+    if(msg) msg.value = 'I would like to know more about suite ' + k + ' (building ' + l.b + ', ' + l.sf + ' sq ft).';
+    var oculto = document.getElementById('fSuite');
+    if(oculto) oculto.value = 'Suite ' + k;
+    location.hash = '#contact';
+  });
+
+  barraHTML(); capaHTML(); vacio();
+})();
+</script>
+
+<script>
+/* La cabecera va transparente sobre la portada y solida en cuanto se baja. */
+(function(){
+  var h = document.getElementById('top'), hero = document.getElementById('hero');
+  function pinta(){
+    var tope = hero.getBoundingClientRect().bottom - 70;
+    h.classList.toggle('solid', scrollY > 10);
+    h.classList.toggle('on-hero', tope > 0);
+  }
+  addEventListener('scroll', pinta, {passive:true});
+  addEventListener('resize', pinta);
+  pinta();
+
+  /* Reveals; si el navegador no trae IntersectionObserver se muestran y ya. */
+  var piezas = [].slice.call(document.querySelectorAll('.rv'));
+  if(!('IntersectionObserver' in window)){
+    piezas.forEach(function(p){ p.classList.add('in'); });
+  } else {
+    var ob = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ob.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -12% 0px'});
+    piezas.forEach(function(p){ ob.observe(p); });
+
+    /* Red de seguridad. El observador solo no basta: un bloque que se salte con
+       la rueda, con el menu o con el salto de pagina de un control remoto no
+       vuelve a intersecar nunca y se queda invisible para siempre. Aqui se
+       muestra todo lo que este en pantalla O YA SE HAYA PASADO, y se revisa
+       tambien por reloj porque los eventos de scroll llegan agrupados. */
+    var rescatar = function(){
+      for(var i=piezas.length-1;i>=0;i--){
+        var el=piezas[i];
+        if(el.classList.contains('in')){ piezas.splice(i,1); continue; }
+        if(el.getBoundingClientRect().top < innerHeight){
+          el.classList.add('in'); ob.unobserve(el); piezas.splice(i,1);
+        }
+      }
+    };
+    addEventListener('scroll',rescatar,{passive:true});
+    addEventListener('resize',rescatar,{passive:true});
+    addEventListener('hashchange',rescatar);
+    setTimeout(rescatar,1200);
+    var vigia=setInterval(function(){
+      rescatar();
+      if(!piezas.length) clearInterval(vigia);
+    },250);
+    setTimeout(function(){ clearInterval(vigia); },20000);
+  }
+
+  /* El formulario se envia sin recargar, igual que el de la landing: Netlify
+     recibe el POST en la raiz con el form-name. */
+  var f = document.getElementById('leadForm');
+  if(!f) return;
+  var btn = document.getElementById('submitBtn'), note = document.getElementById('formNote');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    f.querySelectorAll('[required]').forEach(function(c){
+      var v = c.value.trim();
+      var bien = c.type === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) : v.length > 1;
+      c.closest('.field').classList.toggle('err', !bien);
+      if(!bien) ok = false;
+    });
+    if(!ok){ note.textContent = 'Please check the highlighted fields.'; return; }
+    btn.disabled = true; btn.textContent = 'Sending…'; note.textContent = '';
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+                body:new URLSearchParams(new FormData(f)).toString()})
+      .then(function(){
+        f.style.display = 'none';
+        note.innerHTML = '<strong>Thank you.</strong> We received your leasing inquiry and our team will be in touch shortly.';
+      })
+      .catch(function(err){
+        console.error(err);
+        btn.disabled = false; btn.textContent = 'Try again';
+        note.textContent = 'Something went wrong. Please call our sales team at 407-734-1220 instead.';
+      });
+  });
+})();
+</script>
+</body>
+</html>

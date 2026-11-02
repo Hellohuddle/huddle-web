@@ -260,6 +260,11 @@ collections:
                 label: "Intro paragraph"
                 widget: text
                 required: true
+              - name: nota
+                label: "Legal note under the gallery and the walkthrough"
+                widget: text
+                required: false
+                hint: "Shown in both places. Agreed wording for the renderings disclaimer."
           - name: video
             label: "Section: The film"
             widget: object
@@ -304,6 +309,36 @@ collections:
                 label: "Intro paragraph"
                 widget: text
                 required: true
+          - name: news
+            label: "Section: Stay in the Huddle"
+            widget: object
+            collapsed: true
+            fields:
+              - name: eyebrow
+                label: "Small label above the headline"
+                widget: string
+                required: false
+              - name: titulo
+                label: "Headline"
+                widget: string
+                hint: "Use <br> to break the line and <em>…</em> for the words in orange."
+                required: false
+              - name: lead
+                label: "Intro paragraph"
+                widget: text
+                required: false
+              - name: formTitulo
+                label: "Signup headline"
+                widget: string
+                required: false
+              - name: formLead
+                label: "Signup paragraph"
+                widget: text
+                required: false
+              - name: boton
+                label: "Signup button"
+                widget: string
+                required: false
           - name: contact
             label: "Section: Contact"
             widget: object

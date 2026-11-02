@@ -65,7 +65,7 @@ a{color:inherit}
 header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;
   justify-content:space-between;gap:16px;padding:18px var(--pad);
   transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease)}
-header.solid{background:rgba(246,241,234,.94);backdrop-filter:blur(12px);
+header.solid{background:rgba(246,242,236,.94);backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:12px var(--pad)}
 .logo{display:inline-flex;align-items:center;min-height:46px;line-height:0;text-decoration:none}
 .logo img{height:30px;width:auto;display:block}
@@ -184,6 +184,15 @@ header.on-hero .btn:hover{background:#fff}
 @media(max-width:860px){.form-grid,.f-cols{grid-template-columns:1fr}}
 
 /* ---------- pie ---------- */
+.pie-fila{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;
+  width:100%;padding-bottom:26px;border-bottom:1px solid var(--line)}
+.pie-legal{width:100%;padding-top:24px;display:grid;gap:15px;max-width:92ch}
+.pie-legal p{font-size:12.5px;line-height:1.62;color:var(--ink);opacity:.72}
+.pie-legal a{border-bottom:1px solid var(--line)}
+.pie-eho{display:flex;gap:16px;align-items:flex-start}
+.pie-eho img{width:46px;height:auto;flex:none;margin-top:2px}
+.pie-eho b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:600;color:var(--ink);margin-bottom:7px}
 footer{background:var(--cream-2);padding:46px var(--pad);display:flex;flex-wrap:wrap;gap:16px;
   align-items:center;justify-content:space-between;font-size:13px;color:var(--ink-soft)}
 footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
@@ -349,10 +358,26 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 </section>
 
 <footer>
-  <span class="pie-marca"><img src="/img/logo_huddle_marca.png" alt="" width="400" height="435">
-    Huddle &middot; Cool Eats. Smart Homes. One Place.</span>
-  <span><a href="tel:+14077341220">Huddle Sales Team &middot; 407-734-1220</a> &nbsp;&middot;&nbsp;
-    <a href="/">Back to the neighborhood</a></span>
+  <div class="pie-fila">
+    <span class="pie-marca"><img src="/img/logo_huddle_marca.png" alt="" width="400" height="435">
+      Huddle &middot; Cool Eats. Smart Homes. One Place.</span>
+    <span><a href="tel:+14077341220">Huddle Sales Team &middot; 407-734-1220</a> &nbsp;&middot;&nbsp;
+      <a href="/">Back to the neighborhood</a> &nbsp;&middot;&nbsp;
+      <a href="/#huddlenews">Event Updates</a></span>
+  </div>
+  <div class="pie-legal">
+    <div class="pie-eho">
+      
+      <div>
+        <b>Equal Housing Opportunity</b>
+        <p>Huddle is committed to equal housing opportunity. Homes are offered without discrimination based on race, color, religion, sex, national origin, familial status, disability, or any other characteristic protected by applicable law.</p>
+      </div>
+    </div>
+    <p>Renderings, floor plans and illustrations are for illustrative purposes and may show optional features, furnishings and finishes. Prices, availability, specifications, amenities and anticipated completion dates are subject to change. Contact our sales team for current information, included features and available options.</p>
+    
+    <p>&copy; 2026 Huddle. All rights reserved.
+      </p>
+  </div>
 </footer>
 
 <script src="/locales.js"></script>

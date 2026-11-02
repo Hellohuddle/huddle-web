@@ -61,7 +61,7 @@
     },
     {
       "n": "03",
-      "etiqueta": "Around the corner",
+      "etiqueta": "Within Huddle",
       "titulo": "Connect",
       "texto": "Cool Eats, community Wi-Fi and everyday connection."
     }
@@ -141,7 +141,8 @@
   "gallery": {
     "eyebrow": "The project in images",
     "titulo": "A closer<br><em>look</em>",
-    "lead": "Exteriors, aerials and the first interiors. Tap any image to open it full size."
+    "lead": "Exteriors, aerials and the first interiors. Tap any image to open it full size.",
+    "nota": "Renderings are illustrative and may show optional features, furnishings and finishes. Contact our sales team for included features and available options."
   },
   "video": {
     "eyebrow": "The film",
@@ -153,7 +154,7 @@
   "tour": {
     "eyebrow": "Interactive 3D walkthrough",
     "titulo": "Step inside,<br><em>from anywhere</em>",
-    "lead": "Drag to look around and use the floor points to move between spaces. Runs in the browser, nothing to install."
+    "lead": "Take a look around. Click or tap the markers to move from room to room, then drag to explore each space. Use full screen for a larger view."
   },
   "contact": {
     "eyebrow": "Get in touch",
@@ -219,5 +220,19 @@
       "area": "",
       "espacios": "The whole site from above: the homes, the walking trail, the Pickleball Commons, the dog park, the ponds and the Cool Eats building."
     }
-  ]
+  ],
+  "news": {
+    "eyebrow": "Stay in the Huddle",
+    "titulo": "Stay in the<br><em>Huddle.</em>",
+    "lead": "Follow the progress, get community updates and hear about upcoming Huddle events.",
+    "formTitulo": "Be first to hear what&rsquo;s happening.",
+    "formLead": "Sign up for Huddle news, upcoming events and opportunities to explore the community.",
+    "boton": "Keep Me Updated"
+  },
+  "comercialPreview": {
+    "eyebrow": "Commercial space",
+    "titulo": "Good things are<br><em>coming together.</em>",
+    "lead": "Restaurants, wellness and lifestyle businesses are part of the vision for Huddle&rsquo;s commercial microdistrict. Explore the spaces and discover opportunities to bring your business here.",
+    "boton": "Explore Commercial Space"
+  }
 }

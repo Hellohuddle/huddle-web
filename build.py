@@ -22,10 +22,17 @@ import re
 import sys
 
 RAIZ = os.path.dirname(os.path.abspath(__file__))
-F_PLANTILLA = os.path.join(RAIZ, 'plantilla.html')
 F_CONTENIDO = os.path.join(RAIZ, 'contenido.json')
 F_MEDIOS = os.path.join(RAIZ, 'medios.json')
-F_SALIDA = os.path.join(RAIZ, 'index.html')
+
+# Cada par es (plantilla, salida). La comercial entro aqui cuando su pie paso a
+# compartir banderas con el de la portada: sin pasar por el constructor, un
+# {{legal.brokerage}} se imprimiria literalmente en la pagina.
+PAGINAS = [
+    (os.path.join(RAIZ, 'plantilla.html'), os.path.join(RAIZ, 'index.html')),
+    (os.path.join(RAIZ, 'comercial', 'plantilla.html'),
+     os.path.join(RAIZ, 'comercial', 'index.html')),
+]
 
 
 def valor(datos, ruta):
@@ -37,8 +44,8 @@ def valor(datos, ruta):
     return actual
 
 
-def construir():
-    html = io.open(F_PLANTILLA, encoding='utf-8').read()
+def construir(f_plantilla, f_salida):
+    html = io.open(f_plantilla, encoding='utf-8').read()
 
     # contenido.json lo edita el CMS; medios.json (rutas de imagenes) no se expone en
     # el CMS, porque un CMS borra al guardar los campos que no tiene declarados.
@@ -113,9 +120,10 @@ def construir():
 
     html = re.sub(r'\{\{([\w.]+)\}\}', pinta_suelto, html)
 
-    io.open(F_SALIDA, 'w', encoding='utf-8', newline='').write(html)
-    print('index.html generado: %d campos, %d listas, %d elementos ocultos.'
-          % (cuenta['campos'], cuenta['listas'], cuenta['ocultas']))
+    io.open(f_salida, 'w', encoding='utf-8', newline='').write(html)
+    rel = os.path.relpath(f_salida, RAIZ).replace('\\', '/')
+    print('%s generado: %d campos, %d listas, %d elementos ocultos.'
+          % (rel, cuenta['campos'], cuenta['listas'], cuenta['ocultas']))
     if faltan:
         print('AVISO, sin valor: ' + ', '.join(sorted(set(faltan))))
         return 1
@@ -123,4 +131,11 @@ def construir():
 
 
 if __name__ == '__main__':
-    sys.exit(construir())
+    codigo = 0
+    for plantilla, salida in PAGINAS:
+        if not os.path.exists(plantilla):
+            print('AVISO: no existe ' + plantilla)
+            codigo = 1
+            continue
+        codigo |= construir(plantilla, salida)
+    sys.exit(codigo)

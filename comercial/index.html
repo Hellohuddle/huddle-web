@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Commercial Space for Lease at Huddle — Eustis, Florida</title>
 <meta name="description" content="Commercial space for lease at Huddle, Eustis: approximately 9,000 square feet for restaurants, wellness and lifestyle businesses alongside 48 townhomes.">
-<meta name="theme-color" content="#F6F1EA">
+<meta name="theme-color" content="#F6F2EC">
 <meta property="og:title" content="Commercial Space for Lease at Huddle">
 <meta property="og:description" content="Cool Eats. Smart Homes. One Place.">
 <meta property="og:image" content="/img/retail_hero.jpg">
@@ -25,13 +25,13 @@
 /* ============================================================
    HUDDLE — los locales comerciales
    Pagina aparte de la landing del barrio, con las mismas fichas de
-   marca: crema #F6F1EA, naranja #ED6B3A, tinta #24211F. No se
+   marca: neutro #F6F2EC, naranja #E76D3E, negro #060606, gris #93918D,
+   azul #789EB5. No se
    construye con build.py; es HTML plano, asi que el CMS no la toca.
    ============================================================ */
 :root{
   /* Misma paleta de marca que la pagina principal */
-  --cream:#F6F2EC; --cream-2:#ECE7DE; --orange:#E76D3E; --orange-soft:#F3C7B4;
-  --ink:#060606; --gris:#93918D; --ink-soft:#56544F; --accent:#789EB5;
+  --cream:#F6F2EC; --cream-2:#ECE7DE; --orange:#E76D3E;   --ink:#060606; --gris:#93918D; --ink-soft:#56544F; --accent:#789EB5;
   --line:rgba(6,6,6,.14);
   --serif:'Taviraj',Georgia,serif;
   --sans:'Figtree',system-ui,-apple-system,sans-serif;
@@ -56,7 +56,8 @@ a{color:inherit}
   border-radius:999px;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:600;
   letter-spacing:.04em;padding:16px 30px;white-space:nowrap;
   transition:background .3s var(--ease),transform .3s var(--ease);text-decoration:none}
-.btn:hover{background:#d95c2d;transform:translateY(-2px)}
+/* el hover ya no cambia de color: su guia no trae variante del naranja */
+.btn:hover{transform:translateY(-2px)}
 
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1s var(--ease)}
 .rv.in{opacity:1;transform:none}
@@ -142,7 +143,8 @@ header.on-hero .btn:hover{background:#fff}
 .loc-panel .nada{color:var(--ink-soft);font-size:13.5px;text-align:center;padding:34px 6px}
 .loc-etq{display:inline-block;font:600 10.5px var(--sans);letter-spacing:.09em;text-transform:uppercase;
   padding:4px 9px;border-radius:999px;color:#fff;margin-bottom:11px;background:var(--orange)}
-.loc-etq.b2{background:#2F6F6B}
+/* era verde azulado, fuera de paleta, y es un "selected control" */
+.loc-etq.b2{background:var(--accent)}
 .loc-panel h3{margin:0 0 3px;font:600 21px/1.2 var(--serif)}
 .loc-panel .sf{margin:0 0 15px;font-size:13.5px;color:var(--ink-soft)}
 .loc-panel .sf b{color:var(--ink);font-weight:600;font-size:16px}
@@ -151,12 +153,12 @@ header.on-hero .btn:hover{background:#fff}
 .loc-nota{font-size:11.5px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:12px;line-height:1.5}
 .loc-cta{display:block;width:100%;margin-top:14px;border:0;border-radius:999px;background:var(--orange);
   color:#fff;font:600 12.5px var(--sans);padding:13px;cursor:pointer}
-.loc-cta:hover{background:#d95c2d}
+.loc-cta:hover{opacity:.88}
 .lista{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;margin-top:clamp(26px,3vw,44px)}
 @media(max-width:760px){.lista{grid-template-columns:1fr}}
 .lista li{padding-left:22px;position:relative;font-size:14.5px;color:var(--ink-soft);line-height:1.6}
 .lista li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;
-  background:var(--orange-soft)}
+  background:var(--gris)}
 .lista li b{color:var(--ink);font-weight:600}
 .nota{margin-top:26px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 @media(max-width:860px){.plano-grid{grid-template-columns:1fr}}
@@ -177,7 +179,7 @@ header.on-hero .btn:hover{background:#fff}
   color:var(--ink);font:400 15px/1.5 var(--sans);padding:13px 15px;outline:0;transition:border-color .2s;width:100%}
 .field input:focus,.field textarea:focus{border-color:var(--orange)}
 .field textarea{min-height:110px;resize:vertical}
-.field.err input,.field.err textarea{border-color:#E05B4B}
+.field.err input,.field.err textarea{border-color:#7B1E12}
 .f-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .hp{position:absolute;left:-9999px}
 #formNote{margin-top:16px;font-size:14px;color:var(--ink-soft)}

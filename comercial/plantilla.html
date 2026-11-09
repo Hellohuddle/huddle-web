@@ -86,7 +86,7 @@ header.on-hero .btn:hover{background:#fff}
 
 /* ---------- portada ---------- */
 #hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
-#hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero img,#hero .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #hero::after{content:'';position:absolute;inset:0;
   /* Dos velos. El vertical sostiene el encabezado arriba y asienta el pie del
      hero. El HORIZONTAL es el que hace el trabajo: el texto vive en la columna
@@ -123,6 +123,8 @@ header.on-hero .btn:hover{background:#fff}
    quedaba cortado por el overflow:hidden */
 .shot img{width:100%;height:auto;display:block}
 .shot figcaption{padding:12px 15px;font-size:12.5px;color:var(--ink-soft)}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,22px);
+  margin-top:clamp(14px,2vw,22px)}
 @media(max-width:760px){.shots{grid-template-columns:1fr}}
 
 /* ---------- plano ---------- */
@@ -172,6 +174,12 @@ header.on-hero .btn:hover{background:#fff}
 .lista li b{color:var(--ink);font-weight:600}
 .nota{margin-top:26px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 @media(max-width:860px){.plano-grid{grid-template-columns:1fr}}
+
+/* ---------- el patio en movimiento ---------- */
+#patio{background:var(--cream-2)}
+.patio-video{margin-top:clamp(30px,4vw,54px);border-radius:7px;overflow:hidden;
+  background:var(--ink);aspect-ratio:16/9}
+.patio-video video{width:100%;height:100%;display:block;object-fit:cover}
 
 /* ---------- puente a las viviendas ----------
    De la portada al comercial habia tres caminos; de vuelta, solo dos enlaces
@@ -253,7 +261,15 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 
 <!-- ============ PORTADA ============ -->
 <section id="hero">
-  <img src="/img/retail_hero.webp" alt="The Huddle monument sign at the entrance to the commercial microdistrict at dusk">
+  <!-- El poster se ve desde el primer pintado; el video se le pone src tras
+       cargar la pagina. Sin esto el hero cobraria 7 MB de peaje antes de que
+       el texto sea legible. Si el navegador no deja arrancarlo solo (ahorro de
+       bateria en iOS), se queda el poster, que es una imagen correcta. -->
+  <video id="heroVid" class="hero-video" poster="/video/com_hero_poster.jpg"
+         muted loop playsinline autoplay preload="none"
+         data-hd="/video/com_hero_hd.mp4" data-sd="/video/com_hero_sd.mp4"
+         data-movil="/video/com_hero_movil.mp4"
+         aria-label="Flying down into the Huddle courtyard at dusk"></video>
   <div class="hero-txt">
     <p class="eyebrow">Restaurants &middot; Wellness &middot; Lifestyle</p>
     <h1 class="serif">Commercial Space <em style="font-style:normal">for Lease</em></h1>
@@ -298,6 +314,16 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
       <img src="/img/retail_plaza.webp" alt="The fountain plaza at dusk, with the storefronts behind" loading="lazy">
       <figcaption>The fountain plaza, looking back at the storefronts and the covered walkway.</figcaption>
     </figure>
+    <div class="shots">
+      <figure class="shot rv">
+        <img src="/img/retail_plaza_2.webp" alt="The fountain at dusk with people seated in the courtyard" loading="lazy">
+        <figcaption>Seating around the fountain, with the shops lit behind.</figcaption>
+      </figure>
+      <figure class="shot rv">
+        <img src="/img/retail_entrada.webp" alt="The commercial microdistrict seen from the parking at dusk" loading="lazy">
+        <figcaption>The approach from the parking, at the end of the day.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -337,6 +363,25 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 </section>
 
 <!-- ============ CONTACTO ============ -->
+<!-- ============ EL PATIO, EN MOVIMIENTO ============ -->
+<section id="patio">
+  <div class="wrap">
+    <p class="eyebrow rv">At the end of the day</p>
+    <h2 class="serif h2 rv">Where the neighborhood<br><em>ends up.</em></h2>
+    <p class="lead rv" style="margin-top:24px">The courtyard is the part of Huddle people come back
+      to without planning it. A fountain, shade, somewhere to sit, and the shops a few steps away.</p>
+    <!-- Segunda mitad del material: va aqui y no en el hero para que ninguna
+         pantalla cargue los dos videos. Se le pone src al acercarse. -->
+    <div class="patio-video rv">
+      <video id="patioVid" poster="/video/com_patio_poster.jpg"
+             muted loop playsinline preload="none"
+             data-hd="/video/com_patio_hd.mp4" data-sd="/video/com_patio_sd.mp4"
+             data-movil="/video/com_patio_movil.mp4"
+             aria-label="The fountain courtyard at dusk, with people seated"></video>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PUENTE A LAS VIVIENDAS ============ -->
 <section id="viviendas">
   <div class="wrap">
@@ -433,6 +478,61 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 
 <script src="/locales.js"></script>
 <script>
+/* ---------- LOS DOS VIDEOS ----------
+   Ninguno entra en la carga inicial: el del hero se pide tras 'load' y el del
+   patio al acercarse. Asi cada pantalla paga solo el suyo. */
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function fuente(v){
+    var con = navigator.connection || {};
+    var ahorro = con.saveData || /2g/.test(con.effectiveType || '');
+    if (ahorro || innerWidth < 760) return v.getAttribute('data-movil');
+    if (innerWidth < 1280) return v.getAttribute('data-sd');
+    return v.getAttribute('data-hd');
+  }
+
+  function arrancar(v){
+    if (v.src) return;
+    v.src = fuente(v);
+    if (RM) return;                      // con movimiento reducido se queda quieto
+    function dale(){ var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+    v.addEventListener('loadeddata', dale);
+    v.addEventListener('canplay', dale);
+    dale();
+    /* iOS en ahorro de bateria bloquea el autoarranque: lo permite con el
+       primer gesto de la persona, y solo entonces. */
+    ['touchstart','pointerdown','click','scroll'].forEach(function(ev){
+      addEventListener(ev, dale, {passive:true, once:true});
+    });
+  }
+
+  var hero = document.getElementById('heroVid');
+  if (hero) addEventListener('load', function(){ setTimeout(function(){ arrancar(hero); }, 500); });
+
+  var patio = document.getElementById('patioVid');
+  if (patio){
+    var cerca = function(){
+      var r = patio.getBoundingClientRect();
+      return r.top < innerHeight + 500 && r.bottom > -500;
+    };
+    var mirar = function(){ if (cerca()) { arrancar(patio); apagar(); } };
+    var reloj = setInterval(mirar, 300);
+    function apagar(){ clearInterval(reloj); removeEventListener('scroll', mirar); }
+    /* Observador Y reloj: en algunos entornos el IntersectionObserver no
+       dispara nunca, y entonces el video no cargaria jamas. */
+    if ('IntersectionObserver' in window){
+      var ob = new IntersectionObserver(function(es){
+        if (es[0].isIntersecting){ ob.disconnect(); arrancar(patio); apagar(); }
+      }, {rootMargin:'500px 0px'});
+      ob.observe(patio);
+    }
+    addEventListener('scroll', mirar, {passive:true});
+    setTimeout(apagar, 30000);
+    mirar();
+  }
+})();
+
 /* ---------- PLANO DE LOCALES ----------
    Los siete locales sobre el render del plano. Superficie, ancho de arriendo y
    servicios salen de los Lease Suite Plans; los contornos son una guia dibujada

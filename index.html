@@ -63,7 +63,11 @@ a{color:inherit;text-decoration:none}
   font-size:11px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--orange);font-weight:600;margin-bottom:20px;
 }
-.h2{font-size:clamp(30px,4.4vw,62px)}
+/* Un solo color en todo el titular: antes la primera linea iba en negro
+   y el <em> en naranja, que es justo el emparejamiento que la marca no
+   admite. En fondo claro no cabe ponerlo en blanco, asi que va entero
+   en naranja y el negro se queda para el texto corrido. */
+.h2{font-size:clamp(30px,4.4vw,62px);color:var(--orange)}
 .h2 em{font-style:normal;color:var(--orange)}
 .lead{font-size:clamp(15px,1.25vw,18px);color:var(--ink-soft);max-width:56ch}
 

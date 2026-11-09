@@ -49,7 +49,11 @@ a{color:inherit}
 .serif{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.08}
 .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);
   font-weight:600;margin-bottom:20px}
-.h2{font-size:clamp(30px,4.4vw,62px)}
+/* Un solo color en todo el titular: antes la primera linea iba en negro
+   y el <em> en naranja, que es justo el emparejamiento que la marca no
+   admite. En fondo claro no cabe ponerlo en blanco, asi que va entero
+   en naranja y el negro se queda para el texto corrido. */
+.h2{font-size:clamp(30px,4.4vw,62px);color:var(--orange)}
 .h2 em{font-style:normal;color:var(--orange)}
 .lead{font-size:clamp(15px,1.25vw,18px);color:var(--ink-soft);max-width:56ch}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border:0;
@@ -177,6 +181,7 @@ header.on-hero .btn:hover{background:#fff}
 
 /* ---------- el patio en movimiento ---------- */
 #patio{background:var(--cream-2)}
+#aerea{background:var(--cream)}
 .patio-video{margin-top:clamp(30px,4vw,54px);border-radius:7px;overflow:hidden;
   background:var(--ink);aspect-ratio:16/9}
 .patio-video video{width:100%;height:100%;display:block;object-fit:cover}
@@ -328,6 +333,24 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
 </section>
 
 <!-- ============ PLANO ============ -->
+<!-- ============ EL SITIO DESDE ARRIBA ============ -->
+<section id="aerea">
+  <div class="wrap">
+    <p class="eyebrow rv">The site</p>
+    <h2 class="serif h2 rv">Nine thousand square feet,<br><em>in one place.</em></h2>
+    <p class="lead rv" style="margin-top:24px">Two buildings around a shaded courtyard, with the
+      parking that serves them and the neighborhood right behind. This is the whole commercial
+      microdistrict, from above.</p>
+    <div class="patio-video rv">
+      <video id="aereaVid" poster="/video/com_aerea_poster.jpg"
+             muted loop playsinline preload="none"
+             data-hd="/video/com_aerea_hd.mp4" data-sd="/video/com_aerea_sd.mp4"
+             data-movil="/video/com_aerea_movil.mp4"
+             aria-label="Aerial descent over the Huddle commercial microdistrict"></video>
+    </div>
+  </div>
+</section>
+
 <section id="plano">
   <div class="wrap">
     <p class="eyebrow rv">Leasing opportunities</p>
@@ -510,7 +533,10 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
   var hero = document.getElementById('heroVid');
   if (hero) addEventListener('load', function(){ setTimeout(function(){ arrancar(hero); }, 500); });
 
-  var patio = document.getElementById('patioVid');
+  /* Mismo arranque para todos los videos de seccion: se piden al acercarse,
+     nunca en la carga inicial. */
+  [document.getElementById('patioVid'),
+   document.getElementById('aereaVid')].forEach(function(patio){
   if (patio){
     var cerca = function(){
       var r = patio.getBoundingClientRect();
@@ -531,6 +557,7 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lin
     setTimeout(apagar, 30000);
     mirar();
   }
+  });
 })();
 
 /* ---------- PLANO DE LOCALES ----------

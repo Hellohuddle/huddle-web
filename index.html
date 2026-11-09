@@ -69,6 +69,12 @@ a{color:inherit;text-decoration:none}
    en naranja y el negro se queda para el texto corrido. */
 .h2{font-size:clamp(30px,4.4vw,62px);color:var(--orange)}
 .h2 em{font-style:normal;color:var(--orange)}
+/* El titular va naranja SOLO sobre los fondos claros. Donde el fondo es negro
+   (#spin, #block360) o naranja (#contact), pasa a blanco: naranja sobre negro
+   y negro sobre naranja son justo las dos combinaciones que Danelle prohibio.
+   El <em> de esas secciones ya tiene su propio color mas abajo, azul sobre
+   negro y beige sobre naranja. */
+#spin .h2,#block360 .h2,#contact .h2{color:#fff}
 .lead{font-size:clamp(15px,1.25vw,18px);color:var(--ink-soft);max-width:56ch}
 
 .btn{

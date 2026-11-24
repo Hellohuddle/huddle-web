@@ -133,12 +133,27 @@ header.on-hero #burger i,header.on-hero #burger i::before,header.on-hero #burger
 #burger.open i::after{transform:translateY(-7px) rotate(-45deg)}
 #drawer{
   position:fixed;inset:0;z-index:99;background:var(--cream);
-  display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 var(--pad);
+  display:flex;flex-direction:column;justify-content:flex-start;gap:4px;
+  /* Trece enlaces no caben en un telefono. Con justify-content:center y sin
+     scroll se salian por los DOS extremos y no habia manera de alcanzarlos:
+     asi se perdian Commercial Space y Get in touch abajo, y Experience arriba.
+     Alineado arriba + scroll + margenes automaticos en el primero y el ultimo:
+     se centra cuando cabe y se desplaza cuando no. */
+  padding:clamp(74px,10.5vh,96px) var(--pad) calc(22px + env(safe-area-inset-bottom));
+  overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
   opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;
 }
 #drawer.open{opacity:1;visibility:visible}
-#drawer a{font-family:var(--serif);font-size:clamp(28px,7vw,46px);font-weight:600;padding:12px 0;
+#drawer a:first-of-type{margin-top:auto}
+#drawer a:last-of-type{margin-bottom:auto}
+#drawer a{font-family:var(--serif);font-size:clamp(26px,6.4vw,46px);font-weight:600;padding:10px 0;
           border-bottom:1px solid var(--line)}
+/* en pantallas bajas se aprieta para que entren los trece sin desplazar */
+@media(max-height:900px){
+  #drawer{padding-top:clamp(64px,9vh,80px);gap:0}
+  #drawer a{font-size:clamp(21px,5.4vw,28px);padding:7px 0}
+  #drawer a small{font-size:10px;margin-right:10px}
+}
 #drawer a small{font-size:12px;font-family:var(--sans);color:var(--orange);margin-right:14px;vertical-align:middle}
 
 /* ---------- hero ---------- */
@@ -1178,17 +1193,44 @@ footer{background:var(--cream);color:var(--ink);padding:clamp(50px,7vw,80px) var
   document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- NAV ---------- */
+  /* Bloquear el fondo sin perder el sitio.
+     is-locked lleva height:100vh, que recorta el documento y hace que el
+     navegador olvide el desplazamiento. Se guarda antes y se devuelve despues,
+     con scroll-behavior en auto para que el regreso sea instantaneo. */
+  var scrollGuardado = 0;
+  function bloquearFondo(si){
+    var raiz = document.documentElement;
+    if(si){
+      scrollGuardado = window.pageYOffset || raiz.scrollTop || 0;
+      document.body.classList.add('is-locked');
+    } else {
+      document.body.classList.remove('is-locked');
+      var antes = raiz.style.scrollBehavior;
+      var poner = function(){
+        raiz.style.scrollBehavior = 'auto';
+        window.scrollTo(0, scrollGuardado);
+        raiz.style.scrollBehavior = antes;
+      };
+      poner();
+      /* Al cerrar con el boton Atras, el navegador vuelve a aplicar el ancla de
+         la URL (#gallery) DESPUES del popstate y se lleva la pagina al principio
+         de la seccion. Por eso hay que devolver el sitio tambien en los dos
+         fotogramas siguientes, cuando ese salto ya ocurrio. */
+      requestAnimationFrame(function(){ poner(); requestAnimationFrame(poner); });
+    }
+  }
+
   var hdr=document.getElementById('hdr'), burger=document.getElementById('burger'),
       drawer=document.getElementById('drawer'), hero=document.getElementById('hero');
   burger.addEventListener('click',function(){
     var open=drawer.classList.toggle('open');
     burger.classList.toggle('open',open);
-    document.body.classList.toggle('is-locked',open);
+    bloquearFondo(open);
   });
   drawer.addEventListener('click',function(e){
     if(e.target.tagName==='A'){
       drawer.classList.remove('open'); burger.classList.remove('open');
-      document.body.classList.remove('is-locked');
+      bloquearFondo(false);
     }
   });
 
@@ -1610,15 +1652,27 @@ footer{background:var(--cream);color:var(--ink);padding:clamp(50px,7vw,80px) var
   var lightbox=(function(){
     var lb=document.getElementById('lb'), im=document.getElementById('lbImg'),
         x=document.getElementById('lbClose');
+    /* El boton Atras del telefono tiene que CERRAR la foto, no salirse de la
+       pagina. Al abrir se mete una entrada en el historial; Atras la consume y
+       el visor se cierra sin que la pagina se mueva. Antes, Atras deshacia el
+       ultimo salto de ancla y dejaba al visitante arriba del todo. */
     function abrir(src,alt){
       im.src=src; im.alt=alt||'';
-      lb.classList.add('open'); document.body.classList.add('is-locked'); x.focus();
+      lb.classList.add('open'); bloquearFondo(true); x.focus();
+      try{ history.pushState({lb:1},''); }catch(_){}
     }
-    function cerrar(){
-      lb.classList.remove('open'); document.body.classList.remove('is-locked');
+    function cerrar(porHistoria){
+      if(!lb.classList.contains('open')) return;
+      lb.classList.remove('open'); bloquearFondo(false);
       setTimeout(function(){ if(!lb.classList.contains('open')) im.removeAttribute('src'); },450);
+      /* si se cierra con la X, el clic o Escape, hay que consumir la entrada que
+         se metio al abrir; si no, el siguiente Atras no haria nada visible */
+      if(!porHistoria && history.state && history.state.lb){
+        try{ history.back(); }catch(_){}
+      }
     }
-    lb.addEventListener('click',cerrar);
+    addEventListener('popstate',function(){ cerrar(true); });
+    lb.addEventListener('click',function(){ cerrar(); });
     x.addEventListener('click',function(e){ e.stopPropagation(); cerrar(); });
     addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('open')) cerrar(); });
     window.abrirLightbox = abrir;
